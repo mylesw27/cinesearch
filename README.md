@@ -1,5 +1,5 @@
 
-# Movie Favoriting App
+# CineSearch
 
 Overview: Our team will be creating a movie favoriting app that allows users to save and organize their favorite movies and create a watchlist of movies they want to see in the future. The app will utilize a modern MERN framework to create a responsive and interactive user interface.
 
@@ -46,10 +46,10 @@ Open the app in your browser:
 - As a movie enthusiast I want to have all relevant information that includes release date, rating, genre, synopsis.
 
 ## Wireframes
-![Home page for the movie app](/src/components/assets/page1.png)
-![Movie page for the movie app](/src/components/assets/page2.png)
-![Favorite page for the movie app](/src/components/assets/page3.png)
-![Watch page for the movie app](/src/components/assets/page4.png)
+![Home page for the CineSearch](/src/components/assets/page1.png)
+![Movie page for the CineSearch](/src/components/assets/page2.png)
+![Favorite page for the CineSearch](/src/components/assets/page3.png)
+![Watch page for the CineSearch](/src/components/assets/page4.png)
 
 ## Team Mavericks
  - [Dakota Smith](https://github.com/Dxk0ta)
