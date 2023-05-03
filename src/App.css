@@ -56,20 +56,14 @@
 }
 
 .header img {
-  width: 150px; 
+  width: 100px; 
   height: auto; 
   margin-right: 10px; 
-  margin-top: -15px;
-  margin-bottom: 0px;
+
 }
 
 .header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.header p {
-  padding-top: 30px;
-  padding-left: 50px;
-}
-
-
