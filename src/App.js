@@ -11,6 +11,8 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
+import Header from './partials/Header'
+import Footer from './partials/Footer'
 
 function App() {
 	// the currently logged in user will be stored up here in state
@@ -42,10 +44,7 @@ function App() {
 	return (
 		<Router>
 			<header>
-				<Navbar
-					currentUser={currentUser}
-					handleLogout={handleLogout}
-				/>
+				<Header />
 			</header>
 
 			<div className="App">
