@@ -11,10 +11,13 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
+import ListView from './components/partials/ListView'
+import favorites from './favorites'
 
 function App() {
 	// the currently logged in user will be stored up here in state
 	const [currentUser, setCurrentUser] = useState(null)
+	const [favoritesArray, setFavoritesArray] = useState([])
 
 	// useEffect -- if the user navigates away form the page, we will log them back in
 	useEffect(() => {
@@ -26,6 +29,7 @@ function App() {
 		} else {
 			setCurrentUser(null)
 		}
+		setFavoritesArray(favorites)
 	}, []) // happen only once
 
 	// event handler to log the user out when needed
@@ -69,6 +73,13 @@ function App() {
 						path="/profile"
 						element={<Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 					/>
+
+					{/* Route for favorites list */}
+					<Route
+						path="/favorites"
+						element={<ListView
+							listName={"Favorites"}
+						/>} />
 				</Routes>
 			</div>
 		</Router>
