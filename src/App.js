@@ -13,6 +13,7 @@ import './App.css'
 import jwt_decode from 'jwt-decode'
 import Header from './partials/Header'
 import Footer from './partials/Footer'
+import MovieDetails from './components/pages/MovieDetails'
 
 function App() {
 	// the currently logged in user will be stored up here in state
@@ -28,7 +29,7 @@ function App() {
 		} else {
 			setCurrentUser(null)
 		}
-	}, []) // happen only once
+	}, []) // happen only once - no _id needed
 
 	// event handler to log the user out when needed
 	const handleLogout = () => {
@@ -65,8 +66,13 @@ function App() {
 					/>
 
 					<Route
-						path="/profile"
-						element={<Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+						path="/movies"
+						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+					/>
+
+					<Route
+						path="/movies/details"
+						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 					/>
 				</Routes>
 			</div>
