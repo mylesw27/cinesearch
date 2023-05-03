@@ -37,6 +37,7 @@
   }
 }
 
+
 .Welcome-page {
   display: flex;
   flex-direction: column;
@@ -45,3 +46,10 @@
   height: 100vh;
   margin: 0;
 }
+
+.Header {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+}
+

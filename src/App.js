@@ -11,6 +11,8 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
+import Header from './partials/Header'
+import Footer from './partials/Footer'
 import MovieDetails from './components/pages/MovieDetails'
 
 
@@ -44,10 +46,7 @@ function App() {
 	return (
 		<Router>
 			<header>
-				<Navbar
-					currentUser={currentUser}
-					handleLogout={handleLogout}
-				/>
+				<Header />
 			</header>
 
 			<div className="App">
