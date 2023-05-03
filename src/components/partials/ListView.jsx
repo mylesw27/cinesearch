@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import favorites from "../../favorites"
 import Card from "./Card"
 
@@ -5,8 +6,19 @@ import Card from "./Card"
 export default function ListView(props) {
     // set state for movie list passed down from app.js
     const listName = props.listName
-    // set name of list passed down from app.jst
-    const cardsArray = favorites.map((movie, i) => {
+    const [search, setSearch] = useState("")
+
+    const handleChange = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const filterMoviesArray = favorites.filter((movie) => {
+        return movie.name
+            .toLowerCase()
+            .includes(search.toLowerCase())
+    })
+
+    const cardsArray = filterMoviesArray.map((movie, i) => {
         return (
             <Card
                 movie={movie}
@@ -16,9 +28,17 @@ export default function ListView(props) {
     return (
         <div>
             <h1>{listName}</h1>
+            <div>
+                <label htmlFor="movie-search">Search in {listName}</label>
+                <input
+                    id="movie-search"
+                    type="text"
+                    value={search}
+                    onChange={handleChange}
+                />
+            </div>
+
             {cardsArray}
-
-
         </div>
     )
 }
