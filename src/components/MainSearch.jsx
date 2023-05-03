@@ -35,7 +35,6 @@ function MainSearch() {
                     <p>{movie.overview}</p>
                 </div>
             ))}
-
         </div>
     )
 }
