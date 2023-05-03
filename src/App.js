@@ -11,6 +11,8 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
+import ListView from './components/partials/ListView'
+import favorites from './favorites'
 import Header from './partials/Header'
 import Footer from './partials/Footer'
 import MovieDetails from './components/pages/MovieDetails'
@@ -19,6 +21,7 @@ import MovieDetails from './components/pages/MovieDetails'
 function App() {
 	// the currently logged in user will be stored up here in state
 	const [currentUser, setCurrentUser] = useState(null)
+	const [favoritesArray, setFavoritesArray] = useState([])
 
 	// useEffect -- if the user navigates away form the page, we will log them back in
 	useEffect(() => {
@@ -75,6 +78,13 @@ function App() {
 						path="/movies/details"
 						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 					/>
+
+					{/* Route for favorites list */}
+					<Route
+						path="/favorites"
+						element={<ListView
+							listName={"Favorites"}
+						/>} />
 				</Routes>
 			</div>
 		</Router>
