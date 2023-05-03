@@ -11,6 +11,7 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
+import MovieDetails from './components/pages/MovieDetails'
 
 function App() {
 	// the currently logged in user will be stored up here in state
@@ -66,8 +67,13 @@ function App() {
 					/>
 
 					<Route
-						path="/profile"
-						element={<Profile handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+						path="/movies"
+						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+					/>
+
+					<Route
+						path="/movies/details"
+						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 					/>
 				</Routes>
 			</div>
