@@ -75,7 +75,7 @@ function App() {
 					/>
 
 					<Route
-						path="/movies/details"
+						path="/movies/:id/details"
 						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 					/>
 
