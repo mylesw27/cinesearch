@@ -6,7 +6,7 @@ import axios from "axios";
 // Define the MovieDetails component
 function MovieDetails() {
   // Use the useParams hook to get the movie ID from the URL
-  const { _id } = useParams();
+  const { id } = useParams();
 
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
@@ -15,16 +15,16 @@ function MovieDetails() {
 
   // use the useEffect hook to fetch movie details from the TMDB API - make sure its axios
   useEffect(() => {
-    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`;
+    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
     axios
       .get(popularFilmsUrl)
       .then((response) => {
-        setMovie(response.data.results);
+        setMovie(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [_id]);
+  }, [id]);
 
   // Define the handleAddFavorite function to add the movie to the favorites list
   const handleAddFavorite = () => {
@@ -45,7 +45,6 @@ function MovieDetails() {
   };
   // if the movie is not already in the watch list, add it
   // if
-
   //Render the MovieDetails Component
   return (
     <div className="movie-details">
