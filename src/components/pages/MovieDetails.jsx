@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-// define the TMDB API key and URL - this might something drilled down above
-
 // Define the MovieDetails component
 function MovieDetails() {
   // Use the useParams hook to get the movie ID from the URL

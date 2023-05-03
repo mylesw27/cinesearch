@@ -27,7 +27,7 @@ function App() {
 		} else {
 			setCurrentUser(null)
 		}
-	}, []) // happen only once
+	}, []) // happen only once - no _id needed
 
 	// event handler to log the user out when needed
 	const handleLogout = () => {
