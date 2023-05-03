@@ -11,15 +11,12 @@ import Welcome from './components/pages/Welcome'
 import Navbar from './components/Navbar'
 import './App.css'
 import jwt_decode from 'jwt-decode'
-<<<<<<< HEAD
 import ListView from './components/partials/ListView'
 import favorites from './favorites'
-=======
 import Header from './partials/Header'
 import Footer from './partials/Footer'
 import MovieDetails from './components/pages/MovieDetails'
 
->>>>>>> main
 
 function App() {
 	// the currently logged in user will be stored up here in state
@@ -36,12 +33,7 @@ function App() {
 		} else {
 			setCurrentUser(null)
 		}
-<<<<<<< HEAD
-		setFavoritesArray(favorites)
-	}, []) // happen only once
-=======
 	}, []) // happen only once - no _id needed
->>>>>>> main
 
 	// event handler to log the user out when needed
 	const handleLogout = () => {
