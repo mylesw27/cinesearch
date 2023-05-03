@@ -5,7 +5,7 @@ export default function Welcome() {
 		<div className="Welcome-page">
 			<img src={logo} alt="Logo" />
 			<h1>Welcome to CineSearch!</h1>
-			<p>I don't mean to come off too cocky but I'm kind of the new "it" app.. Tell your friends.</p>
+			<p>Search all things movies here</p>
 		</div>
 	)
 }
