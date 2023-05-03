@@ -10,14 +10,15 @@ function MovieDetails() {
 
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
+  const [watchMovie, setWatchMovie] = useState({})
   const [favorites, setFavorites] = useState([]);
   const [watchList, setWatchList] = useState([]);
 
   // use the useEffect hook to fetch movie details from the TMDB API - make sure its axios
   useEffect(() => {
-    const popularFilmsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+    const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
     axios
-      .get(popularFilmsUrl)
+      .get(movieDetailsUrl)
       .then((response) => {
         setMovie(response.data);
       })
@@ -25,6 +26,19 @@ function MovieDetails() {
         console.log(error);
       });
   }, [id]);
+
+  // // WATCH LIST - JUST A TEST
+  // useEffect(() => {
+  //   const movieWatchUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+  //   axios
+  //     .get(movieWatchUrl)
+  //     .then((response) => {
+  //       setWatchMovie(response.data.results.US.flatrate);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [id]);
 
   // Define the handleAddFavorite function to add the movie to the favorites list
   const handleAddFavorite = () => {
@@ -44,7 +58,10 @@ function MovieDetails() {
     }
   };
   // if the movie is not already in the watch list, add it
-  // if
+  console.log(movie)
+  console.log(watchMovie)
+
+
   //Render the MovieDetails Component
   return (
     <div className="movie-details">
@@ -57,10 +74,22 @@ function MovieDetails() {
       <p>Adult: {movie.adult ? "Yes" : "No"}</p>
       <p>Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
       <p>Synopsis: {movie.overview}</p>
+      <p>Movie Rating: {movie.certification}</p>
+      {/* {watchMovie.map((provider) => (
+        <div key={provider.provider_id}>
+          <img
+            src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
+            alt={provider.provider_name}
+          />
+          <p>{provider.provider_name}</p>
+        </div>
+      ))}
+      <br /> */}
       <button onClick={handleAddFavorite}>Add to Favorites</button>
       <button onClick={handleAddWatchList}>Add to Watch List</button>
     </div>
   );
-}
+      }  
+
 
 export default MovieDetails;
