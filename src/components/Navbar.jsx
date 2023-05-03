@@ -19,22 +19,21 @@ export default function Navbar({ currentUser, handleLogout }) {
 			{/* if the user is not logged in... */}
 			<Link to="/register">
 				register
-			</Link>
+			</Link> {" | "}
 
 			<Link to="/login">
 				login
-			</Link>
+			</Link> 
 		</>
 	)
 
 	return (
-		<nav>
-			{/* user always sees this section */}
-			<Link to="/">
-				<p>User App</p>
-			</Link>
-
-			{currentUser ? loggedIn : loggedOut}
-		</nav>
+			<div className="nav">
+				{/* user always sees this section */}
+				<Link to="/">
+					User App {" | "}
+				</Link>
+				{currentUser ? loggedIn : loggedOut}
+			</div>
 	)
 }
