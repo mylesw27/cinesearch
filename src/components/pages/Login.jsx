@@ -46,7 +46,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div>
+		<div className="login-container">
 			<h1 className="login-title">Login to Your Account:</h1>
 
 			<p>{msg}</p>
