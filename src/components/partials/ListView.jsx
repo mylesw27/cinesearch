@@ -13,15 +13,15 @@ export default function ListView(props) {
     }
 
     const filterMoviesArray = favorites.filter((movie) => {
-        return movie.name
-            .toLowerCase()
-            .includes(search.toLowerCase())
+        return movie.title.toLowerCase().includes(search.toLowerCase())
     })
 
     const cardsArray = filterMoviesArray.map((movie, i) => {
         return (
             <Card
+                key={`Card-${movie.id}`}
                 movie={movie}
+                listType={listName}
             />
         )
     })
@@ -42,7 +42,3 @@ export default function ListView(props) {
         </div>
     )
 }
-
-// TO DO
-// stub out card component
-// create mock favorites array to display
