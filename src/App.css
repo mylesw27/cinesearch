@@ -221,3 +221,11 @@ label {
   border: none;
   margin-bottom: 1rem;
 }
+
+.movienight-img {
+  width: 1000px;
+  height: 600px;
+  margin-top: 310px;
+  margin-left: -80px;
+}
+
