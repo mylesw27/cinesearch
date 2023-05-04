@@ -17,7 +17,6 @@ import Header from './components/partials/Header'
 import Footer from './components/partials/Footer'
 import MovieDetails from './components/pages/MovieDetails'
 
-
 function App() {
 	// the currently logged in user will be stored up here in state
 	const [currentUser, setCurrentUser] = useState(null)
