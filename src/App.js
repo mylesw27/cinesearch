@@ -13,10 +13,9 @@ import './App.css'
 import jwt_decode from 'jwt-decode'
 import ListView from './components/partials/ListView'
 import favorites from './favorites'
-import Header from './partials/Header'
-import Footer from './partials/Footer'
+import Header from './components/partials/Header'
+import Footer from './components/partials/Footer'
 import MovieDetails from './components/pages/MovieDetails'
-
 
 function App() {
 	// the currently logged in user will be stored up here in state
