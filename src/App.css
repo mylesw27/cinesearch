@@ -54,7 +54,6 @@ body {
   height: auto; 
   margin-right: 0px; 
   margin-top: -80px;
-<<<<<<< HEAD
 }
 
 .register-title {
@@ -228,8 +227,6 @@ label {
   height: 600px;
   margin-top: 310px;
   margin-left: -80px;
-=======
->>>>>>> 91460b5 (styling landing page)
 }
 
 .register-title {
@@ -330,4 +327,14 @@ label {
 
 .btn-login:hover {
 	background-color: #0066b3;
+}
+
+.label-password-login {
+	width: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.label-email-login {
+	width: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
