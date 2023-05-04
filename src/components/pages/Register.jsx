@@ -49,9 +49,13 @@ export default function Register({ currentUser, setCurrentUser }) {
     navigate("/profile");
   }
 
-  return (
-    <div className="register-container">
-      <h1 className="register-title">Register for your account today!</h1>
+	return (
+<<<<<<< HEAD
+		<div className="register-container">
+=======
+		<div>
+>>>>>>> e270930 (got styling on register and login page done)
+			<h1 className="register-title">Register for your account today!</h1>
 
       <p>{msg}</p>
 
