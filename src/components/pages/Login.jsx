@@ -52,7 +52,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 			<p>{msg}</p>
 
 			<form onSubmit={handleSubmit} className="login-inputs">
-				<label htmlFor='email' className="label-name-login">Email:</label>
+				<label htmlFor='email' className="label-email-login">Email:</label>
 				<input 
 					type="email"
 					id="email"
