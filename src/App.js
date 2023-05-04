@@ -81,9 +81,14 @@ function App() {
 
 					{/* Route for favorites list */}
 					<Route
-						path="/favorites"
+						path="/users/favorites"
 						element={<ListView
 							listName={"Favorites"}
+						/>} />
+					<Route
+						path="/users/watchlist"
+						element={<ListView
+							listName={"Watchlist"}
 						/>} />
 				</Routes>
 			</div>
