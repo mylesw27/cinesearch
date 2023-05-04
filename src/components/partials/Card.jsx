@@ -5,19 +5,23 @@ export default function Card(props) {
     const listType = props.listType
     const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`
 
-    const handleRemoveFavorite = () => {
+    const handleRemoveFavorite = (e) => {
+        e.preventDefault()
         console.log(`Remove ${movie.title} from favories`)
     }
 
-    const handleAddWatchList = () => {
+    const handleAddWatchList = (e) => {
+        e.preventDefault()
         console.log(`Add ${movie.title} to watchlist`)
     }
 
-    const handleAddFavorite = () => {
+    const handleAddFavorite = (e) => {
+        e.preventDefault()
         console.log(`Add ${movie.title} to favorites`)
     }
 
-    const handleRemoveWatchList = () => {
+    const handleRemoveWatchList = (e) => {
+        e.preventDefault()
         console.log(`Remove ${movie.title} from watchlist`)
     }
 
@@ -54,14 +58,14 @@ export default function Card(props) {
 
     return (
         <>
-            <div className="card">
-                <Link to={`/movies/${movie.id}/details`}>
+            <Link to={`/movies/${movie.id}/details`}>
+                <div className="card">
                     <img src={posterUrl} />
                     <h2>{movie.name}</h2>
                     <p>{movie.overview}</p>
-                </Link>
-                {buttons()}
-            </div>
+                    {buttons()}
+                </div>
+            </Link>
         </>
     )
 }
