@@ -1,4 +1,5 @@
-import logo from "../assets/Logo.png"
+import logo from "../assets/Logo.png";
+import Navbar from "../Navbar";
 
 export default function Welcome() {
 	return (
@@ -6,6 +7,6 @@ export default function Welcome() {
 			<img src={logo} alt="Logo" />
 			<h1>Welcome to CineSearch!</h1>
 			<p>Search all things movies here</p>
-		</div>
+			</div>
 	)
 }

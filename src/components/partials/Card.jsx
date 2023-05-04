@@ -5,7 +5,7 @@ export default function Card(props) {
     console.log(movie)
     const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
 
-    const watchArray = watchMovie.map((service) => {
+    const watchArray = movie.map((service) => {
         return (
             <>
                 <img src={`https://image.tmdb.org/t/p/w200/${service.logo_path}`} />
