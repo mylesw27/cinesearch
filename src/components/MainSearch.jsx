@@ -26,13 +26,13 @@ function MainSearch() {
                 type="text"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
+                
                 />
                 <button type="submit">Search</button>
             </form>
             {movies.map((movie) => (
                 <div key={movie.id}>
                     <h2>{movie.title}</h2>
-                    <p>{movie.overview}</p>
                 </div>
             ))}
         </div>
