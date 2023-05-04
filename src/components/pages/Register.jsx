@@ -49,12 +49,12 @@ export default function Register({ currentUser, setCurrentUser }) {
 
 	return (
 		<div>
-			<h1>Register for an account:</h1>
+			<h1 className="register-title">Register for your account today!</h1>
 
 			<p>{msg}</p>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='name'>Name:</label>
+			<form className="register-inputs" onSubmit={handleSubmit}>
+				<label htmlFor='name' className="label-name-register">Name:</label>
 				<input 
 					type="text"
 					id="name"
@@ -63,7 +63,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 					value={name}
 				/>
 
-				<label htmlFor='email'>Email:</label>
+				<label htmlFor='email' className="label-email-register">Email:</label>
 				<input 
 					type="email"
 					id="email"
@@ -72,7 +72,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 					value={email}
 				/>
 
-				<label htmlFor='password'>Password:</label>
+				<label htmlFor='password' className="label-password-register">Password:</label>
 				<input 
 					type="password"
 					id="password"
@@ -81,7 +81,7 @@ export default function Register({ currentUser, setCurrentUser }) {
 					value={password}
 				/>
 
-				<button type="submit">Register</button>
+				<button type="submit" className="btn-register">Register</button>
 			</form>
 		</div>
 	)
