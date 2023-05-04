@@ -4,7 +4,6 @@ import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Register from "./components/pages/Register";
 import Welcome from "./components/pages/Welcome";
-import Navbar from "./components/Navbar";
 import "./App.css";
 import jwt_decode from "jwt-decode";
 import ListView from "./components/partials/ListView";
