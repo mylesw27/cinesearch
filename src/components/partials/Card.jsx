@@ -2,27 +2,66 @@ import { Link } from "react-router-dom";
 
 export default function Card(props) {
     const movie = props.movie
-    console.log(movie)
-    const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
+    const listType = props.listType
+    const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`
 
-    const watchArray = watchMovie.map((service) => {
+    const handleRemoveFavorite = () => {
+        console.log(`Remove ${movie.title} from favories`)
+    }
+
+    const handleAddWatchList = () => {
+        console.log(`Add ${movie.title} to watchlist`)
+    }
+
+    const handleAddFavorite = () => {
+        console.log(`Add ${movie.title} to favorites`)
+    }
+
+    const handleRemoveWatchList = () => {
+        console.log(`Remove ${movie.title} from watchlist`)
+    }
+
+    const buttons = () => {
+        if (listType === "Favorites") {
+            return (
+                <>
+                    <button onClick={handleRemoveFavorite}>Remove from Favorites</button>
+                    <button onClick={handleAddWatchList}>Add to Watch List</button>
+                </>
+            )
+        } else if (listType === "Watchlist") {
+            return (
+                <>
+                    <button onClick={handleAddFavorite}>Add to Favorites</button>
+                    <button onClick={handleRemoveWatchList}>Remove from Watch List</button>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <button onClick={handleAddFavorite}>Add to Favorites</button>
+                    <button onClick={handleAddWatchList}>Add to Watch List</button>
+                </>
+            )
+        }
+    }
+
+    const otherButtons = () => {
         return (
-            <>
-                <img src={`https://image.tmdb.org/t/p/w200/${service.logo_path}`} />
-                <p>{service.provider_name}</p>
-            </>
+            <p>{listType}</p>
         )
-    })
+    }
 
     return (
         <>
-            <Link to={`/movies/${movie.id}/details`}>
-                <div className="card">
+            <div className="card">
+                <Link to={`/movies/${movie.id}/details`}>
                     <img src={posterUrl} />
                     <h2>{movie.name}</h2>
                     <p>{movie.overview}</p>
-                </div>
-            </Link>
+                </Link>
+                {buttons()}
+            </div>
         </>
     )
 }
