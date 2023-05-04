@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Comments from "./Comments";
-import FavoritesButton from "../FavoritesButton";
+
 
 
 // Define the MovieDetails component
@@ -93,7 +93,6 @@ function MovieDetails() {
         </div>
       ))}
       <br />
-      <FavoritesButton/>
       <button onClick={handleAddWatchList}>Add to Watch List</button>
       <Comments />
     </div>
