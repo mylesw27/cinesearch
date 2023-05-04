@@ -30,14 +30,11 @@ export default function Header({ currentUser, handleLogout }) {
 	return (
 		<nav class="navbar navbar-light bg-light header">
             <div>
-            <a class="navbar-brand navbar-link" href="/">
-                    Home
-                </a>
                 <a class="navbar-brand navbar-link" href="/register">
-                    Register
-                </a>
+                    REGISTER
+                </a> {" | "}
                 <a class="navbar-brand navbar-link" href="/login">
-                    Login
+                    LOGIN
                 </a>
             </div>
             <img class="navbar-logo" src="/logo.png" alt="logo image" />
