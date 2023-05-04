@@ -1,28 +1,18 @@
 import { Link } from "react-router-dom";
+import DefaultPoster from "../assets/DefaultPoster.png"
 
-export default function Card(props) {
-    const movie = props.movie
-    console.log(movie)
+export default function Card({movie}) {
+
     const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
-
-    const watchArray = movie.map((service) => {
-        return (
-            <>
-                <img src={`https://image.tmdb.org/t/p/w200/${service.logo_path}`} />
-                <p>{service.provider_name}</p>
-            </>
-        )
-    })
+    const defaultPosterUrl = DefaultPoster;
 
     return (
-        <>
-            <Link to={`/movies/${movie.id}/details`}>
-                <div className="card">
-                    <img src={posterUrl} />
-                    <h2>{movie.name}</h2>
-                    <p>{movie.overview}</p>
-                </div>
-            </Link>
-        </>
-    )
-}
+        <Link to={`/movies/${movie.id}/details`}>
+          <div className="card">
+            <img src={posterUrl || defaultPosterUrl} alt={`This is the "${movie.title}" poster`} />
+            {movie.title && <h2>{movie.title}</h2>}
+            {movie.overview && <p>{movie.overview}</p>}
+          </div>
+        </Link>
+      );
+    }
