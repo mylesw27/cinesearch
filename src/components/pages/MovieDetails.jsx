@@ -14,8 +14,6 @@ function MovieDetails() {
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([])
-  const [favorites, setFavorites] = useState([]);
-  const [watchList, setWatchList] = useState([]);
 
   // use the useEffect hook to fetch movie details from the TMDB API - make sure its axios
   useEffect(() => {
@@ -42,28 +40,6 @@ function MovieDetails() {
         console.log(error);
       });
   }, [id]);
-
-  // Define the handleAddFavorite function to add the movie to the favorites list
-  const handleAddFavorite = () => {
-    if (!favorites.includes(movie)) {
-      setFavorites([...favorites, movie]);
-      //Wait for STUB to be done on backend and then I need to set up POST to go to the favorite reference
-      console.log('added to favorites-list')
-    }
-  };
-
-  //Define the handleAddWatchList function to add the movie to the watch list
-  const handleAddWatchList = () => {
-    if (!watchList.includes(movie)) {
-      setWatchList([...watchList, movie]);
-      //Wait for STUB to be done on backend and then I need to set up POST to go to the watchList reference
-      console.log('added to watch-list')
-    }
-  };
-  // if the movie is not already in the watch list, add it
-  console.log(movie)
-  console.log(watchMovie)
-// const origin = movie.production_companies[0].origin_country
 
   //Render the MovieDetails Component
   return (
@@ -93,7 +69,6 @@ function MovieDetails() {
         </div>
       ))}
       <br />
-      <button onClick={handleAddWatchList}>Add to Watch List</button>
       <Comments />
     </div>
   );
