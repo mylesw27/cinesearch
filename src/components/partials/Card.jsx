@@ -4,9 +4,9 @@ import FavoritesButton from "./FavoritesButton";
 import WatchlistButton from "./WatchlistButton";
 
 export default function Card({ movie }) {
-  const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
+  const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster}`;
   const defaultPosterUrl = DefaultPoster;
-
+  console.log(movie)
   return (
     <Link to={`/movies/${movie.id}/details`}>
       <div className="card">
@@ -16,8 +16,8 @@ export default function Card({ movie }) {
         />
         {movie.title && <h2>{movie.title}</h2>}
         {movie.overview && <p>{movie.overview}</p>}
-        {/* <FavoritesButton movie={movie} /> */}
-        {/* <WatchlistButton movie={movie} /> */}
+        <FavoritesButton movie={movie} />
+        <WatchlistButton movie={movie} />
       </div>
     </Link>
   );
