@@ -8,9 +8,9 @@ export default function Login({ currentUser, setCurrentUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
-
   const navigate = useNavigate();
 
+ 
   // submit event handler
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,23 +47,21 @@ export default function Login({ currentUser, setCurrentUser }) {
     navigate("/movies");
   }
 
-  return (
-    <div className="login-container">
-      <h1 className="login-title">Login to Your Account:</h1>
+	return (
+		<div>
+			<h1 className="login-title">Login to Your Account:</h1>
 
       <p>{msg}</p>
 
-      <form onSubmit={handleSubmit} className="login-inputs">
-        <label htmlFor="email" className="label-email-login">
-          Email:
-        </label>
-        <input
-          type="email"
-          id="email"
-          placeholder="your email..."
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
+			<form onSubmit={handleSubmit} className="login-inputs">
+				<label htmlFor='email' className="label-name-login">Email:</label>
+				<input 
+					type="email"
+					id="email"
+					placeholder='your email...'
+					onChange={e => setEmail(e.target.value)}
+					value={email}
+				/>
 
         <label htmlFor="password" className="label-password-login">
           Password:

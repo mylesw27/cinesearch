@@ -49,9 +49,9 @@ export default function Register({ currentUser, setCurrentUser }) {
     navigate("/profile");
   }
 
-  return (
-    <div className="register-container">
-      <h1 className="register-title">Register for your account today!</h1>
+	return (
+		<div>
+			<h1 className="register-title">Register for your account today!</h1>
 
       <p>{msg}</p>
 
