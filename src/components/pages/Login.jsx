@@ -2,22 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
 
 export default function Login({ currentUser, setCurrentUser }) {
   // state for the controlled form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
-  // state for the controlled form
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
 
-  const navigate = useNavigate();
   const navigate = useNavigate();
 
   // submit event handler
@@ -33,23 +24,7 @@ export default function Login({ currentUser, setCurrentUser }) {
         `${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`,
         reqBody
       );
-  // submit event handler
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // post fortm data to the backend
-      const reqBody = {
-        email,
-        password,
-      };
-      const response = await axios.post(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/users/login`,
-        reqBody
-      );
 
-      // save the token in localstorage
-      const { token } = response.data;
-      localStorage.setItem("jwt", token);
       // save the token in localstorage
       const { token } = response.data;
       localStorage.setItem("jwt", token);
