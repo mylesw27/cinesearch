@@ -8,9 +8,9 @@ export default function Login({ currentUser, setCurrentUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
-
   const navigate = useNavigate();
 
+ 
   // submit event handler
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,3 +83,4 @@ export default function Login({ currentUser, setCurrentUser }) {
     </div>
   );
 }
+  

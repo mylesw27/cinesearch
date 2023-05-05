@@ -48,7 +48,6 @@ export default function Register({ currentUser, setCurrentUser }) {
   if (currentUser) {
     navigate("/profile");
   }
-
   return (
     <div className="register-container">
       <h1 className="register-title">Register for your account today!</h1>
@@ -88,7 +87,7 @@ export default function Register({ currentUser, setCurrentUser }) {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-
+        
         <button type="submit" className="btn-register">
           Register
         </button>
