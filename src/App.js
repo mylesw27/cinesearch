@@ -12,6 +12,7 @@ import Header from "./components/partials/Header";
 import Footer from "./components/partials/Footer";
 import MovieDetails from "./components/pages/MovieDetails";
 import Movies from "./components/pages/Movies";
+import SearchMovies from "./components/pages/SearchMovies"
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -112,6 +113,11 @@ function App() {
             element={
               <Watchlist listName={"Watchlist"} currentUser={currentUser} />
             }
+          />
+
+          <Route
+            path="/search/*"
+            element={<SearchMovies />}
           />
         </Routes>
       </div>
