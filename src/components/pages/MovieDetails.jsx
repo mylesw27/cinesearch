@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Comments from "./Comments";
 
-
-
 // Define the MovieDetails component
 function MovieDetails() {
   // Use the useParams hook to get the movie ID from the URL
@@ -13,7 +11,7 @@ function MovieDetails() {
 
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
-  const [watchMovie, setWatchMovie] = useState([])
+  const [watchMovie, setWatchMovie] = useState([]);
 
   // use the useEffect hook to fetch movie details from the TMDB API - make sure its axios
   useEffect(() => {
@@ -30,7 +28,7 @@ function MovieDetails() {
 
   // WATCH LIST - JUST A TEST
   useEffect(() => {
-    const movieWatchUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+    const movieWatchUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
     axios
       .get(movieWatchUrl)
       .then((response) => {
@@ -72,6 +70,6 @@ function MovieDetails() {
       <Comments />
     </div>
   );
-      }  
+}
 
 export default MovieDetails;
