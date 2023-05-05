@@ -6,7 +6,6 @@ import Register from "./components/pages/Register";
 import Welcome from "./components/pages/Welcome";
 import "./App.css";
 import jwt_decode from "jwt-decode";
-import ListView from "./components/partials/ListView";
 import Favorites from "./components/pages/Favorites";
 import Watchlist from "./components/pages/Watchlist";
 import Header from "./components/partials/Header";
@@ -18,7 +17,6 @@ import SearchMovies from "./components/pages/SearchMovies"
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
-  const [favoritesArray, setFavoritesArray] = useState([]);
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -48,19 +46,26 @@ function App() {
       <Header />
       <div className="App">
         <Routes>
-          <Route
-            path="/"
-            element={<Welcome />}
-          />
+          <Route path="/" element={<Welcome />} />
 
           <Route
             path="/register"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            element={
+              <Register
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
 
           <Route
             path="/login"
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
 
           <Route
@@ -98,18 +103,16 @@ function App() {
 
           <Route
             path="/favorites"
-            element={<Favorites
-              listName={"Favorites"}
-              currentUser={currentUser}
-            />}
+            element={
+              <Favorites listName={"Favorites"} currentUser={currentUser} />
+            }
           />
 
           <Route
             path="/watchlist"
-            element={<Watchlist
-              listName={"Watchlist"}
-              currentUser={currentUser}
-            />}
+            element={
+              <Watchlist listName={"Watchlist"} currentUser={currentUser} />
+            }
           />
 
           <Route
@@ -118,6 +121,7 @@ function App() {
           />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
