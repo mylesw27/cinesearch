@@ -4,7 +4,6 @@ import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Register from "./components/pages/Register";
 import Welcome from "./components/pages/Welcome";
-import Navbar from "./components/Navbar";
 import "./App.css";
 import jwt_decode from "jwt-decode";
 import ListView from "./components/partials/ListView";
@@ -43,35 +42,30 @@ function App() {
     }
   };
 
-  return (
-    <Router>
-      <header>
-        <Header />
-      </header>
+	return (
+		<Router>
+			<Header/>
+			<div className="App">
+				<Routes>
+					<Route
+						path="/"
+						element={<Welcome />}
+					/>
 
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Welcome />} />
+					<Route
+						path="/register"
+						element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+					/>
 
-          <Route
-            path="/register"
-            element={
-              <Register
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
+					<Route
+						path="/login"
+						element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+					/>
 
-          <Route
-            path="/login"
-            element={
-              <Login
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
+					<Route
+						path="/movies"
+						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+					/>
 
           <Route
             path="/movies"
@@ -127,4 +121,4 @@ function App() {
   );
 }
 
-export default App;
+          export default App;
