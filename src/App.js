@@ -106,9 +106,10 @@ function App() {
 
           <Route
             path="/watchlist"
-            element={
-              <Watchlist listName={"Watchlist"} currentUser={currentUser} />
-            }
+            element={<Watchlist
+              listName={"Watchlist"}
+              currentUser={currentUser}
+            />}
           />
 
           <Route
