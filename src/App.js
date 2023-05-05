@@ -20,7 +20,6 @@ import MovieDetails from './components/pages/MovieDetails'
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
-  const [favoritesArray, setFavoritesArray] = useState([]);
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -100,10 +99,9 @@ function App() {
 
           <Route
             path="/favorites"
-            element={<Favorites
-              listName={"Favorites"}
-              currentUser={currentUser}
-            />}
+            element={
+              <Favorites listName={"Favorites"} currentUser={currentUser} />
+            }
           />
 
           <Route
@@ -120,6 +118,7 @@ function App() {
           />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
