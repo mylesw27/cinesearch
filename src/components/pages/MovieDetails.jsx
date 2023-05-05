@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Comments from "./Comments";
+import FavoriteButton from "../partials/FavoritesButton";
 
 // Define the MovieDetails component
 function MovieDetails() {

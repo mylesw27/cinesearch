@@ -1,21 +1,18 @@
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-} from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import Login from './components/pages/Login'
-import Profile from './components/pages/Profile'
-import Register from './components/pages/Register'
-import Welcome from './components/pages/Welcome'
-import './App.css'
-import jwt_decode from 'jwt-decode'
-import ListView from './components/partials/ListView'
-import favorites from './favorites'
-import Header from './partials/Header'
-import Footer from './partials/Footer'
-import MovieDetails from './components/pages/MovieDetails'
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Login from "./components/pages/Login";
+import Profile from "./components/pages/Profile";
+import Register from "./components/pages/Register";
+import Welcome from "./components/pages/Welcome";
+import "./App.css";
+import jwt_decode from "jwt-decode";
+import Favorites from "./components/pages/Favorites";
+import Watchlist from "./components/pages/Watchlist";
+import Header from "./components/partials/Header";
+import Footer from "./components/partials/Footer";
+import MovieDetails from "./components/pages/MovieDetails";
+import Movies from "./components/pages/Movies";
+import SearchMovies from "./components/pages/SearchMovies"
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -49,19 +46,26 @@ function App() {
       <Header />
       <div className="App">
         <Routes>
-          <Route
-            path="/"
-            element={<Welcome />}
-          />
+          <Route path="/" element={<Welcome />} />
 
           <Route
             path="/register"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            element={
+              <Register
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
 
           <Route
             path="/login"
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
 
           <Route
@@ -106,10 +110,14 @@ function App() {
 
           <Route
             path="/watchlist"
-            element={<Watchlist
-              listName={"Watchlist"}
-              currentUser={currentUser}
-            />}
+            element={
+              <Watchlist listName={"Watchlist"} currentUser={currentUser} />
+            }
+          />
+
+          <Route
+            path="/search/*"
+            element={<SearchMovies />}
           />
 
           <Route
