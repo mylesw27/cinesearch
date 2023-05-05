@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
-export default function FavoritesButton({ movie, userId }) {
+export default function FavoritesButton({ movie, currentUser, userId }) {
   const [isFavorite, setIsFavorite] = useState(false)
+
 
   useEffect(() => {
     // check if the movie is already in favorites
@@ -15,12 +16,16 @@ export default function FavoritesButton({ movie, userId }) {
       .catch(err => console.log(err))
   }, [movie, userId])
 
-  const handleFavorite = () => {
+  const handleFavorite = (e) => {
+    e.preventDefault()
+    console.log(movie)
+    console.log(currentUser)
     if (isFavorite) {
       // remove the movie from favorites
-      fetch(`/api-v1/users/${userId}/favorites/${movie.id}`, { method: 'DELETE' })
-        .then(() => setIsFavorite(false))
-        .catch(err => console.log(err))
+      //   fetch(`/api-v1/users/${userId}/favorites/${movie.id}`, { method: 'DELETE' })
+      //     .then(() => setIsFavorite(false))
+      //     .catch(err => console.log(err))
+      console.log(`Add ${movie.title} to favorites`)
     } else {
       // add the movie to favorites
       fetch(`/api-v1/users/${userId}/favorites`, {
@@ -32,6 +37,7 @@ export default function FavoritesButton({ movie, userId }) {
       })
         .then(() => setIsFavorite(true))
         .catch(err => console.log(err))
+      console.log(`Remove ${movie.title} from favorites`)
     }
   }
 
