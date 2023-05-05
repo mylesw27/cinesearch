@@ -2,19 +2,15 @@ import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
 
 export default function Login({ currentUser, setCurrentUser }) {
   // state for the controlled form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
+
   const navigate = useNavigate();
 
-  
   // submit event handler
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +28,6 @@ export default function Login({ currentUser, setCurrentUser }) {
       // save the token in localstorage
       const { token } = response.data;
       localStorage.setItem("jwt", token);
-    
 
       // decode the token
       const decoded = jwt_decode(token);
