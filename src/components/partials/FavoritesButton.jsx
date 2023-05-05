@@ -1,54 +1,67 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const FavoritesButton = ({ movieId, authToken }) => {
-  const [isFavorited, setIsFavorited] = useState(false);
+const FavoritesButton = ({ movie }) => {
+  console.log(movie)
+  const [isFavorite, setIsFavorite] = useState(false);
+  const jwt = localStorage.getItem("jwt");
+  const tmdbId = `${movie.id}`
 
-  const handleFavoriteClick = async () => {
+  const toggleFavorite = async () => {
     try {
-      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`;
-
-      if (isFavorited) {
-        // Remove the movie from favorites
-        await axios.delete(`${url}/${movieId}`, {
-          headers: { Authorization: `jwt ${authToken}` },
+      if (isFavorite) {
+        // remove from favorites
+        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites/${movie}`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
         });
-        setIsFavorited(false);
+        setIsFavorite(false);
       } else {
-        // Add the movie to favorites
-        await axios.post(
-          url,
-          { movieId },
-          { headers: { Authorization: `jwt ${authToken}` } }
-        );
-        setIsFavorited(true);
+        // add to favorites
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, movie, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsFavorite(true);
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
   };
 
-  const checkIfFavorited = async () => {
-    try {
-      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`;
-      const response = await axios.get(url, {
-        headers: { Authorization: `jwt ${authToken}` },
-      });
-      const favorites = response.data.result;
-      setIsFavorited(favorites.includes(movieId));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // Check if the movie is in favorites when the component mounts
   useEffect(() => {
-    checkIfFavorited();
-  }, []);
+    const checkFavorite = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        const favorites = response.data.result;
+        const ids = favorites.map(favorite => favorite.id)
+        console.log(ids)
+
+        console.log(`Sanity`, ids.includes(tmdbId), tmdbId)
+        setIsFavorite(ids.includes(tmdbId));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  // get all objectid from users favorites
+  // get all 
+
+
+
+    checkFavorite();
+  }, [jwt, tmdbId]);
+  
+  
 
   return (
-    <button onClick={handleFavoriteClick}>
-      {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
+    <button onClick={toggleFavorite}>
+      {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
     </button>
   );
 };
