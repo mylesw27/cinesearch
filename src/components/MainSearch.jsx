@@ -1,7 +1,6 @@
 // import react and the necessary hoooks
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 // define mainsearch component
 function MainSearch() {

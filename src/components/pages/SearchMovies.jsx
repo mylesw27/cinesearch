@@ -19,7 +19,6 @@ export default function SearchMovies() {
 
     // useEffect    
     useEffect(() => {
-        // const unlisten = navigate.addListener("focus", () => {
         // setState search params
         const getSearch = async () => {
             await setSearch(searchParams.get('q'))
@@ -30,8 +29,6 @@ export default function SearchMovies() {
             console.log(response)
         }
         getSearch()
-        // })
-        // return unlisten
     }, [])
 
 
