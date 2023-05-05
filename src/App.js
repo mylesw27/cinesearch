@@ -13,6 +13,7 @@ import Header from "./components/partials/Header";
 import Footer from "./components/partials/Footer";
 import MovieDetails from "./components/pages/MovieDetails";
 import Movies from "./components/pages/Movies";
+import SearchMovies from "./components/pages/SearchMovies"
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -42,30 +43,25 @@ function App() {
     }
   };
 
-	return (
-		<Router>
-			<Header/>
-			<div className="App">
-				<Routes>
-					<Route
-						path="/"
-						element={<Welcome />}
-					/>
+  return (
+    <Router>
+      <Header />
+      <div className="App">
+        <Routes>
+          <Route
+            path="/"
+            element={<Welcome />}
+          />
 
-					<Route
-						path="/register"
-						element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
+          <Route
+            path="/register"
+            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+          />
 
-					<Route
-						path="/login"
-						element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
-
-					<Route
-						path="/movies"
-						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
+          <Route
+            path="/login"
+            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+          />
 
           <Route
             path="/movies"
@@ -115,10 +111,15 @@ function App() {
               currentUser={currentUser}
             />}
           />
+
+          <Route
+            path="/search"
+            element={<SearchMovies />}
+          />
         </Routes>
       </div>
     </Router>
   );
 }
 
-          export default App;
+export default App;
