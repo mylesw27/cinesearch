@@ -1,5 +1,5 @@
 // import useSearchParams
-import { useSearchParams, useHistory } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 // import listview component
 import ListView from '../partials/ListView'
@@ -14,12 +14,15 @@ export default function SearchMovies() {
     // declare state for search params
     const [searchParams, setSearchParams] = useSearchParams()
     const [search, setSearch] = useState(searchParams.get('q'))
-    const [searchArray, setSearchArray] = useState([])
+
+    const navigate = useNavigate()
 
     // useEffect    
     useEffect(() => {
+        // const unlisten = navigate.addListener("focus", () => {
         // setState search params
         const getSearch = async () => {
+            await setSearch(searchParams.get('q'))
             // axios get apiURL/{searchparams}
             const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`)
             // then set SearchArray to response
@@ -27,9 +30,13 @@ export default function SearchMovies() {
             console.log(response)
         }
         getSearch()
-    }, [searchParams])
+        // })
+        // return unlisten
+    }, [])
+
 
     console.log(search)
+
     // return search bar
     // return listview with searchArray
     return (
