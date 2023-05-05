@@ -6,7 +6,6 @@ import Register from "./components/pages/Register";
 import Welcome from "./components/pages/Welcome";
 import "./App.css";
 import jwt_decode from "jwt-decode";
-import ListView from "./components/partials/ListView";
 import Favorites from "./components/pages/Favorites";
 import Watchlist from "./components/pages/Watchlist";
 import Header from "./components/partials/Header";
@@ -47,19 +46,26 @@ function App() {
       <Header />
       <div className="App">
         <Routes>
-          <Route
-            path="/"
-            element={<Welcome />}
-          />
+          <Route path="/" element={<Welcome />} />
 
           <Route
             path="/register"
-            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            element={
+              <Register
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
 
           <Route
             path="/login"
-            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
 
           <Route
@@ -108,11 +114,6 @@ function App() {
               listName={"Watchlist"}
               currentUser={currentUser}
             />}
-          />
-
-          <Route
-            path="/search"
-            element={<SearchMovies />}
           />
         </Routes>
       </div>
