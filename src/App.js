@@ -6,7 +6,6 @@ import Register from "./components/pages/Register";
 import Welcome from "./components/pages/Welcome";
 import "./App.css";
 import jwt_decode from "jwt-decode";
-import ListView from "./components/partials/ListView";
 import Favorites from "./components/pages/Favorites";
 import Watchlist from "./components/pages/Watchlist";
 import Header from "./components/partials/Header";
@@ -17,7 +16,6 @@ import Movies from "./components/pages/Movies";
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
-  const [favoritesArray, setFavoritesArray] = useState([]);
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -42,30 +40,32 @@ function App() {
     }
   };
 
-	return (
-		<Router>
-			<Header/>
-			<div className="App">
-				<Routes>
-					<Route
-						path="/"
-						element={<Welcome />}
-					/>
+  return (
+    <Router>
+      <Header />
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Welcome />} />
 
-					<Route
-						path="/register"
-						element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
+          <Route
+            path="/register"
+            element={
+              <Register
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
 
-					<Route
-						path="/login"
-						element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
-
-					<Route
-						path="/movies"
-						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
+          <Route
+            path="/login"
+            element={
+              <Login
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
 
           <Route
             path="/movies"
@@ -102,23 +102,22 @@ function App() {
 
           <Route
             path="/favorites"
-            element={<Favorites
-              listName={"Favorites"}
-              currentUser={currentUser}
-            />}
+            element={
+              <Favorites listName={"Favorites"} currentUser={currentUser} />
+            }
           />
 
           <Route
             path="/watchlist"
-            element={<Watchlist
-              listName={"Watchlist"}
-              currentUser={currentUser}
-            />}
+            element={
+              <Watchlist listName={"Watchlist"} currentUser={currentUser} />
+            }
           />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
 
-          export default App;
+export default App;
