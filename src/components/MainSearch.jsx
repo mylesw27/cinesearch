@@ -1,7 +1,6 @@
 // import react and the necessary hoooks
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 // define mainsearch component
 function MainSearch() {
@@ -15,6 +14,7 @@ function MainSearch() {
   const handleSearch = (event) => {
     event.preventDefault();
     navigate(`/search/?q=${searchQuery}`, { replace: false })
+    navigate(0)
     console.log("submit")
     setSearchQuery('')
   };
