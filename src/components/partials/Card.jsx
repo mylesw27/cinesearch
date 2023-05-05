@@ -16,8 +16,8 @@ export default function Card({ movie }) {
         />
         {movie.title && <h2>{movie.title}</h2>}
         {movie.overview && <p>{movie.overview}</p>}
-        <FavoritesButton movie={movie} />
-        <WatchlistButton movie={movie} />
+        {/* <FavoritesButton movie={movie} /> */}
+        {/* <WatchlistButton movie={movie} /> */}
       </div>
     </Link>
   );

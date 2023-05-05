@@ -1,5 +1,6 @@
 // import react and the necessary hoooks
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // define mainsearch component
@@ -8,16 +9,14 @@ function MainSearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
 
+  let navigate = useNavigate()
+
   // define handle
   const handleSearch = (event) => {
     event.preventDefault();
-
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`
-      )
-      .then((response) => setMovies(response.data.results))
-      .catch((error) => console.log(error));
+    navigate(`/search/?q=${searchQuery}`, { replace: false })
+    console.log("submit")
+    setSearchQuery('')
   };
 
   return (
