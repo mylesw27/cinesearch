@@ -8,9 +8,11 @@ import "./App.css";
 import jwt_decode from "jwt-decode";
 import ListView from "./components/partials/ListView";
 import Favorites from "./components/pages/Favorites";
+import Watchlist from "./components/pages/Watchlist";
 import Header from "./components/partials/Header";
 import Footer from "./components/partials/Footer";
 import MovieDetails from "./components/pages/MovieDetails";
+import Movies from "./components/pages/Movies";
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -65,21 +67,58 @@ function App() {
 						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 					/>
 
-					<Route
-						path="/movies/:id/details"
-						element={<MovieDetails handleLogout={handleLogout} currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
+          <Route
+            path="/movies"
+            element={
+              <Movies
+                handleLogout={handleLogout}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
 
-					{/* Route for favorites list */}
-					<Route
-						path="/favorites"
-						element={<ListView
-							listName={"Favorites"}
-						/>} />
-				</Routes>
-			</div>
-		</Router>
-	);
+          <Route
+            path="/movies/:id/details"
+            element={
+              <MovieDetails
+                handleLogout={handleLogout}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                handleLogout={handleLogout}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
+          />
+
+          <Route
+            path="/favorites"
+            element={<Favorites
+              listName={"Favorites"}
+              currentUser={currentUser}
+            />}
+          />
+
+          <Route
+            path="/watchlist"
+            element={<Watchlist
+              listName={"Watchlist"}
+              currentUser={currentUser}
+            />}
+          />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
           export default App;
