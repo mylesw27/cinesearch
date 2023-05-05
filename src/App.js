@@ -49,26 +49,19 @@ function App() {
       <Header />
       <div className="App">
         <Routes>
-          <Route path="/" element={<Welcome />} />
+          <Route
+            path="/"
+            element={<Welcome />}
+          />
 
           <Route
             path="/register"
-            element={
-              <Register
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
+            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
 
           <Route
             path="/login"
-            element={
-              <Login
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
+            element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
 
           <Route
@@ -113,9 +106,10 @@ function App() {
 
           <Route
             path="/watchlist"
-            element={
-              <Watchlist listName={"Watchlist"} currentUser={currentUser} />
-            }
+            element={<Watchlist
+              listName={"Watchlist"}
+              currentUser={currentUser}
+            />}
           />
 
           <Route
