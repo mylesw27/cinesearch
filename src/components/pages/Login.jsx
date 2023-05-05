@@ -2,15 +2,19 @@ import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ currentUser, setCurrentUser }) {
   // state for the controlled form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
-
   const navigate = useNavigate();
 
+  
   // submit event handler
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,29 +51,23 @@ export default function Login({ currentUser, setCurrentUser }) {
     navigate("/movies");
   }
 
-	return (
-<<<<<<< HEAD
-		<div className="login-container">
-=======
-		<div>
->>>>>>> e270930 (got styling on register and login page done)
-			<h1 className="login-title">Login to Your Account:</h1>
+  return (
+    <div className="login-container">
+      <h1 className="login-title">Login to Your Account:</h1>
 
       <p>{msg}</p>
 
-			<form onSubmit={handleSubmit} className="login-inputs">
-<<<<<<< HEAD
-				<label htmlFor='email' className="label-email-login">Email:</label>
-=======
-				<label htmlFor='email' className="label-name-login">Email:</label>
->>>>>>> e270930 (got styling on register and login page done)
-				<input 
-					type="email"
-					id="email"
-					placeholder='your email...'
-					onChange={e => setEmail(e.target.value)}
-					value={email}
-				/>
+      <form onSubmit={handleSubmit} className="login-inputs">
+        <label htmlFor="email" className="label-email-login">
+          Email:
+        </label>
+        <input
+          type="email"
+          id="email"
+          placeholder="your email..."
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
 
         <label htmlFor="password" className="label-password-login">
           Password:
@@ -89,3 +87,4 @@ export default function Login({ currentUser, setCurrentUser }) {
     </div>
   );
 }
+  

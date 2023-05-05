@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export default function Register({ currentUser, setCurrentUser }) {
   // state for the controlled form
@@ -49,13 +53,9 @@ export default function Register({ currentUser, setCurrentUser }) {
     navigate("/profile");
   }
 
-	return (
-<<<<<<< HEAD
-		<div className="register-container">
-=======
-		<div>
->>>>>>> e270930 (got styling on register and login page done)
-			<h1 className="register-title">Register for your account today!</h1>
+  return (
+    <div className="register-container">
+      <h1 className="register-title">Register for your account today!</h1>
 
       <p>{msg}</p>
 
