@@ -46,13 +46,13 @@ export default function Login({ currentUser, setCurrentUser }) {
 	}
 
 	return (
-		<div>
-			<h1>Login to Your Account:</h1>
+		<div className="login-container">
+			<h1 className="login-title">Login to Your Account:</h1>
 
 			<p>{msg}</p>
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor='email'>Email:</label>
+			<form onSubmit={handleSubmit} className="login-inputs">
+				<label htmlFor='email' className="label-email-login">Email:</label>
 				<input 
 					type="email"
 					id="email"
@@ -61,7 +61,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 					value={email}
 				/>
 
-				<label htmlFor='password'>Password:</label>
+				<label htmlFor='password' className="label-password-login">Password:</label>
 				<input 
 					type="password"
 					id="password"
@@ -70,7 +70,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 					value={password}
 				/>
 
-				<button type="submit">Login</button>
+				<button type="submit" className="btn-login">Login</button>
 			</form>
 		</div>
 	)
