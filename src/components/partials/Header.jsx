@@ -31,19 +31,19 @@ export default function Header({ currentUser, handleLogout }) {
           LOGIN
         </a>
         {" | "}
-        <a class="navbar-brand navbar-link" href="/favorites">
+        <a className="navbar-brand navbar-link" href="/favorites">
           FAVORITES
         </a>
         {" | "}
-        <a class="navbar-brand navbar-link" href="/watch">
+        <a className="navbar-brand navbar-link" href="/watch">
           WATCH
         </a>
         {" | "}
-        <a class="navbar-brand navbar-link" href="/search">
+        <a className="navbar-brand navbar-link" href="/search">
           SEARCH
         </a>
       </div>
-      <img className="navbar-logo" src="/logo.png" alt="logo image" />
+      <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
     </nav>
   );
 }
