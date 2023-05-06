@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ListView from "../partials/ListView";
+import "./Movies.css"
 
 export default function Movies(props) {
   // declare an empty array for state "popularArray"
   const [popularArray, setPopularArray] = useState([]);
-
   // useEffect for getting movies array on component mount
   useEffect(() => {
     // axios get request to API for list of popular movies
@@ -15,6 +15,7 @@ export default function Movies(props) {
       )
       // set state of movies array to the list of popular movies
       .then((response) => {
+        console.log('ressss   ', response)
         setPopularArray(response.data.results);
       })
       .catch((err) => {
@@ -24,7 +25,7 @@ export default function Movies(props) {
 
   // return Listview component with array of popular movies
   return (
-    <div>
+    <div className="movies">
       <h2 className="popular-title">Popular Movies</h2>
       <ListView movies={popularArray} />
     </div>
