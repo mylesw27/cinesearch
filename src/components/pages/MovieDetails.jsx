@@ -2,10 +2,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Comments from "./Comments";
-import FavoriteButton from "../partials/FavoritesButton";
-import "./MovieDetails.css"
-
+import WatchlistButton from "../partials/WatchlistButton";
+import FavoritesButton from "../partials/FavoritesButton";
 
 // Define the MovieDetails component
 function MovieDetails() {
@@ -15,27 +13,16 @@ function MovieDetails() {
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
+  console.log('hello')
 
-  // use the useEffect hook to fetch movie details from the TMDB API - make sure its axios
   useEffect(() => {
     const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
-    axios
-      .get(movieDetailsUrl)
-      .then((response) => {
-        setMovie(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
-
-  // WATCH LIST - JUST A TEST
-  useEffect(() => {
     const movieWatchUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
-    axios
-      .get(movieWatchUrl)
-      .then((response) => {
-        setWatchMovie(response.data.results.US.flatrate);
+  
+    Promise.all([axios.get(movieDetailsUrl), axios.get(movieWatchUrl)])
+      .then(([movieResponse, watchResponse]) => {
+        setMovie(movieResponse.data);
+        setWatchMovie(watchResponse.data.results.US.flatrate);
       })
       .catch((error) => {
         console.log(error);
@@ -45,23 +32,20 @@ function MovieDetails() {
   //Render the MovieDetails Component
   return (
     <div className="movie-details">
+      {movie.poster_path && (
       <img
         className="movie-poster"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={`This is the poster for the movie titled ${movie.title}`}
       />
-      <img
-        className="movie-backdrop"
-        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-        alt={`This is the poster for the movie titled ${movie.title}`}
-      />
-      <h1 className="movie-title">{movie.title}</h1>
-      <p className="movie-rating" >Rating: {movie.vote_average}</p>
-      <p className="movie-adult">Adult: {movie.adult ? "Yes" : "No"}</p>
-      <p className="movie-genre">Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
-      <p className="movie-synopsis">Synopsis: {movie.overview}</p>
-      <p className="movie-certification">Movie Rating: {movie.certification}</p>
-      <p className="movie-homepage">Movie Homepage: {movie.homepage}</p>
+      )}
+      <h1>{movie.title}</h1>
+      <p>Rating: {movie.vote_average}</p>
+      <p>Adult: {movie.adult ? "Yes" : "No"}</p>
+      <p>Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
+      <p>Synopsis: {movie.overview}</p>
+      <p>Movie run time: {movie.runtime} minutes</p>
+      <p>Movie Homepage: {movie.homepage}</p>
       {watchMovie?.map((provider) => (
         <div key={provider.provider_id}>
           <img
@@ -72,8 +56,8 @@ function MovieDetails() {
         </div>
       ))}
       <br />
-      <FavoriteButton movie={movie}/>
-      <Comments />
+      <FavoritesButton movie={movie}/>
+      <WatchlistButton movie={movie}/>
     </div>
   );
 }
