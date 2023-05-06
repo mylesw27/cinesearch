@@ -1,12 +1,12 @@
 // imports
 
 // export with comment in object destructing
-export default function CommentCard() {
-
+export default function CommentCard(props) {
+    const comment = props.comment
     return (
         <div>
-            <h3>username</h3>
-            <p>Here's where the body of the comment will go</p>
+            <h4>{comment.userName}</h4>
+            <p>{comment.commentBody}</p>
         </div>
     )
 }
