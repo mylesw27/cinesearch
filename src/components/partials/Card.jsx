@@ -9,10 +9,12 @@ export default function Card({ movie }) {
   return (
     <Link to={`/movies/${movie.id}/details`}>
       <div className="card">
+        {movie.poster_path && (
         <img
           src={posterUrl || defaultPosterUrl}
           alt={`This is the "${movie.title}" poster`}
         />
+        )}
         {movie.title && <h2>{movie.title}</h2>}
         {movie.overview && <p>{movie.overview}</p>}
         <FavoritesButton movie={movie} />

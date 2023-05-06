@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import MainSearch from "../MainSearch";
 
 export default function Header({ currentUser, handleLogout }) {
   const loggedIn = (
@@ -35,12 +36,14 @@ export default function Header({ currentUser, handleLogout }) {
           FAVORITES
         </a>
         {" | "}
-        <a className="navbar-brand navbar-link" href="/watch">
+        <a className="navbar-brand navbar-link" href="/watchlist">
           WATCH
         </a>
         {" | "}
-        <a className="navbar-brand navbar-link" href="/search">
-          SEARCH
+        <MainSearch/>
+        {" | "}
+        <a className="navbar-brand navbar-link" href="/logout">
+          LOGOUT
         </a>
       </div>
       <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
