@@ -6,7 +6,6 @@ import "./Movies.css"
 export default function Movies(props) {
   // declare an empty array for state "popularArray"
   const [popularArray, setPopularArray] = useState([]);
-
   // useEffect for getting movies array on component mount
   useEffect(() => {
     // axios get request to API for list of popular movies
@@ -16,6 +15,7 @@ export default function Movies(props) {
       )
       // set state of movies array to the list of popular movies
       .then((response) => {
+        console.log('ressss   ', response)
         setPopularArray(response.data.results);
       })
       .catch((err) => {

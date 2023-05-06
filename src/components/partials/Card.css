@@ -1,0 +1,18 @@
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates four columns */
+    grid-auto-rows: 1fr; /* Makes the rows the same height */
+    gap: 20x; /* Sets the spacing between cards */
+  }
+
+  .pictures {
+    object-fit: cover;
+  }
+
+  .buttons {
+    display: flex;
+  }
+
+  .card {
+    background-color: black;
+  }
