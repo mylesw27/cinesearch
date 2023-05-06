@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ListView from "../partials/ListView";
+import "./Movies.css"
 
 export default function Movies(props) {
   // declare an empty array for state "popularArray"

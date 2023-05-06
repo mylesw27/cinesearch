@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Comments from "./Comments";
 import FavoriteButton from "../partials/FavoritesButton";
+import "./MovieDetails.css"
+
 
 // Define the MovieDetails component
 function MovieDetails() {
@@ -44,20 +46,22 @@ function MovieDetails() {
   return (
     <div className="movie-details">
       <img
+        className="movie-poster"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={`This is the poster for the movie titled ${movie.title}`}
       />
       <img
+        className="movie-backdrop"
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={`This is the poster for the movie titled ${movie.title}`}
       />
-      <h1>{movie.title}</h1>
-      <p>Rating: {movie.vote_average}</p>
-      <p>Adult: {movie.adult ? "Yes" : "No"}</p>
-      <p>Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
-      <p>Synopsis: {movie.overview}</p>
-      <p>Movie Rating: {movie.certification}</p>
-      <p>Movie Homepage: {movie.homepage}</p>
+      <h1 className="movie-title">{movie.title}</h1>
+      <p className="movie-rating" >Rating: {movie.vote_average}</p>
+      <p className="movie-adult">Adult: {movie.adult ? "Yes" : "No"}</p>
+      <p className="movie-genre">Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
+      <p className="movie-synopsis">Synopsis: {movie.overview}</p>
+      <p className="movie-certification">Movie Rating: {movie.certification}</p>
+      <p className="movie-homepage">Movie Homepage: {movie.homepage}</p>
       {watchMovie?.map((provider) => (
         <div key={provider.provider_id}>
           <img
