@@ -56,8 +56,8 @@ const FavoritesButton = ({ movie }) => {
   
 
   return (
-    <button onClick={toggleFavorite}>
-      {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+    <button type="button" class="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
+      {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
     </button>
   );
 };

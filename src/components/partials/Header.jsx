@@ -6,7 +6,7 @@ export default function Header({ currentUser, handleLogout }) {
     <>
       {/* if the user is logged in... */}
       <Link to="/">
-        <span onClick={handleLogout}>logout</span>
+        <span onClick={handleLogout}>Logout</span>
       </Link>
 
       <Link to="/profile">Profile</Link>
@@ -22,7 +22,7 @@ export default function Header({ currentUser, handleLogout }) {
   );
 
   return (
-    <nav className="navbar navbar-light bg-light header">
+    <nav className="navbar navbar-light header">
       <div>
         <a className="navbar-brand navbar-link" href="/register">
           REGISTER
@@ -40,11 +40,11 @@ export default function Header({ currentUser, handleLogout }) {
           WATCH
         </a>
         {" | "}
-        <MainSearch />
-        {" | "}
         <a className="navbar-brand navbar-link" href="/" onClick={handleLogout}>
           LOGOUT
         </a>
+        {" | "}
+        {"         "}<MainSearch />
       </div>
       <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
     </nav>
