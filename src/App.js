@@ -13,7 +13,7 @@ import Footer from "./components/partials/Footer";
 import MovieDetails from "./components/pages/MovieDetails";
 import Movies from "./components/pages/Movies";
 import SearchMovies from "./components/pages/SearchMovies"
-
+import 'bootstrap/dist/css/bootstrap.css';
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
@@ -43,7 +43,9 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Header
+        handleLogout={handleLogout}
+      />
       <div className="App">
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -119,7 +121,7 @@ function App() {
             path="/search/*"
             element={<SearchMovies />}
           />
-          
+
         </Routes>
       </div>
       <Footer />

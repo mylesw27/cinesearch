@@ -34,6 +34,7 @@ function MovieDetails() {
     <div className="movie-details">
       {movie.poster_path && (
       <img
+        className="movie-poster"
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={`This is the poster for the movie titled ${movie.title}`}
       />
