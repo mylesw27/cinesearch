@@ -44,7 +44,10 @@ export default function Header({ currentUser, handleLogout }) {
           LOGOUT
         </a>
         {" | "}
-        {"         "}<MainSearch />
+        <a className="navbar-brand navbar-link" href="/movies" onClick={handleLogout}>
+          HOME
+        </a>
+        <MainSearch />
       </div>
       <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
     </nav>

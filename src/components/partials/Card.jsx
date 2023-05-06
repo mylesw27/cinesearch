@@ -16,7 +16,7 @@ function Cards({ movie }) {
       <div className="card-container">
         <Card className="card bg-dark text-white">
           <Link to={`/movies/${movie.id}/details`}>
-            <Card.Img className="pictures" src={posterUrl || defaultPosterUrl} alt="Card image" />
+            <Card.Img className="card-img-top" src={posterUrl || defaultPosterUrl} alt="Card image" />
           </Link>
         </Card>
       </div>
