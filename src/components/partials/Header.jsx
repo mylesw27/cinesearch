@@ -25,10 +25,22 @@ export default function Header({ currentUser, handleLogout }) {
       <div>
         <a class="navbar-brand navbar-link" href="/register">
           REGISTER
-        </a>{" "}
+        </a>
         {" | "}
         <a class="navbar-brand navbar-link" href="/login">
           LOGIN
+        </a>
+        {" | "}
+        <a class="navbar-brand navbar-link" href="/favorites">
+          FAVORITES
+        </a>
+        {" | "}
+        <a class="navbar-brand navbar-link" href="/watch">
+          WATCH
+        </a>
+        {" | "}
+        <a class="navbar-brand navbar-link" href="/search">
+          SEARCH
         </a>
       </div>
       <img class="navbar-logo" src="/logo.png" alt="logo image" />
