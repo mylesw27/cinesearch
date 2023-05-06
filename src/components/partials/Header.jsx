@@ -21,13 +21,13 @@ export default function Header({ currentUser, handleLogout }) {
   );
 
   return (
-    <nav class="navbar navbar-light bg-light header">
+    <nav className="navbar navbar-light bg-light header">
       <div>
-        <a class="navbar-brand navbar-link" href="/register">
+        <a className="navbar-brand navbar-link" href="/register">
           REGISTER
         </a>
         {" | "}
-        <a class="navbar-brand navbar-link" href="/login">
+        <a className="navbar-brand navbar-link" href="/login">
           LOGIN
         </a>
         {" | "}
@@ -43,7 +43,7 @@ export default function Header({ currentUser, handleLogout }) {
           SEARCH
         </a>
       </div>
-      <img class="navbar-logo" src="/logo.png" alt="logo image" />
+      <img className="navbar-logo" src="/logo.png" alt="logo image" />
     </nav>
   );
 }
