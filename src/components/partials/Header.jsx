@@ -40,9 +40,9 @@ export default function Header({ currentUser, handleLogout }) {
           WATCH
         </a>
         {" | "}
-        <MainSearch/>
+        <MainSearch />
         {" | "}
-        <a className="navbar-brand navbar-link" href="/logout">
+        <a className="navbar-brand navbar-link" href="/" onClick={handleLogout}>
           LOGOUT
         </a>
       </div>

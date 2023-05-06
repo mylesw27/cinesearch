@@ -43,7 +43,9 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Header
+        handleLogout={handleLogout}
+      />
       <div className="App">
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -119,7 +121,7 @@ function App() {
             path="/search/*"
             element={<SearchMovies />}
           />
-          
+
         </Routes>
       </div>
       <Footer />
