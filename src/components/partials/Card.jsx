@@ -6,7 +6,6 @@ import WatchlistButton from "./WatchlistButton";
 export default function Card({ movie }) {
   const posterUrl = `https://image.tmdb.org/t/p/w780/${movie.poster}`;
   const defaultPosterUrl = DefaultPoster;
-  console.log(movie)
   return (
     <Link to={`/movies/${movie.id}/details`}>
       <div className="card">
