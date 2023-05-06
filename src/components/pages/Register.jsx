@@ -3,7 +3,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
-export default function Register({ currentUser, setCurrentUser }) {
+export default function Register(props) {
   // state for the controlled form
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ export default function Register({ currentUser, setCurrentUser }) {
       const decoded = jwt_decode(token);
 
       // set the user in App's state to be the decoded token
-      setCurrentUser(decoded);
+      props.setCurrentUser(decoded);
     } catch (err) {
       console.warn(err);
       if (err.response) {
@@ -45,7 +45,7 @@ export default function Register({ currentUser, setCurrentUser }) {
   };
 
   // conditionally render a navigate component
-  if (currentUser) {
+  if (props.currentUser) {
     navigate("/profile");
   }
   return (
