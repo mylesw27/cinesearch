@@ -1,44 +1,69 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export default function WatchlistButton({ movie, userId }) {
-  const [isWatchlist, setIsWatchlist] = useState(false);
+const WatchlistButton = ({ movie }) => {
+  console.log(movie)
+  const [isWatched, setIsWatched] = useState(false);
+  const jwt = localStorage.getItem("jwt");
+  const tmdbId = `${movie.id}`
 
-  useEffect(() => {
-    // check if the movie is already in favorites
-    fetch(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.result.some((watchlist) => watchlist.id === movie.id)) {
-          setIsWatchlist(true);
-        }
-      })
-      .catch((err) => console.log(err));
-  }, [movie, userId]);
-
-  const handleWatchlist = (e) => {
-    e.preventDefault();
-    if (isWatchlist) {
-      // fetch(`/api-v1/users/${userId}/favorites/${movie.id}`, { method: 'DELETE' })
-      //     .then(() => setIsFavorite(false))
-      //     .catch(err => console.log(err))
-      console.log(`Removed ${movie.title} from watchlist`);
-    } else {
-      // fetch(`/api-v1/users/${userId}/favorites`, {
-      //     method: 'POST',
-      //     headers: {
-      //         'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify(movie)
-      // })
-      //     .then(() => setIsFavorite(true))
-      //     .catch(err => console.log(err))
-      console.log(`Added ${movie.title} to watchlist`);
+  const toggleWatchList = async () => {
+    try {
+      if (isWatched) {
+        // remove from watchList
+        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist/${movie}`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsWatched(false);
+      } else {
+        // add to watchList
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`, movie, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsWatched(true);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
+  useEffect(() => {
+    const checkFavorite = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        const watchList = response.data.result;
+        const ids = watchList.map(favorite => favorite.id)
+        console.log(ids)
+
+        console.log(`Sanity`, ids.includes(tmdbId), tmdbId)
+        setIsWatched(ids.includes(tmdbId));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  // get all objectid from users watchList
+  // get all 
+
+
+
+    checkFavorite();
+  }, [jwt, tmdbId]);
+  
+  
+
   return (
-    <button onClick={handleWatchlist}>
-      {isWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+    <button onClick={toggleWatchList}>
+      {isWatched ? "Remove from watchList" : "Add to watchList"}
     </button>
   );
-}
+};
+
+export default WatchlistButton;
