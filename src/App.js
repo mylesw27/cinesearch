@@ -119,16 +119,7 @@ function App() {
             path="/search/*"
             element={<SearchMovies />}
           />
-
-          <Route
-            path="/search"
-            element={<SearchMovies />}
-          />
-
-          <Route
-            path="/search"
-            element={<SearchMovies />}
-          />
+          
         </Routes>
       </div>
       <Footer />
