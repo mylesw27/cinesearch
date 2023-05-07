@@ -6,3 +6,7 @@
     overflow: scroll;
 }
 
+.frame:hover {
+    transform: scale(1.4);
+      transition-duration: 0.5s;
+  }
