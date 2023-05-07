@@ -34,6 +34,8 @@ export default function Comments2(props) {
                 key={`thread-${thread._id}`}
                 thread={thread}
                 comments={comments}
+                setComments={setComments}
+                currentUser={currentUser}
             />
         )
     })
