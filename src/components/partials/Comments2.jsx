@@ -11,7 +11,7 @@ export default function Comments2(props) {
     const [form, setForm] = useState({})
     const [currentUser, setCurrentUser] = useState(props.currentUser)
     const navigate = useNavigate()
-    console.log(currentUser)
+    const [randomId, setRandomId] = useState(Date.now)
 
     useEffect(() => {
         const getComments = async () => {
@@ -20,10 +20,11 @@ export default function Comments2(props) {
             })
             setThreads(allComments.data.findThreads)
             setComments(allComments.data.findComments)
+            setRandomId(Date.now())
         }
         getComments()
         if (currentUser) {
-            setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "" })
+            setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "", _id: randomId })
         }
     }, [])
 
@@ -40,8 +41,10 @@ export default function Comments2(props) {
     const handleSubmit = async (e, form) => {
         e.preventDefault()
         try {
+            setRandomId(Date.now())
             await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
-            console.log(form)
+            setThreads([...threads, form])
+            console.log(threads)
         } catch (error) {
             console.log(error)
         }
@@ -59,7 +62,7 @@ export default function Comments2(props) {
                         <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
                         {/* threadBody */}
                         <label htmlFor="body">Thread Body:</label>
-                        <textarea type="textarea" id="title" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
+                        <textarea type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
 
                         <button type="submit">Post Thread</button>
                     </form>
