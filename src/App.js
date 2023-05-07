@@ -41,6 +41,8 @@ function App() {
     }
   };
 
+  console.log(currentUser)
+
   return (
     <Router>
       <Header
