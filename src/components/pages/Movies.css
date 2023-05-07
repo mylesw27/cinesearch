@@ -1,6 +1,8 @@
-.popular-title {
-    color: white;
-    font-size: 70px;
-    font-weight: 600;
+.movies {
+    display:flex;
+    justify-content: center;
+    max-height: fit-content;
+    max-width: fit-content;
+    overflow: scroll;
 }
 

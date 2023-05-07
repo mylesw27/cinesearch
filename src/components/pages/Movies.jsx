@@ -25,9 +25,8 @@ export default function Movies(props) {
 
   // return Listview component with array of popular movies
   return (
-    <div className="movies">
-      <h2 className="popular-title">Popular Movies</h2>
+      <><h2 className="popular-title">Popular Movies</h2><div className="movies">
       <ListView movies={popularArray} />
-    </div>
+    </div></>
   );
 }
