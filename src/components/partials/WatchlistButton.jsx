@@ -1,37 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 import axios from "axios";
 
-const WatchlistButton = ({ movie }) => {
+export default function WatchlistButton (props) {
   const [isWatched, setIsWatched] = useState(false);
   const jwt = localStorage.getItem("jwt");
-  const tmdbId = `${movie.id}`
-
-  const toggleWatchList = async () => {
-    try {
-      if (isWatched) {
-        // remove from watchList
-        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist/${movie}`, {
-          headers: {
-            Authorization: `${jwt}`,
-          },
-        });
-        setIsWatched(false);
-      } else {
-        // add to watchList
-        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`, movie, {
-          headers: {
-            Authorization: `${jwt}`,
-          },
-        });
-        setIsWatched(true);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const tmdbId = `${props.movie.id}`
+  const currentUser = props.currentUser
+  const navigate = useNavigate()
 
   useEffect(() => {
-    const checkFavorite = async () => {
+    const checkWatch = async () => {
       try {
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`, {
           headers: {
@@ -45,21 +24,44 @@ const WatchlistButton = ({ movie }) => {
         console.log(err);
       }
     };
-  // get all objectid from users watchList
-  // get all 
 
-
-
-    checkFavorite();
+    checkWatch();
   }, [jwt, tmdbId]);
+  
+
+  const toggleWatchList = async () => {
+    try {
+      navigate(0)
+      if (isWatched) {
+        // remove from watchList
+        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist/${props.watchObjId}`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsWatched(false);
+      } else {
+        // add to watchList
+        const sendData = {...props.movie, userId:currentUser._id}
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`, sendData, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsWatched(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   
   
 
   return (
-    <button type="button" class="btn btn-sm font-weight-bold" onClick={toggleWatchList}>
+    <button type="button" className="btn btn-sm font-weight-bold" onClick={toggleWatchList}>
       {isWatched ? "Remove From WatchList" : "Add To WatchList"}
     </button>
   );
 };
 
-export default WatchlistButton;
