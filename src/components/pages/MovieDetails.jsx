@@ -7,7 +7,7 @@ import FavoritesButton from "../partials/FavoritesButton";
 import Comments2 from "../partials/Comments2";
 
 // Define the MovieDetails component
-function MovieDetails({currentUser}) {
+function MovieDetails({ currentUser }) {
   // Use the useParams hook to get the movie ID from the URL
   const { id } = useParams();
   const jwt = localStorage.getItem("jwt");
@@ -32,6 +32,7 @@ function MovieDetails({currentUser}) {
         console.log(err);
       }
     };
+
     checkFavorite();
   }, [jwt]);
 
@@ -97,6 +98,7 @@ function MovieDetails({currentUser}) {
       <br />
       <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
       <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser}/>
+      <Comments2 movie={id} currentUser={currentUser} />
     </div>
   );
 }

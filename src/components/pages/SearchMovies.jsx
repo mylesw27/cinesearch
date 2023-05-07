@@ -15,13 +15,10 @@ export default function SearchMovies() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [search, setSearch] = useState(searchParams.get('q'))
 
-    const navigate = useNavigate()
-
     // useEffect    
     useEffect(() => {
         // setState search params
         const getSearch = async () => {
-            await setSearch(searchParams.get('q'))
             // axios get apiURL/{searchparams}
             const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${search}&page=1&include_adult=false`)
             // then set SearchArray to response
@@ -31,9 +28,7 @@ export default function SearchMovies() {
         getSearch()
     }, [])
 
-
     console.log(search)
-
     // return search bar
     // return listview with searchArray
     return (
