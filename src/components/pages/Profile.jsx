@@ -51,7 +51,7 @@ export default function Profile(props) {
       }
     };
     fetchData();
-  }, [props.handleLogout, navigate]); // only fire on the first render of this component
+  }, []); // only fire on the first render of this component
 
  const  handleEdit = async (e) => {
     try{
@@ -69,26 +69,41 @@ export default function Profile(props) {
           Authorization: jwt
         }
       }
-      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users/user`
+      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
       const response = await axios.put(url, reqBody, auth)
+      console.log(response)
       setUserData({...userData,
         name: response.data.name,
         email: response.data.email,
         password: response.data.password
     })
       setEdit(false)
-      localStorage.setItem('userData', JSON.stringify(userData))
       console.log("response right here", response)
     }catch(err){
       console.log(err)
     }
-    
-    
     props.setCurrentUser(userData)
     console.log(props.currentUser)
-    navigate('/profile')
+  
     
   }
+
+const handleDelete = async () => {
+  try {
+    const auth= {
+      headers: {
+        Authorization: jwt
+      }
+    }
+    const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
+    const response = await axios.delete(url, auth)
+    navigate('/login')
+    console.log(response)
+
+  }catch(err){
+    console.log(err)
+  }
+}
 
   return (
     <div>
@@ -126,10 +141,10 @@ export default function Profile(props) {
       </form> 
       ) : (
         <div>
-      <h1>Hello, {userData.name}</h1>
-      <p>your email is {userData.email}</p>
+      <h1>Hello, {props.currentUser?.name}</h1>
+      <p>your email is {props.currentUser?.email}</p>
       <button onClick={()=> setEdit(true)}>edit</button>
-      <button>delete</button>
+      <button onClick={handleDelete}>delete</button>
 
       <h2>
         Here is the secret message that is only availible to users of User App:
