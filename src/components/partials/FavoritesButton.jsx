@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function FavoritesButton (props) {
-  const [isFavorite, setIsFavorite] = useState(props.isfavorite);
+  const [isFavorite, setIsFavorite] = useState(false); //I MIGHT NOT NEED props.isfavorite - change to false instead
   const jwt = localStorage.getItem("jwt");
   const tmdbId = `${props.movie.id}`
   const currentUser = props.currentUser
@@ -60,7 +60,7 @@ export default function FavoritesButton (props) {
   
 
   return (
-    <button type="button" class="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
+    <button type="button" className="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
       {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
     </button>
   );

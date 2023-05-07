@@ -1,6 +1,7 @@
 // import react and the necessary hoooks
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // define mainsearch component
 function MainSearch() {
@@ -27,7 +28,7 @@ function MainSearch() {
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className="btn btn-dark" type="submit">Search</button>
       </form>
     </div>
   );

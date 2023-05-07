@@ -22,7 +22,7 @@ export default function Header({ currentUser, handleLogout }) {
   );
 
   return (
-    <nav className="navbar navbar-light header">
+    <><img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" /><nav className="navbar navbar-light header">
       <div>
         <a className="navbar-brand navbar-link" href="/register">
           REGISTER
@@ -44,12 +44,14 @@ export default function Header({ currentUser, handleLogout }) {
           LOGOUT
         </a>
         {" | "}
-        <a className="navbar-brand navbar-link" href="/movies" onClick={handleLogout}>
+        <a className="navbar-brand navbar-link" href="/movies">
           HOME
         </a>
-        <MainSearch />
+        <a className="navbar-brand">
+        </a>
       </div>
-      <img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" />
+      <MainSearch/>
     </nav>
+    </>
   );
 }

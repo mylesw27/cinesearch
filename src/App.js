@@ -45,6 +45,8 @@ function App() {
     }
   };
 
+  console.log(currentUser)
+
   return (
     <Router>
       <Header handleLogout={handleLogout} />
@@ -140,7 +142,7 @@ function App() {
           <Route path="/search/*" element={<SearchMovies />} />
         </Routes>
       </div>
-      <Footer />
+      <Footer className="footer"/>
     </Router>
   );
 }
