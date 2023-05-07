@@ -1,4 +1,4 @@
-.movie-details {
+/* .movie-details {
     position: relative;
 }
 
@@ -24,4 +24,60 @@
   
   .movie-.movie-details .movie-backdrop {
     opacity: 1;
-  }
+  } */
+
+/* Container for the movie poster and backdrop */
+.details-img-container {
+  position: relative;
+}
+
+/* Movie poster */
+.movie-poster {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Movie backdrop */
+.movie-backdrop {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* Title and metadata */
+.movie-details h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.movie-details p {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Watch provider logos */
+.movie-details img {
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+/* Favorite and watchlist buttons */
+.movie-details button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.movie-details button:hover {
+  background-color: #d32f2f;
+}

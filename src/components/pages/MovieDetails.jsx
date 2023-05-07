@@ -59,11 +59,18 @@ function MovieDetails({currentUser}) {
   return (
     <div className="movie-details">
       {movie.poster_path && (
+        <div className="details-img-container">
         <img
           className="movie-poster"
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={`This is the poster for the movie titled ${movie.title}`}
         />
+        <img
+        className="movie-backdrop"
+        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+        alt={`This is the poster for the movie titled ${movie.title}`}
+      />
+        </div>
       )}
       <h1>{movie.title}</h1>
       <p>Rating: {movie.vote_average}</p>
