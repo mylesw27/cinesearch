@@ -128,7 +128,7 @@ function App() {
           <Route path="/search/*" element={<SearchMovies />} />
         </Routes>
       </div>
-      <Footer />
+      <Footer className="footer"/>
     </Router>
   );
 }

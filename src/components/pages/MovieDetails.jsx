@@ -5,18 +5,23 @@ import axios from "axios";
 import WatchlistButton from "../partials/WatchlistButton";
 import FavoritesButton from "../partials/FavoritesButton";
 import Comments2 from "../partials/Comments2";
+import "./MovieDetails.css"
 
 // Define the MovieDetails component
 function MovieDetails({currentUser}) {
   // Use the useParams hook to get the movie ID from the URL
   const { id } = useParams();
   const jwt = localStorage.getItem("jwt");
-
+  
   const [objectId, setObjectId] = useState(null)
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  function toggleMenu() {
+    setIsMenuOpen(!isMenuOpen);
+  }
 
   console.log('hello')
 
@@ -59,7 +64,7 @@ function MovieDetails({currentUser}) {
   return (
     <div className="movie-details">
       {movie.poster_path && (
-        <div className="details-img-container">
+        <>
         <img
           className="movie-poster"
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -69,25 +74,35 @@ function MovieDetails({currentUser}) {
         className="movie-backdrop"
         src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
         alt={`This is the poster for the movie titled ${movie.title}`}
+        onClick={toggleMenu}
       />
-        </div>
+      </>
       )}
+      <div className="movie-text">
       <h1>{movie.title}</h1>
       <p>Rating: {movie.vote_average}</p>
       <p>Adult: {movie.adult ? "Yes" : "No"}</p>
       <p>Genres: {movie.genres?.map((genre) => genre.name).join(", ")}</p>
       <p>Synopsis: {movie.overview}</p>
       <p>Movie run time: {movie.runtime} minutes</p>
-      <p>Movie Homepage: {movie.homepage}</p>
-      {watchMovie?.map((provider) => (
-        <div key={provider.provider_id}>
+      {/* <p>Movie Homepage: {movie.homepage}</p> */}
+      </div>
+      {isMenuOpen && (
+  <div className="movie-dropdown">
+    <p>Now Streaming On:</p>
+    {watchMovie?.map((provider) => (
+      <div className="provider-image" key={provider.provider_id}>
+        <p>{`${provider.provider_name}`}</p>
+        <a href={`${movie.homepage}`}>
           <img
             src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
             alt={provider.provider_name}
           />
-          <p>{provider.provider_name}</p>
-        </div>
-      ))}
+        </a>
+      </div>
+    ))}
+  </div>
+)}
       <br />
       <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
       <WatchlistButton movie={movie} />

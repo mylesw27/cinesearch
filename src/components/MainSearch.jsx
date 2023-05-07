@@ -27,7 +27,7 @@ function MainSearch() {
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className="btn btn-dark" type="submit">Search</button>
       </form>
     </div>
   );
