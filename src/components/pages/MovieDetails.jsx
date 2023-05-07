@@ -4,21 +4,47 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import WatchlistButton from "../partials/WatchlistButton";
 import FavoritesButton from "../partials/FavoritesButton";
+import Comments2 from "../partials/Comments2";
 
 // Define the MovieDetails component
-function MovieDetails() {
+function MovieDetails({currentUser}) {
   // Use the useParams hook to get the movie ID from the URL
   const { id } = useParams();
+  const jwt = localStorage.getItem("jwt");
 
+  const [objectId, setObjectId] = useState(null)
   // Set up state variables for the movie, favorites, and watch list
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
+
+
   console.log('hello')
+
+  useEffect(() => {
+    const checkFavorite = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        const favorites = response.data.result;
+        setObjectId(favorites[0]._id)
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  // get all objectid from users favorites
+  // get all 
+    checkFavorite();
+  }, [jwt]);
+
 
   useEffect(() => {
     const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
     const movieWatchUrl = `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
-  
+
     Promise.all([axios.get(movieDetailsUrl), axios.get(movieWatchUrl)])
       .then(([movieResponse, watchResponse]) => {
         setMovie(movieResponse.data);
@@ -33,11 +59,11 @@ function MovieDetails() {
   return (
     <div className="movie-details">
       {movie.poster_path && (
-      <img
-        className="movie-poster"
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={`This is the poster for the movie titled ${movie.title}`}
-      />
+        <img
+          className="movie-poster"
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={`This is the poster for the movie titled ${movie.title}`}
+        />
       )}
       <h1>{movie.title}</h1>
       <p>Rating: {movie.vote_average}</p>
@@ -56,8 +82,8 @@ function MovieDetails() {
         </div>
       ))}
       <br />
-      <FavoritesButton movie={movie}/>
-      <WatchlistButton movie={movie}/>
+      <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser}/>
+      <WatchlistButton movie={movie} />
     </div>
   );
 }

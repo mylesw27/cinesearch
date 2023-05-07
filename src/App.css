@@ -7,10 +7,13 @@ body {
   background-size: cover;
   /* background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
 	url("/public/bg.jpg"); */
+  overflow: hidden;
 }
 
 .navbar {
   background-color: rosybrown;
+  display: flex;
+  align-self: auto;
 }
 
 
@@ -172,7 +175,7 @@ label {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-left: 320px;
+  /* margin-left: 320px; */
   margin-top: 0px;
 }
 
@@ -189,8 +192,7 @@ label {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin-left: 320px;
-  margin-top: -50px;
+  margin-top: 0px;
 }
 
 .login-title {
@@ -331,4 +333,10 @@ label {
 
 .popular-title {
   font-size: xxxx-large;
+}
+
+@media (max-width: 768px) {
+  .item {
+    flex-basis: calc(50% - 10px);
+  }
 }
