@@ -18,14 +18,14 @@ export default function Comments2(props) {
             const allComments = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads/movie/${movie}`, {
                 headers: { Authorization: `${jwt}` }
             })
-            if (currentUser) {
-                setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "" })
-                setThreads(allComments.data.findThreads)
-                setComments(allComments.data.findComments)
-            }
+            setThreads(allComments.data.findThreads)
+            setComments(allComments.data.findComments)
         }
         getComments()
-    }, [form])
+        if (currentUser) {
+            setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "" })
+        }
+    }, [])
 
     const threadsArray = threads.map((thread, i) => {
         return (
@@ -42,7 +42,6 @@ export default function Comments2(props) {
         try {
             await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
             console.log(form)
-            navigate(0)
         } catch (error) {
             console.log(error)
         }
@@ -50,19 +49,23 @@ export default function Comments2(props) {
 
     return (
         <>
-            <h2>Discussions</h2>
-            <h3>Start a thread here:</h3>
-            <form onSubmit={e => handleSubmit(e, form)}>
-                {/* threadTitle */}
-                <label htmlFor="title">Thread Title:</label>
-                <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
-                {/* threadBody */}
-                <label htmlFor="body">Thread Body:</label>
-                <textarea type="textarea" id="title" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
+            {currentUser ?
+                <>
+                    <h2>Discussions</h2>
+                    <h3>Start a thread here:</h3>
+                    <form onSubmit={e => handleSubmit(e, form)}>
+                        {/* threadTitle */}
+                        <label htmlFor="title">Thread Title:</label>
+                        <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
+                        {/* threadBody */}
+                        <label htmlFor="body">Thread Body:</label>
+                        <textarea type="textarea" id="title" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
 
-                <button type="submit">Post Thread</button>
-            </form>
-            {threadsArray}
+                        <button type="submit">Post Thread</button>
+                    </form>
+                    {threadsArray}
+                </>
+                : <h3>Please sign in to view discussions</h3>}
         </>
     )
 }
