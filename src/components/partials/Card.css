@@ -1,9 +1,11 @@
-* {
+/* * {
     font-family: 'Montserrat', sans-serif;
     word-wrap: break-word;
     max-width: fit-content;
     
 }
+
+
 
 .frame {
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
@@ -11,13 +13,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    height: 320px;
     position: relative;
     font-size:x-large;
     font-weight: 900;
     color: black;
-    padding-bottom: 10px;
+    padding-bottom: 40px;
     padding-top: 10px;
 }
 
@@ -27,18 +29,18 @@
     align-items: center;
     padding-bottom: 20px;
     gap: 20x; /* Sets the spacing between cards */
-  }
+  /* }
 
   .card-container img {
     width: 250px;
     height: 350px;
     margin: 10px;
     opacity: 0.7;
-  }
+  } */ /*/
 
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
+/* @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200'); */
 
-body  {
+/* body  {
     background-image: url('https://media.npr.org/assets/img/2014/09/28/4dx_interior_img02_wide-c89a3d8756fae045234d9e7bc0a17258b43cdbcb-s1100-c50.jpg');
         background-size:cover;
         -webkit-animation: slidein 100s;
@@ -57,17 +59,17 @@ body  {
 @-webkit-keyframes slidein {
 from {background-position: top; background-size:3000px; }
 to {background-position: -100px 0px;background-size:2750px;}
-}
+} */
 
-@keyframes slidein {
+/* @keyframes slidein {
 from {background-position: top;background-size:3000px; }
 to {background-position: -100px 0px;background-size:2750px;}
 
-}
+} */
 
 
 
-.center
+/* .center
 {
   display: flex;
   align-items: center;
@@ -86,7 +88,7 @@ to {background-position: -100px 0px;background-size:2750px;}
   color:white;
   font-family: 'Source Code Pro', monospace;
   text-transform:uppercase;
-}
+} */
 
 
   /* .pictures {
@@ -98,7 +100,7 @@ to {background-position: -100px 0px;background-size:2750px;}
   } */
 
   .title {
-    font-size:x-large;
+    font-size:medium;
     font-weight: 900;
     color: black;
   }
@@ -134,9 +136,34 @@ to {background-position: -100px 0px;background-size:2750px;}
     padding: 10px 20px;
     cursor: pointer;
   }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    gap: 20x;
+    height: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+    opacity: 0.9;
+  }
+
+ 
   /* .card {
     background-color: black;
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
 	url("/public/card-frame.png");
     background-size: 1500px
   } */
+
+ * {
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.frame {
+    height: 150px;
+    width: 200px;
+    padding-bottom: 10px;
+}

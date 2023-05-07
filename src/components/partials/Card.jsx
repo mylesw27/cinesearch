@@ -20,14 +20,6 @@ function Cards({ movie }) {
           </Link>
         </Card>
       </div>
-      <div className="buttons">
-        <div className="button-one">
-          <FavoritesButton movie={movie} />
-        </div>
-        <div className="button-two">
-          <WatchlistButton movie={movie} />
-        </div>
-      </div>
     </div>
   );
 }
