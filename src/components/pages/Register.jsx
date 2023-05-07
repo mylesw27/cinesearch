@@ -5,10 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register(props) {
   // state for the controlled form
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
 
   const navigate = useNavigate();
 
@@ -17,6 +13,9 @@ export default function Register(props) {
     e.preventDefault();
     try {
       // post fortm data to the backend
+      const name= props.name
+      const email= props.email
+      const password= props.password
       const reqBody = {
         name,
         email,
@@ -39,7 +38,7 @@ export default function Register(props) {
     } catch (err) {
       console.warn(err);
       if (err.response) {
-        setMsg(err.response.data.msg);
+        props.setMsg(err.response.data.msg);
       }
     }
   };
@@ -52,7 +51,7 @@ export default function Register(props) {
     <div className="register-container">
       <h1 className="register-title">Register for your account today!</h1>
 
-      <p>{msg}</p>
+      <p>{props.msg}</p>
 
       <form className="register-inputs" onSubmit={handleSubmit}>
         <label htmlFor="name" className="label-name-register">
@@ -62,8 +61,8 @@ export default function Register(props) {
           type="text"
           id="name"
           placeholder="your username..."
-          onChange={(e) => setName(e.target.value)}
-          value={name}
+          onChange={(e) => props.setName(e.target.value)}
+          value={props.name}
         />
 
         <label htmlFor="email" className="label-email-register">
@@ -73,8 +72,8 @@ export default function Register(props) {
           type="email"
           id="email"
           placeholder="your email..."
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          onChange={(e) => props.setEmail(e.target.value)}
+          value={props.email}
         />
 
         <label htmlFor="password" className="label-password-register">
@@ -84,8 +83,8 @@ export default function Register(props) {
           type="password"
           id="password"
           placeholder="password..."
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
+          onChange={(e) => props.setPassword(e.target.value)}
+          value={props.password}
         />
         
         <button type="submit" className="btn-register">

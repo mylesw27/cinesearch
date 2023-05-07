@@ -17,6 +17,10 @@ import "bootstrap/dist/css/bootstrap.css";
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
 
   // useEffect -- if the user navigates away form the page, we will log them back in
   useEffect(() => {
@@ -97,6 +101,14 @@ function App() {
                 handleLogout={handleLogout}
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
+                name={name}
+                setName={setName}
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                msg={msg}
+                setMsg={setMsg}
               />
             }
           />
