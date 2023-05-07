@@ -8,23 +8,24 @@ export default function Comments2(props) {
     const jwt = localStorage.getItem('jwt')
     const [threads, setThreads] = useState([])
     const [comments, setComments] = useState([])
+    const [form, setForm] = useState({})
     const [currentUser, setCurrentUser] = useState(props.currentUser)
-    const [form, setForm] = useState({ tmdbId: movie, userId: currentUser.name, userName: currentUser._id, threadTitle: "", threadBody: "" })
-
+    const navigate = useNavigate()
     console.log(currentUser)
-
-    let navigate = useNavigate()
 
     useEffect(() => {
         const getComments = async () => {
             const allComments = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads/movie/${movie}`, {
                 headers: { Authorization: `${jwt}` }
             })
-            setThreads(allComments.data.findThreads)
-            setComments(allComments.data.findComments)
+            if (currentUser) {
+                setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "" })
+                setThreads(allComments.data.findThreads)
+                setComments(allComments.data.findComments)
+            }
         }
         getComments()
-    }, [])
+    }, [form])
 
     const threadsArray = threads.map((thread, i) => {
         return (
@@ -41,7 +42,7 @@ export default function Comments2(props) {
         try {
             await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
             console.log(form)
-            // navigate(0)
+            navigate(0)
         } catch (error) {
             console.log(error)
         }
