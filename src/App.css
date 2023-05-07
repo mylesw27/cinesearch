@@ -12,27 +12,30 @@ body {
 
 .navbar {
   background-color: rosybrown;
-  display: flex;
-  align-self: auto;
+  height: 125px;
 }
 
 
 .navbar-logo {
-  height: 150px;
+  height: 125px;
   width: 150px;
   float: right;
-  padding: 10px;
+  background-color: rosybrown;
 }
 
 .navbar-light {
   padding: 25px;
 }
 
+nav {
+  height: 175px;
+}
+
 .navbar-link {
   margin: 0px 15px;
   font-size: larger;
   display: inline;
-  padding-inline: 25px;
+  /* padding-inline: 25px; */
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color:black;
   text-decoration: none;
@@ -331,9 +334,9 @@ label {
 	background-color: #0066b3;
 }
 
-.popular-title {
-  font-size: xxxx-large;
-}
+/* .popular-title {
+  font-size: 'xxx-large'
+} */
 
 @media (max-width: 768px) {
   .item {
