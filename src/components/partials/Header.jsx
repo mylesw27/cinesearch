@@ -44,7 +44,7 @@ export default function Header({ currentUser, handleLogout }) {
           LOGOUT
         </a>
         {" | "}
-        <a className="navbar-brand navbar-link" href="/movies" onClick={handleLogout}>
+        <a className="navbar-brand navbar-link" href="/movies">
           HOME
         </a>
         <a className="navbar-brand">
