@@ -12,7 +12,6 @@ function Cards({ movie }) {
 
   return (
     <div className="frame">
-      <h1 className="title">{movie.title}</h1>
       <div className="card-container">
         <Card className="card bg-dark text-white">
           <Link to={`/movies/${movie.id}/details`}>
@@ -20,6 +19,7 @@ function Cards({ movie }) {
           </Link>
         </Card>
       </div>
+      <h1 className="title">{movie.title}</h1>
     </div>
   );
 }
