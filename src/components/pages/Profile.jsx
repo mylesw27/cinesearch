@@ -5,6 +5,7 @@ import axios from "axios";
 export default function Profile({ currentUser, handleLogout }) {
   // state for the secret message (aka user privilaged data)
   const [msg, setMsg] = useState("");
+  const [edit, setEdit] = useState(false)
 
   const navigate = useNavigate();
 
@@ -45,11 +46,22 @@ export default function Profile({ currentUser, handleLogout }) {
     fetchData();
   }, [handleLogout, navigate]); // only fire on the first render of this component
 
+ const  handleEdit = async (e) => {
+    try{
+      e.preventDefault()
+      setEdit(true)
+      console.log("im clicking edit", edit)
+    }catch(err){
+      console.log(err)
+    }
+    
+  }
   return (
     <div>
       <h1>Hello, {currentUser?.name}</h1>
-
       <p>your email is {currentUser?.email}</p>
+      <button onClick={handleEdit}>edit</button>
+      <button>delete</button>
 
       <h2>
         Here is the secret message that is only availible to users of User App:
