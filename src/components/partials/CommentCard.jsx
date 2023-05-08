@@ -3,7 +3,9 @@ export default function CommentCard(props) {
     const currentUser = props.currentUser
 
     const handleRemoveComment = () => {
-
+        try {
+            await axios.delete(`${}`)
+        }
     }
 
 
