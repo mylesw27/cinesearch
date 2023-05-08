@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import "./Comments.css"
 
 export default function CommentCard(props) {
     const comment = props.comment

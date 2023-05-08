@@ -1,0 +1,9 @@
+.discussions-firstlook {
+    display: flex;
+    flex-direction: row;
+}
+
+.discussions-dropdown {
+    border: none;
+    background-color: none;
+}

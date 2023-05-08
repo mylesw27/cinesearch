@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams, useNavigate } from "react-router-dom"
 import Thread from './Thread'
+import "./Comments.css"
 
 export default function Comments2(props) {
     const movie = props.movie
@@ -53,7 +54,10 @@ export default function Comments2(props) {
         <>
             {currentUser ?
                 <>
-                    <h2>Discussions</h2>
+                    <div className="discussions-firstlook">
+                        <h2>Social:</h2>
+                        <button className="discussions-dropdown" type="dropdown">View discussions</button>
+                    </div>
                     <h3>Start a thread here:</h3>
                     <form onSubmit={e => handleSubmit(e, form)}>
                         {/* threadTitle */}
