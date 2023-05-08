@@ -21,28 +21,6 @@ export default function Header({ currentUser, handleLogout }) {
     </>
   );
 
-<<<<<<< HEAD
-			<Link to="/login">
-				Login
-			</Link> 
-		</>
-	)
-
-	return (
-		<nav class="navbar navbar-light bg-light header">
-            <div>
-                <a class="navbar-brand navbar-link" href="/register">
-                    REGISTER
-                </a> {" | "}
-                <a class="navbar-brand navbar-link" href="/login">
-                    LOGIN
-                </a>
-            </div>
-            <img class="navbar-logo" src="/logo.png" alt="panda eating popcorn. he is the cinesearch logo" />
-		</nav>
-	)
-}
-=======
   return (
     <><img className="navbar-logo" src="/logo.png" alt="Panda eating popcorn which is the CineSearch logo" /><nav className="navbar navbar-light header">
       <div>
@@ -77,4 +55,3 @@ export default function Header({ currentUser, handleLogout }) {
     </>
   );
 }
->>>>>>> main
