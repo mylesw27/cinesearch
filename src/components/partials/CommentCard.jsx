@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import "./Comments.css"
+import { useBootstrapBreakpoints } from "react-bootstrap/esm/ThemeProvider"
 
 export default function CommentCard(props) {
     const comment = props.comment

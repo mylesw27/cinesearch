@@ -58,18 +58,20 @@ export default function Comments2(props) {
                         <h2>Social:</h2>
                         <button className="discussions-dropdown" type="dropdown">View discussions</button>
                     </div>
-                    <h3>Start a thread here:</h3>
-                    <form onSubmit={e => handleSubmit(e, form)}>
-                        {/* threadTitle */}
-                        <label htmlFor="title">Thread Title:</label>
-                        <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
-                        {/* threadBody */}
-                        <label htmlFor="body">Thread Body:</label>
-                        <textarea type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
+                    <div className="comments-container">
+                        <h3 className="create-comment-header">Create a thread:</h3>
+                        <form className="comments-form" onSubmit={e => handleSubmit(e, form)}>
+                            {/* threadTitle */}
+                            <label htmlFor="title">Thread Title:</label>
+                            <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
+                            {/* threadBody */}
+                            <label htmlFor="body">Thread Body:</label>
+                            <textarea type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
 
-                        <button type="submit">Post Thread</button>
-                    </form>
-                    {threadsArray}
+                            <button type="submit">Post Thread</button>
+                        </form>
+                        {threadsArray}
+                    </div>
                 </>
                 : <h3>Please sign in to view discussions</h3>}
         </>
