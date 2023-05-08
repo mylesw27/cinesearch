@@ -29,7 +29,7 @@ export default function Comments2(props) {
     const threadsArray = threads.map((thread, i) => {
         return (
             <Thread
-                key={`thread-${thread._id}`}
+                // key={`thread-${thread._id}`}
                 thread={thread}
                 comments={comments}
                 setComments={setComments}
@@ -44,7 +44,6 @@ export default function Comments2(props) {
             const postResponse = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
             const responseObject = postResponse.data.newThread
             setThreads([...threads, responseObject])
-            console.log(threads)
         } catch (error) {
             console.log(error)
         }

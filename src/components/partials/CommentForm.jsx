@@ -19,8 +19,9 @@ export default function CommentForm(props) {
         e.preventDefault()
         try {
             console.log(form)
-            await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads/comments`, form)
-            setComments([...comments, form])
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads/comments`, form)
+            const newComment = response.data.newComment
+            setComments([...comments, newComment])
         } catch (err) {
             console.log(err)
         }
