@@ -29,7 +29,7 @@ export default function Comments2(props) {
     const threadsArray = threads.map((thread, i) => {
         return (
             <Thread
-                // key={`thread-${thread._id}`}
+                key={`thread-${thread._id}`}
                 thread={thread}
                 comments={comments}
                 setComments={setComments}
