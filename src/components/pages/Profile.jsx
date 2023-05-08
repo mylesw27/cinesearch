@@ -17,32 +17,18 @@ export default function Profile(props) {
   const jwt = localStorage.getItem("jwt");
   
   const navigate = useNavigate();
-
-  const handleFileSelect = async (file) => {
+  async function handleFileSelect(file) {
     try {
-          // Create a new FormData object
-    const formData = new FormData();
-    // Append the selected file to the FormData object
-    formData.append("img", file);
+      const fileInfo = await file.promise();
+      const cdnUrl = fileInfo.cdnUrl;
+      setUserData({ ...userData, img: cdnUrl }, () => {
+      });
       // Make a POST request to update the currentUser object with the UUID of the uploaded image
-      const response = await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/api-v1/users/`,
-        formData,
-        {
-          headers: {
-            Authorization: localStorage.getItem("jwt"),
-            "Content-Type": "multipart/form-data", 
-          },
-        }
-      );
-      // Update the currentUser object with the new img property
-      const imgUrl = `https://ucarecdn.com/${response.data.uuid}/`;
-      // Call a function to update the user in state (not shown)
-      setUserData({ ...userData, img: imgUrl });
     } catch (err) {
       console.log(err);
     }
-  };
+  }
+  
 
   // useEffect for getting the user data and checking auth
   useEffect(() => {
@@ -82,7 +68,7 @@ export default function Profile(props) {
     fetchData();
   }, []); // only fire on the first render of this component
 
- const  handleEdit = async (e) => {
+  const handleEdit = async (e) => {
     try{
       e.preventDefault()
       const name= userData.name
@@ -104,21 +90,11 @@ export default function Profile(props) {
       }
       const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
       const response = await axios.put(url, reqBody, auth)
-      console.log(response)
-      setUserData({...userData,
-        name: response.data.name,
-        userName: response.data.username,
-        img: response.data.img,
-        email: response.data.email,
-        password: response.data.password
-    })
       setEdit(false)
-      console.log("response right here", response)
     }catch(err){
       console.log(err)
     }
     props.setCurrentUser(userData)
-    console.log(props.currentUser)
   
     
   }
@@ -190,7 +166,7 @@ const handleDelete = async () => {
       </div>
 
       <p>
-        <label htmlFor="img">Your profile picture:</label>{" "}
+        <label htmlFor="my_file">Your profile picture:</label>{" "}
         <Widget
           publicKey="eb5cb5bbf1cbfe6b01be"
           id="img"
