@@ -15,7 +15,6 @@ export default function Movies(props) {
       )
       // set state of movies array to the list of popular movies
       .then((response) => {
-        console.log('ressss   ', response)
         setPopularArray(response.data.results);
       })
       .catch((err) => {

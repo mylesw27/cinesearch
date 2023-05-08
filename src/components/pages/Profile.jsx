@@ -91,7 +91,6 @@ export default function Profile(props) {
       const response = await axios.delete(url, auth);
       window.location.href = "/login";
       localStorage.removeItem("jwt");
-      console.log(response);
     } catch (err) {
       console.log(err);
     }

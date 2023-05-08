@@ -23,8 +23,6 @@ function MovieDetails({ currentUser }) {
     setIsMenuOpen(!isMenuOpen);
   }
 
-  console.log('hello')
-
   useEffect(() => {
     const checkFavorite = async () => {
       try {
