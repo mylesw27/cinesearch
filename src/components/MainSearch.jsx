@@ -24,10 +24,11 @@ function MainSearch() {
       <form onSubmit={handleSearch}>
         <input
           type="text"
+          className="main-search-input"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <button className="btn btn-dark" type="submit">Search</button>
+        <button className="main-search-button" type="submit">Search</button>
       </form>
     </div>
   );

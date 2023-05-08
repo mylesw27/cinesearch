@@ -1,0 +1,155 @@
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 12rem; /* reduce the height on smaller screens */
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-image: url('../assets/movienight.png');
+  background-size: cover;
+  opacity: 0.3;
+}
+
+.hero-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  color: #000000;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  font-size: 24px;
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 768px) {
+  /* adjust styles for screens narrower than 768px */
+  .hero-section {
+    height: 400px;
+  }
+
+  .logo {
+    height: 8rem;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+}
+
+.main-search-input {
+  width: 80%;
+  padding: 12px 20px;
+  margin-right: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  border: black;
+  border-style: inset;
+}
+
+.main-search-button {
+  background-color: #757575;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.features-section {
+  padding: 48px 0;
+}
+
+.features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.features-list li {
+  width: 100%;
+  max-width: 400px;
+  margin: 24px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  border: 2px solid #000000;
+  border-radius: 16px;
+  padding: 24px;
+  background-color: #fff;
+}
+
+.feature img {
+  width: 64px;
+  height: 64px;
+  margin-right: 24px;
+  border-radius: 50%;
+}
+
+.feature p {
+  margin: 0;
+  font-size: 20px;
+  color: #555;
+}
+
+.movie-list {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.movie-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card img {
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+}
+
+.movie-info {
+  padding: 20px;
+  border:rgba(0, 0, 0,);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
