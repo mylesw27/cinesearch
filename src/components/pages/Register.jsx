@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -45,10 +45,12 @@ export default function Register(props) {
     }
   };
 
-  // conditionally render a navigate component
-  if (props.currentUser) {
-    navigate("/profile");
-  }
+  // useEffect for conditionally navigating
+  useEffect(() => {
+    if (props.currentUser) {
+      navigate("/profile");
+    }
+  }, [props.currentUser, navigate]);
 
   return (
     <div className="register-container">

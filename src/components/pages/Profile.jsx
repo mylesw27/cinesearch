@@ -62,7 +62,7 @@ export default function Profile(props) {
             // panic!
             props.handleLogout();
             // send the user to the login screen
-            navigate("/login");
+            window.location.href = "/login";
           }
         }
       }
@@ -73,25 +73,16 @@ export default function Profile(props) {
   const handleEdit = async (e) => {
     try{
       e.preventDefault()
-      const name= userData.name
-      const email= userData.email
-      const password= userData.password
-      const userName= userData.userName
-      const img= userData.img
-      const reqBody = {
-        name,
-        userName,
-        email,
-        password,
-        img,
-      };
-      const auth= {
+      const { name, email, password, userName, img } = userData;
+      const reqBody = { name, email, password, userName, img };
+      const auth = {
         headers: {
-          Authorization: jwt
-        }
-      }
-      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
-      const response = await axios.put(url, reqBody, auth)
+          Authorization: jwt,
+        },
+      };
+      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`;
+      const response = await axios.put(url, reqBody, auth);
+      
       setEdit(false)
 
     }catch(err){
@@ -102,22 +93,23 @@ export default function Profile(props) {
     
   }
 
-const handleDelete = async () => {
-  try {
-    const auth= {
-      headers: {
-        Authorization: jwt
-      }
+  const handleDelete = async () => {
+    try {
+      const auth = {
+        headers: {
+          Authorization: localStorage.getItem("jwt"),
+        },
+      };
+      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`;
+      const response = await axios.delete(url, auth);
+      window.location.href = "/login";
+      localStorage.removeItem("jwt");
+      console.log(response);
+    } catch (err) {
+      console.log(err);
     }
-    const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
-    const response = await axios.delete(url, auth)
-    navigate('/login')
-    console.log(response)
+  };
 
-  }catch(err){
-    console.log(err)
-  }
-}
 
   return (
     <div>
