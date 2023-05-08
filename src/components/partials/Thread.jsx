@@ -9,15 +9,17 @@ export default function Thread(props) {
     const thread = props.thread
     const [seeComments, setSeeComments] = useState(false)
     const currentUser = props.currentUser
+    const [seeThread, setSeeThread] = useState(true)
 
 
     const handleThreadClick = () => {
         setSeeComments(!seeComments)
     }
 
-    const handleRemoveThread = () => {
+    const handleRemoveThread = async () => {
         try {
-            console.log("remove thread")
+            await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads/${thread._id}`)
+            setSeeThread(false)
         } catch (err) {
             console.log(err)
         }
@@ -35,33 +37,36 @@ export default function Thread(props) {
         }
     })
 
-
-
     return (
-        <div>
-            <p>{thread.userName} wrote:</p>
-            <h3>{thread.threadTitle}</h3>
-            <h4>{thread.threadBody}</h4>
-            {currentUser._id === thread.userId ?
+        <>
+            {seeThread ?
                 <div>
-                    <button onClick={handleRemoveThread}>Remove Thread</button>
+                    <p>{thread.userName} wrote:</p>
+                    <h3>{thread.threadTitle}</h3>
+                    <h4>{thread.threadBody}</h4>
+                    {currentUser._id === thread.userId ?
+                        <div>
+                            <button onClick={handleRemoveThread}>Remove Thread</button>
+                        </div>
+                        :
+                        <></>
+                    }
+                    {seeComments ?
+                        <>
+                            {commentsArray}
+                            <CommentForm
+                                currentUser={currentUser}
+                                thread={thread}
+                                comments={comments}
+                                setComments={setComments}
+                            />
+                        </>
+                        :
+                        <div onClick={handleThreadClick}>Click to see thread comments</div>}
                 </div>
-                :
-                <></>
+                : <></>
             }
-            {seeComments ?
-                <>
-                    {commentsArray}
-                    <CommentForm
-                        currentUser={currentUser}
-                        thread={thread}
-                        comments={comments}
-                        setComments={setComments}
-                    />
-                </>
-                :
-                <div onClick={handleThreadClick}>Click to see thread comments</div>}
-        </div>
+        </>
     )
 
 

@@ -11,7 +11,6 @@ export default function Comments2(props) {
     const [form, setForm] = useState({})
     const [currentUser, setCurrentUser] = useState(props.currentUser)
     const navigate = useNavigate()
-    const [randomId, setRandomId] = useState(Date.now)
 
     useEffect(() => {
         const getComments = async () => {
@@ -20,11 +19,10 @@ export default function Comments2(props) {
             })
             setThreads(allComments.data.findThreads)
             setComments(allComments.data.findComments)
-            setRandomId(Date.now())
         }
         getComments()
         if (currentUser) {
-            setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "", _id: randomId })
+            setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "" })
         }
     }, [])
 
@@ -43,9 +41,9 @@ export default function Comments2(props) {
     const handleSubmit = async (e, form) => {
         e.preventDefault()
         try {
-            setRandomId(Date.now())
-            await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
-            setThreads([...threads, form])
+            const postResponse = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
+            const responseObject = postResponse.data.newThread
+            setThreads([...threads, responseObject])
             console.log(threads)
         } catch (error) {
             console.log(error)
