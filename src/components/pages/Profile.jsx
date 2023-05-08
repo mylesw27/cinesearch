@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Widget } from "@uploadcare/react-widget";
 
 import axios from "axios";
 
@@ -9,11 +10,39 @@ export default function Profile(props) {
   const [userData, setUserData] = useState({
       name: props.name,
       email: props.email,
-      password: props.password
+      password: props.password,
+      userName: props.userName,
+      img: props.img,
 })
   const jwt = localStorage.getItem("jwt");
   
   const navigate = useNavigate();
+
+  const handleFileSelect = async (file) => {
+    try {
+          // Create a new FormData object
+    const formData = new FormData();
+    // Append the selected file to the FormData object
+    formData.append("img", file);
+      // Make a POST request to update the currentUser object with the UUID of the uploaded image
+      const response = await axios.put(
+        `${process.env.REACT_APP_SERVER_URL}/api-v1/users/`,
+        formData,
+        {
+          headers: {
+            Authorization: localStorage.getItem("jwt"),
+            "Content-Type": "multipart/form-data", 
+          },
+        }
+      );
+      // Update the currentUser object with the new img property
+      const imgUrl = `https://ucarecdn.com/${response.data.uuid}/`;
+      // Call a function to update the user in state (not shown)
+      setUserData({ ...userData, img: imgUrl });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // useEffect for getting the user data and checking auth
   useEffect(() => {
@@ -21,7 +50,7 @@ export default function Profile(props) {
       try {
         // get the token from local storage
         const token = localStorage.getItem("jwt");
-        const userStorage = JSON.parse(localStorage.getItem('userData'))
+        // const userStorage = JSON.parse(localStorage.getItem('userData'))
         // make the auth headers
         const options = {
           headers: {
@@ -59,10 +88,14 @@ export default function Profile(props) {
       const name= userData.name
       const email= userData.email
       const password= userData.password
+      const userName= userData.userName
+      const img= userData.img
       const reqBody = {
         name,
+        userName,
         email,
         password,
+        img,
       };
       const auth= {
         headers: {
@@ -74,6 +107,8 @@ export default function Profile(props) {
       console.log(response)
       setUserData({...userData,
         name: response.data.name,
+        userName: response.data.username,
+        img: response.data.img,
         email: response.data.email,
         password: response.data.password
     })
@@ -119,6 +154,14 @@ const handleDelete = async () => {
         onChange={(e) => setUserData({...userData, name:e.target.value})}
         value={userData.name}
         />
+        <label htmlFor="username">Username</label>
+        <input 
+        type="text"
+        id="userName"
+        placeholder={props.userName}
+        onChange={(e) => setUserData({...userData, userName:e.target.value})}
+        value={userData.userName}
+        />
         <label htmlFor="email">Email</label>
         <input 
         type="text"
@@ -135,9 +178,29 @@ const handleDelete = async () => {
         onChange={(e) => setUserData({...userData, password:e.target.value})}
         value={userData.password}
         />
+        
+    
+        <div>
+        <div className="centered">
+        <img
+          src={props.currentUser?.img ? props.currentUser.img : "./assets/default.png"}
+          alt="This is the current default profile pic which is a person with no face"
+          style={{ maxWidth: "200px", height: "auto" }}
+        />
+      </div>
 
-        <button>Submit</button>
-
+      <p>
+        <label htmlFor="img">Your profile picture:</label>{" "}
+        <Widget
+          publicKey="eb5cb5bbf1cbfe6b01be"
+          id="img"
+          onFileSelect={handleFileSelect}
+          name="my_file"
+          role="uploadcare-uploader" 
+        />
+      </p>
+        </div>
+            <button>Submit</button>
       </form> 
       ) : (
         <div>
