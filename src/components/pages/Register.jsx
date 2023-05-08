@@ -49,7 +49,7 @@ export default function Register(props) {
   }
   return (
     <div className="register-container">
-      <h1 className="register-title">Register for your account today!</h1>
+      <h1 className="register-title" >Register for your account today!</h1>
 
       <p>{props.msg}</p>
 

@@ -20,7 +20,7 @@ export default function Watchlist() {
 
   return (
     <div>
-      <h2>My Watchlist</h2>
+      <h2 style={{fontFamily:"Sigmar", fontWeight:"lighter", padding:"30px"}}>My Watchlist</h2>
       <ListView movies={watchlistArray} />
     </div>
   );

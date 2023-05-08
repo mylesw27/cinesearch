@@ -19,7 +19,7 @@ export default function Favorites({ authToken }) {
 
   return (
     <div>
-      <h2>My Favorite Movies</h2>
+      <h2 style={{fontFamily:"Sigmar", fontWeight:"lighter", padding:"30px"}}>My Favorite Movies</h2>
       <ListView movies={favoritesArray} />
     </div>
   );
