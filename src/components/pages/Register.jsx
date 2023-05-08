@@ -101,6 +101,7 @@ export default function Register(props) {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          autoComplete="off"
         />
         
         <button type="submit" className="btn-register">
