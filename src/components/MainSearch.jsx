@@ -16,7 +16,6 @@ function MainSearch() {
     event.preventDefault();
     navigate(`/search/?q=${searchQuery}`, { replace: false })
     navigate(0)
-    console.log("submit")
     setSearchQuery('')
   };
 
