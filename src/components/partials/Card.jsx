@@ -13,9 +13,9 @@ function Cards({ movie }) {
   return (
     <div className="frame">
       <div className="card-container">
-        <Card className="card bg-dark text-white">
+        <Card className="card bg-dark text-white" key='myKey'>
           <Link to={`/movies/${movie.id}/details`}>
-            <Card.Img className="card-img-top" src={posterUrl || defaultPosterUrl} alt="Card image" />
+            <Card.Img key='the movie-id' className="card-img-top" src={posterUrl || defaultPosterUrl} alt="Card image" />
           </Link>
         </Card>
       </div>

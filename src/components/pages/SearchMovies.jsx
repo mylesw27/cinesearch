@@ -33,7 +33,6 @@ export default function SearchMovies() {
     // return listview with searchArray
     return (
         <div>
-            <MainSearch />
             <ListView
                 movies={movies}
             />
