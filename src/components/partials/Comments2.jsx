@@ -8,7 +8,7 @@ export default function Comments2(props) {
     const jwt = localStorage.getItem('jwt')
     const [threads, setThreads] = useState([])
     const [comments, setComments] = useState([])
-    const [form, setForm] = useState({})
+    const [form, setForm] = useState({ tmdbId: '', userId: '', userName: '', threadTitle: "", threadBody: "" })
     const [currentUser, setCurrentUser] = useState(props.currentUser)
     const navigate = useNavigate()
 

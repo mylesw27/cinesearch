@@ -6,9 +6,15 @@ export default function ListView({ movies }) {
   return (
     <div className="list-view">
       <div className="list-view">
-      {movies.map((movie) => (
-        <Card key={movie.id} movie={movie} />
-      ))}
+        {movies.map((movie) => (
+          <>
+            {movie.poster_path ?
+              <Card key={movie.id} movie={movie} />
+              :
+              <></>
+            }
+          </>
+        ))}
       </div>
     </div>
   );
