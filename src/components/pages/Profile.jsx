@@ -140,10 +140,11 @@ export default function Profile(props) {
         placeholder= 'new password'
         onChange={(e) => setUserData({...userData, password:e.target.value})}
         value={userData.password}
+        autoComplete="off"
         />
         </div>
         <div>
-      <p>
+        <div>
         <div>
       <img
           src={props.currentUser?.img ? props.currentUser.img : logo}
@@ -159,7 +160,7 @@ export default function Profile(props) {
           name="my_file"
           role="uploadcare-uploader" 
         />
-      </p>
+      </div>
         </div>
             <button>Submit</button>
       </form> 

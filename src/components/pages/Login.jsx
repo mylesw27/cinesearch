@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -42,10 +42,12 @@ export default function Login({ currentUser, setCurrentUser }) {
     }
   };
 
-  // conditionally render a navigate component
-  if (currentUser) {
-    navigate("/movies");
-  }
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/movies");
+    }
+  }, [currentUser, navigate]);
+  
 
   return (
     <div className="login-container">
@@ -74,6 +76,7 @@ export default function Login({ currentUser, setCurrentUser }) {
           placeholder="password..."
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          autoComplete="off"
         />
 
         <button type="submit" className="btn-login">
