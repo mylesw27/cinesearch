@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Register from "./components/pages/Register";
@@ -22,17 +23,32 @@ function App() {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
 
-  // useEffect -- if the user navigates away form the page, we will log them back in
-  useEffect(() => {
-    // check to see if token is in storage
-    const token = localStorage.getItem("jwt");
-    if (token) {
-      // if so, we will decode it and set the user in app state
-      setCurrentUser(jwt_decode(token));
-    } else {
-      setCurrentUser(null);
-    }
-  }, []); // happen only once - no _id needed
+// useEffect -- if the user navigates away form the page, we will log them back in
+useEffect(() => {
+  // check to see if token is in storage
+  const token = localStorage.getItem("jwt");
+  if (token) {
+    // if so, we will decode it and set the user in app state
+    const decoded = jwt_decode(token);
+    setCurrentUser(decoded);
+
+    // fetch the user data from the server
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${decoded._id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(response => {
+        // update the currentUser state with the username and image of the authenticated user
+        const { userName, image } = response.data;
+        setCurrentUser(prevUser => ({ ...prevUser, userName, image }));
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  } else {
+    setCurrentUser(null);
+  }
+}, []);
+
 
   // event handler to log the user out when needed
   const handleLogout = () => {

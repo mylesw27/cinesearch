@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Widget } from "@uploadcare/react-widget";
+import logo from "../assets/logo.png"
 
 import axios from "axios";
 
@@ -17,6 +18,7 @@ export default function Profile(props) {
   const jwt = localStorage.getItem("jwt");
   
   const navigate = useNavigate();
+
   async function handleFileSelect(file) {
     try {
       const fileInfo = await file.promise();
@@ -91,6 +93,7 @@ export default function Profile(props) {
       const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
       const response = await axios.put(url, reqBody, auth)
       setEdit(false)
+
     }catch(err){
       console.log(err)
     }
@@ -126,26 +129,31 @@ const handleDelete = async () => {
         <input 
         type="text"
         id="name"
-        placeholder={props.name}
+        placeholder={props.currentUser.name}
         onChange={(e) => setUserData({...userData, name:e.target.value})}
         value={userData.name}
         />
+        <div>
         <label htmlFor="username">Username</label>
         <input 
         type="text"
         id="userName"
-        placeholder={props.userName}
+        placeholder={props.currentUser.userName}
         onChange={(e) => setUserData({...userData, userName:e.target.value})}
         value={userData.userName}
         />
+        </div>
+        <div>
         <label htmlFor="email">Email</label>
         <input 
         type="text"
         id="email"
-        placeholder={props.email}
+        placeholder={props.currentUser.email}
         onChange={(e) => setUserData({...userData, email:e.target.value})}
         value={userData.email}
         />
+        </div>
+        <div>
         <label htmlFor="password">Password</label>
         <input 
         type="text"
@@ -154,18 +162,16 @@ const handleDelete = async () => {
         onChange={(e) => setUserData({...userData, password:e.target.value})}
         value={userData.password}
         />
-        
-    
+        </div>
         <div>
-        <div className="centered">
-        <img
-          src={props.currentUser?.img ? props.currentUser.img : "./assets/default.png"}
+      <p>
+        <div>
+      <img
+          src={props.currentUser?.img ? props.currentUser.img : logo}
           alt="This is the current default profile pic which is a person with no face"
           style={{ maxWidth: "200px", height: "auto" }}
         />
-      </div>
-
-      <p>
+        </div>
         <label htmlFor="my_file">Your profile picture:</label>{" "}
         <Widget
           publicKey="eb5cb5bbf1cbfe6b01be"
@@ -181,6 +187,13 @@ const handleDelete = async () => {
       ) : (
         <div>
       <h1>Hello, {props.currentUser?.name}</h1>
+      <div className="centered">
+        <img
+          src={props.currentUser?.img ? props.currentUser.img : logo}
+          alt="This is the current default profile pic which is a person with no face"
+          style={{ maxWidth: "200px", height: "auto" }}
+        />
+      </div>
       <p>your email is {props.currentUser?.email}</p>
       <button onClick={()=> setEdit(true)}>edit</button>
       <button onClick={handleDelete}>delete</button>

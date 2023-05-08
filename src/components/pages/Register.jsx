@@ -5,21 +5,23 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register(props) {
   // state for the controlled form
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
   // submit event handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // post fortm data to the backend
-      const name= props.name
-      const email= props.email
-      const password= props.password
+      // post form data to the backend
       const reqBody = {
         name,
         email,
         password,
+        userName,
       };
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`,
@@ -38,7 +40,7 @@ export default function Register(props) {
     } catch (err) {
       console.warn(err);
       if (err.response) {
-        props.setMsg(err.response.data.msg);
+        setMsg(err.response.data.msg);
       }
     }
   };
@@ -47,11 +49,12 @@ export default function Register(props) {
   if (props.currentUser) {
     navigate("/profile");
   }
+
   return (
     <div className="register-container">
       <h1 className="register-title">Register for your account today!</h1>
 
-      <p>{props.msg}</p>
+      <p>{msg}</p>
 
       <form className="register-inputs" onSubmit={handleSubmit}>
         <label htmlFor="name" className="label-name-register">
@@ -60,9 +63,20 @@ export default function Register(props) {
         <input
           type="text"
           id="name"
-          placeholder="your username..."
-          onChange={(e) => props.setName(e.target.value)}
-          value={props.name}
+          placeholder="your name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+        />
+
+        <label htmlFor="userName" className="label-name-register">
+          Username:
+        </label>
+        <input
+          type="text"
+          id="userName"
+          placeholder="your username"
+          onChange={(e) => setUserName(e.target.value)}
+          value={userName}
         />
 
         <label htmlFor="email" className="label-email-register">
@@ -71,9 +85,9 @@ export default function Register(props) {
         <input
           type="email"
           id="email"
-          placeholder="your email..."
-          onChange={(e) => props.setEmail(e.target.value)}
-          value={props.email}
+          placeholder="your email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
 
         <label htmlFor="password" className="label-password-register">
@@ -82,9 +96,9 @@ export default function Register(props) {
         <input
           type="password"
           id="password"
-          placeholder="password..."
-          onChange={(e) => props.setPassword(e.target.value)}
-          value={props.password}
+          placeholder="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
         />
         
         <button type="submit" className="btn-register">
