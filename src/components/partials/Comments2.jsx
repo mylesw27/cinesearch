@@ -11,7 +11,6 @@ export default function Comments2(props) {
     const [form, setForm] = useState({})
     const [currentUser, setCurrentUser] = useState(props.currentUser)
     const navigate = useNavigate()
-    console.log(currentUser)
 
     useEffect(() => {
         const getComments = async () => {
@@ -33,6 +32,8 @@ export default function Comments2(props) {
                 key={`thread-${thread._id}`}
                 thread={thread}
                 comments={comments}
+                setComments={setComments}
+                currentUser={currentUser}
             />
         )
     })
@@ -40,8 +41,9 @@ export default function Comments2(props) {
     const handleSubmit = async (e, form) => {
         e.preventDefault()
         try {
-            await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
-            console.log(form)
+            const postResponse = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
+            const responseObject = postResponse.data.newThread
+            setThreads([...threads, responseObject])
         } catch (error) {
             console.log(error)
         }
@@ -59,7 +61,7 @@ export default function Comments2(props) {
                         <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
                         {/* threadBody */}
                         <label htmlFor="body">Thread Body:</label>
-                        <textarea type="textarea" id="title" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
+                        <textarea type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
 
                         <button type="submit">Post Thread</button>
                     </form>
