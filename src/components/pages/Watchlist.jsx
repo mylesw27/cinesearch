@@ -1,20 +1,27 @@
-import { useState, useEffect } from "react"
-import ListView from "../partials/ListView"
-import favorites from "../../favorites" // Using favorites for placeholder data
+import { useState, useEffect } from "react";
+import ListView from "../partials/ListView";
+import axios from "axios";
+
 
 export default function Watchlist() {
-    const [watchlistArray, setWatchlistAray] = useState([])
-    const watchlist = favorites // This code will need to be removed once we have watchlist data
+  const [watchlistArray, setWatchlistArray] = useState([]);
+  const jwt = localStorage.getItem("jwt")
 
-    useEffect(() => {
-        setWatchlistAray(watchlist)
-    })
+  useEffect(() => {
+    const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users/watchlist`;
+    const getWatchlist = async () => {
+      const response = await axios.get(url, {
+        headers: { Authorization: `${jwt}` },
+      })
+      setWatchlistArray(response.data.result)
+    }
+    getWatchlist()
+  }, []);
 
-    return (
-        <div>
-            <h2>My Watchlist</h2>
-            <ListView movies={watchlistArray} />
-        </div>
-    )
+  return (
+    <div>
+      <h2 style={{fontFamily:"Sigmar", fontWeight:"lighter", padding:"30px"}}>My Watchlist</h2>
+      <ListView movies={watchlistArray} />
+    </div>
+  );
 }
-

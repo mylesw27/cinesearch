@@ -1,49 +1,67 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function FavoritesButton({ movie, currentUser, userId }) {
-  const [isFavorite, setIsFavorite] = useState(false)
-
+export default function FavoritesButton (props) {
+  const [isFavorite, setIsFavorite] = useState(false); //I MIGHT NOT NEED props.isfavorite - change to false instead
+  const jwt = localStorage.getItem("jwt");
+  const tmdbId = `${props.movie.id}`
+  const currentUser = props.currentUser
+  const navigate = useNavigate()
 
   useEffect(() => {
-    // check if the movie is already in favorites
-    fetch(`/api-v1/users/${userId}/favorites`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.result.some(favorite => favorite.id === movie.id)) {
-          setIsFavorite(true)
-        }
-      })
-      .catch(err => console.log(err))
-  }, [movie, userId])
+    const checkFavorite = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        const favorites = response.data.result;
+        const ids = favorites.map(favorite => favorite.id)
+        setIsFavorite(ids.includes(tmdbId));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+  // get all objectid from users favorites
+  // get all 
+    checkFavorite();
+  }, [jwt, tmdbId]);
 
-  const handleFavorite = (e) => {
-    e.preventDefault()
-    console.log(movie)
-    console.log(currentUser)
-    if (isFavorite) {
-      // remove the movie from favorites
-      //   fetch(`/api-v1/users/${userId}/favorites/${movie.id}`, { method: 'DELETE' })
-      //     .then(() => setIsFavorite(false))
-      //     .catch(err => console.log(err))
-      console.log(`Add ${movie.title} to favorites`)
-    } else {
-      // add the movie to favorites
-      fetch(`/api-v1/users/${userId}/favorites`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(movie)
-      })
-        .then(() => setIsFavorite(true))
-        .catch(err => console.log(err))
-      console.log(`Remove ${movie.title} from favorites`)
+  const toggleFavorite = async () => {
+    try {
+      navigate(0)
+      if (isFavorite) {
+        // remove from favorites
+        await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites/${props.objectId}`, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsFavorite(false);
+      } else {
+        // add to favorites
+        const sendData = {...props.movie, userId: currentUser._id}
+        await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, sendData, {
+          headers: {
+            Authorization: `${jwt}`,
+          },
+        });
+        setIsFavorite(true);
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
+
+
+  
+  
 
   return (
-    <button onClick={handleFavorite}>
-      {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+    <button type="button" className="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
+      {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
     </button>
-  )
-}
+  );
+};

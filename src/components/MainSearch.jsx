@@ -1,37 +1,37 @@
-// search endpoint for movie api
-
 // import react and the necessary hoooks
-import {useState} from 'react'
-import axios from 'axios'
+import { useState } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // define mainsearch component
 function MainSearch() {
-    // set up state variables
-    const [searchQuery, setSearchQuery] = useState('')
-    const [movies, setMovies] = useState([])
-    // define handle
-    const handleSearch = (event) => {
-        event.preventDefault()
+  // set up state variables
+  const [searchQuery, setSearchQuery] = useState("");
+  const [movies, setMovies] = useState([]);
 
-        axios
-        .get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&query=${searchQuery}&page=1&include_adult=false`)
-        .then((response) => setMovies(response.data.results))
-        .catch((error) => console.log(error))
-    }
+  let navigate = useNavigate()
 
-    return (
-        <div className='main-search'>
-            <form onSubmit={handleSearch}>
-                <input
-                type="text"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                
-                />
-                <button type="submit">Search</button>
-            </form>
-        </div>
-    )
+  // define handle
+  const handleSearch = (event) => {
+    event.preventDefault();
+    navigate(`/search/?q=${searchQuery}`, { replace: false })
+    navigate(0)
+    console.log("submit")
+    setSearchQuery('')
+  };
+
+  return (
+    <div className="main-search">
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+        />
+        <button className="btn btn-dark" type="submit">Search</button>
+      </form>
+    </div>
+  );
 }
 
-export default MainSearch
+export default MainSearch;
