@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Widget } from "@uploadcare/react-widget";
+import logo from "../assets/logo.png"
 
 import axios from "axios";
 
@@ -17,6 +18,7 @@ export default function Profile(props) {
   const jwt = localStorage.getItem("jwt");
   
   const navigate = useNavigate();
+
   async function handleFileSelect(file) {
     try {
       const fileInfo = await file.promise();
@@ -34,23 +36,10 @@ export default function Profile(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // get the token from local storage
         const token = localStorage.getItem("jwt");
-        // const userStorage = JSON.parse(localStorage.getItem('userData'))
-        // make the auth headers
-        const options = {
-          headers: {
-            Authorization: token,
-          },
-        };
-        // hit the auth locked endpoint
-        const response = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`,
-          options
-        );
-        // example POST with auth headers (options are always last argument)
-        // await axios.post(url, requestBody (form data), options)
-        // set the secret user message in state
+        const headers = { Authorization: token };
+        const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`;
+        const response = await axios.get(url, { headers });
         props.setMsg(response.data.msg);
       } catch (err) {
         // if the error is a 401 -- that means that auth failed
@@ -60,7 +49,7 @@ export default function Profile(props) {
             // panic!
             props.handleLogout();
             // send the user to the login screen
-            navigate("/login");
+            window.location.href = "/login";
           }
         }
       }
@@ -71,26 +60,18 @@ export default function Profile(props) {
   const handleEdit = async (e) => {
     try{
       e.preventDefault()
-      const name= userData.name
-      const email= userData.email
-      const password= userData.password
-      const userName= userData.userName
-      const img= userData.img
-      const reqBody = {
-        name,
-        userName,
-        email,
-        password,
-        img,
-      };
-      const auth= {
+      const { name, email, password, userName, img } = userData;
+      const reqBody = { name, email, password, userName, img };
+      const auth = {
         headers: {
-          Authorization: jwt
-        }
-      }
-      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
-      const response = await axios.put(url, reqBody, auth)
+          Authorization: jwt,
+        },
+      };
+      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`;
+      const response = await axios.put(url, reqBody, auth);
+      
       setEdit(false)
+
     }catch(err){
       console.log(err)
     }
@@ -99,22 +80,23 @@ export default function Profile(props) {
     
   }
 
-const handleDelete = async () => {
-  try {
-    const auth= {
-      headers: {
-        Authorization: jwt
-      }
+  const handleDelete = async () => {
+    try {
+      const auth = {
+        headers: {
+          Authorization: localStorage.getItem("jwt"),
+        },
+      };
+      const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`;
+      const response = await axios.delete(url, auth);
+      window.location.href = "/login";
+      localStorage.removeItem("jwt");
+      console.log(response);
+    } catch (err) {
+      console.log(err);
     }
-    const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`
-    const response = await axios.delete(url, auth)
-    navigate('/login')
-    console.log(response)
+  };
 
-  }catch(err){
-    console.log(err)
-  }
-}
 
   return (
     <div>
@@ -126,26 +108,31 @@ const handleDelete = async () => {
         <input 
         type="text"
         id="name"
-        placeholder={props.name}
+        placeholder={props.currentUser.name}
         onChange={(e) => setUserData({...userData, name:e.target.value})}
         value={userData.name}
         />
+        <div>
         <label htmlFor="username">Username</label>
         <input 
         type="text"
         id="userName"
-        placeholder={props.userName}
+        placeholder={props.currentUser.userName}
         onChange={(e) => setUserData({...userData, userName:e.target.value})}
         value={userData.userName}
         />
+        </div>
+        <div>
         <label htmlFor="email">Email</label>
         <input 
         type="text"
         id="email"
-        placeholder={props.email}
+        placeholder={props.currentUser.email}
         onChange={(e) => setUserData({...userData, email:e.target.value})}
         value={userData.email}
         />
+        </div>
+        <div>
         <label htmlFor="password">Password</label>
         <input 
         type="text"
@@ -154,18 +141,16 @@ const handleDelete = async () => {
         onChange={(e) => setUserData({...userData, password:e.target.value})}
         value={userData.password}
         />
-        
-    
+        </div>
         <div>
-        <div className="centered">
-        <img
-          src={props.currentUser?.img ? props.currentUser.img : "./assets/default.png"}
+      <p>
+        <div>
+      <img
+          src={props.currentUser?.img ? props.currentUser.img : logo}
           alt="This is the current default profile pic which is a person with no face"
           style={{ maxWidth: "200px", height: "auto" }}
         />
-      </div>
-
-      <p>
+        </div>
         <label htmlFor="my_file">Your profile picture:</label>{" "}
         <Widget
           publicKey="eb5cb5bbf1cbfe6b01be"
@@ -181,6 +166,13 @@ const handleDelete = async () => {
       ) : (
         <div>
       <h1>Hello, {props.currentUser?.name}</h1>
+      <div className="centered">
+        <img
+          src={props.currentUser?.img ? props.currentUser.img : logo}
+          alt="This is the current default profile pic which is a person with no face"
+          style={{ maxWidth: "200px", height: "auto" }}
+        />
+      </div>
       <p>your email is {props.currentUser?.email}</p>
       <button onClick={()=> setEdit(true)}>edit</button>
       <button onClick={handleDelete}>delete</button>
