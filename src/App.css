@@ -16,6 +16,7 @@ body {
 }
 
 
+
 .navbar-logo {
   height: 125px;
   width: 150px;
@@ -332,6 +333,11 @@ label {
 
 .btn-login:hover {
 	background-color: #0066b3;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-end;
 }
 
 /* .popular-title {
