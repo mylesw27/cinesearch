@@ -33,7 +33,7 @@ useEffect(() => {
     setCurrentUser(decoded);
 
     // fetch the user data from the server
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/${decoded._id}`, {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(response => {
