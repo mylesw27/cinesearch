@@ -78,17 +78,19 @@
 }
 
 .movie-dropdown {
-  position: absolute;
+  display: flex;
   top: 100%;
   left: 0;
   z-index: 1;
-  background-color: #fff;
-  padding: 1rem;
+  background-color: transparent;
+  padding: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 500px;
+  max-width: 75px;
+  max-height: 75px;
   border-radius: 4px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .movie-dropdown p {
@@ -97,7 +99,8 @@
 }
 
 .movie-dropdown img {
-  max-width: 100%;
+  height: 75px;
+  width: 75px;
 }
 
 .movie-dropdown a {
@@ -140,4 +143,22 @@
 
 .movie-details button:hover {
   background-color: #d32f2f;
+}
+
+.stream-btn {
+  border: 1px solid black;
+  border-width: 3px;
+  height: -1px;
+  width: 460px;
+  display: block;
+  justify-content: center;
+  font-size: small;
+  padding-top: 80px;
+  margin: auto;
+
+}
+
+.stream-btn:hover {
+  transform: scale(1.1);
+  transition-duration: 0.5s;
 }
