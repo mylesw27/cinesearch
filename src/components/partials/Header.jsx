@@ -3,6 +3,8 @@ import MainSearch from "./MainSearch";
 import { useEffect, useState } from "react";
 import "./Header.css"
 import axios from "axios";
+import cinesearchWhite from '../assets/cinesearch_white.png'
+import pandaLogo from '../assets/panda.png'
 
 export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   const loggedIn = (
@@ -38,8 +40,8 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
       <nav className="navbar navbar-light">
         <div className="logos">
           <a className="navbar-brand navbar-link" href="/movies">
-            <img className="navbar-logo" src="/panda.png" alt="Panda eating popcorn which is the CineSearch logo" />
-            <img className="navbar-name" src="/cinesearch_white.png" alt="Panda eating popcorn which is the CineSearch logo" />
+            <img className="navbar-logo" src={pandaLogo} alt="Panda eating popcorn which is the CineSearch logo" />
+            <img className="navbar-name" src={cinesearchWhite} alt="CineSearch name logo" />
           </a>
         </div>
         <MainSearch />
