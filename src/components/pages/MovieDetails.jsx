@@ -18,10 +18,12 @@ function MovieDetails({ currentUser }) {
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const rating = (movie.vote_average ? movie.vote_average.toFixed(1) : 0)
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
+  console.log(watchMovie)
 
   useEffect(() => {
     const checkFavorite = async () => {
@@ -90,20 +92,28 @@ function MovieDetails({ currentUser }) {
               />
               <div className="backdrop-gradient"></div>
             </div>
-            <img
-              className="movie-poster"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={`This is the poster for the movie titled ${movie.title}`}
-            />
           </>
         )}
-        <div className="movie-text">
-          <h1>{movie.title}</h1>
-          <h3><b>Rating:</b> {movie.vote_average}</h3>
-          <p><b>Adult:</b> {movie.adult ? "Yes" : "No"}</p>
-          <p><b>Genres:</b> {movie.genres?.map((genre) => genre.name).join(", ")}</p>
-          <p><b>Synopsis:</b> {movie.overview}</p>
-          <p><b>Movie run time:</b> {movie.runtime} minutes</p>
+        <div className="detailsDisplay">
+          <img
+            className="movie-poster"
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={`This is the poster for the movie titled ${movie.title}`}
+          />
+          <div className="details-column">
+            <div className="movie-text">
+              <h1>{movie.title}</h1>
+              <h3><b>User Rating:</b> {rating} <small>/ 10 ★</small></h3>
+              <p><b>Family Friendly:</b> {movie.adult ? "No" : "Yes"}</p>
+              <p><b>Genres:</b> {movie.genres?.map((genre) => genre.name).join(", ")}</p>
+              <p><b>Synopsis:</b> {movie.overview}</p>
+              <p><b>Movie run time:</b> {movie.runtime} minutes</p>
+            </div >
+            <div className="buttons">
+              <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser} />
+              <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
+            </div>
+          </div>
           <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}>Click Here To Find Potential Streams</p>
           {/* <p>Movie Homepage: {movie.homepage}</p> */}
           {isMenuOpen && (
@@ -122,13 +132,12 @@ function MovieDetails({ currentUser }) {
             </div>
           )}
         </div>
-        <br />
       </div>
-      <div className="buttons">
-        <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser} />
-        <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
+      <br />
+
+      <div className="discussion">
+        <Comments2 movie={id} currentUser={currentUser} />
       </div>
-      <Comments2 movie={id} currentUser={currentUser} />
     </>
   );
 }
