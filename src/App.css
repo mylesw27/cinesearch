@@ -12,7 +12,7 @@ body {
 }
 
 .navbar {
-  background-color: rosybrown;
+  background-color: rgb(0, 0, 0);
   height: 100px !important;
   color: white
 }
@@ -20,7 +20,14 @@ body {
 
 
 .navbar-logo {
-  height: 100px;
+  height: 95px;
+  justify-content: baseline;
+  margin: 0 10px;
+}
+
+.navbar-name {
+  height: 80px;
+  /* justify-content: baseline; */
 }
 
 .navbar-light {

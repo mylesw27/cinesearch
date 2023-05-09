@@ -71,7 +71,7 @@ export default function Comments2(props) {
 
                             <button type="submit">Post Thread</button>
                         </form>
-                       
+             
                     </div>
                 </>
                 : <h3>Please sign in to view discussions</h3>}

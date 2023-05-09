@@ -3,6 +3,7 @@ import CommentCard from "./CommentCard"
 import CommentForm from "./CommentForm"
 import axios from "axios"
 import Comments from "../pages/Comments"
+import cdnUrl from "../pages/Profile"
 
 export default function Thread(props) {
     const comments = props.comments
@@ -51,7 +52,7 @@ export default function Thread(props) {
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="media">
-                                    <img className="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
+                                    <img className="mr-3 rounded-circle" alt="Bootstrap Media Preview" src={cdnUrl._id} />
                                     <div className="media-body">
                                         <div className="row">
                                             <div className="col-8 d-flex">
