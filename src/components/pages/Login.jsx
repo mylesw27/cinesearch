@@ -54,7 +54,7 @@ export default function Login({ currentUser, setCurrentUser }) {
 <div className="login-container">
   <h1 className="login-title">Login to Your Account:</h1>
   <p className="msg"></p>
-  <form className="login-form">
+  <form onSubmit={handleSubmit} className="login-form">
     <label for="email" className="label-email-login">
       Email:
     </label>
@@ -63,6 +63,8 @@ export default function Login({ currentUser, setCurrentUser }) {
       id="email"
       placeholder="your email..."
       required
+      onChange={(e) => setEmail(e.target.value)}
+      value={email}
     />
     <label for="password" className="label-password-login">
       Password:
@@ -72,6 +74,8 @@ export default function Login({ currentUser, setCurrentUser }) {
       id="password"
       placeholder="password..."
       required
+      onChange={(e) => setPassword(e.target.value)}
+      value={password}
       autoComplete="off"
     />
     <button type="submit" className="btn-login">
