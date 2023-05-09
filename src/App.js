@@ -17,10 +17,10 @@ import "bootstrap/dist/css/bootstrap.css";
 import FrontPage from "./components/pages/FrontPage";
 
 
-function HeaderWrapper({ children, handleLogout }) {
+function HeaderWrapper({ children, handleLogout, currentUser }) {
   return (
     <>
-      <Header handleLogout={handleLogout} />
+      <Header handleLogout={handleLogout} currentUser={currentUser} />
       {children}
     </>
   );
@@ -75,113 +75,113 @@ function App() {
 
   return (
     <Router>
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<FrontPage />} />
-  
-        <Route
-        path="/register"
-        element={
-          <Register
-            currentUser={currentUser}
-            setCurrentUser={setCurrentUser}
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<FrontPage />} />
+
+          <Route
+            path="/register"
+            element={
+              <Register
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            }
           />
-        }
-      />
-  
-        <Route
-          path="/login"
-          element={
-            <Login
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
-          }
-        />
-  
-        <Route
-          path="/movies"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
-              <Movies
+
+          <Route
+            path="/login"
+            element={
+              <Login
                 currentUser={currentUser}
                 setCurrentUser={setCurrentUser}
               />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/movies/:id/details"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
-              <MovieDetails
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/profile"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
-              <Profile
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-                name={name}
-                setName={setName}
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-                msg={msg}
-                setMsg={setMsg}
-              />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/favorites"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
-              <Favorites
-                listName={"Favorites"}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/watchlist"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
-              <Watchlist
-                listName={"Watchlist"}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            </HeaderWrapper>
-          }
-        />
-  
-        <Route
-          path="/search/*"
-          element={
-            <HeaderWrapper handleLogout={handleLogout}>
-              <SearchMovies />
-            </HeaderWrapper>
-          }
-        />
-      </Routes>
-    </div>
-    <Footer className="footer" />
-  </Router>
-  
+            }
+          />
+
+          <Route
+            path="/movies"
+            element={
+              <HeaderWrapper handleLogout={handleLogout} currentUser={currentUser}>
+                <Movies
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              </HeaderWrapper>
+            }
+          />
+
+          <Route
+            path="/movies/:id/details"
+            element={
+              <HeaderWrapper handleLogout={handleLogout} currentUser={currentUser}>
+                <MovieDetails
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              </HeaderWrapper>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <HeaderWrapper handleLogout={handleLogout} currentUser={currentUser}>
+                <Profile
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                  name={name}
+                  setName={setName}
+                  email={email}
+                  setEmail={setEmail}
+                  password={password}
+                  setPassword={setPassword}
+                  msg={msg}
+                  setMsg={setMsg}
+                />
+              </HeaderWrapper>
+            }
+          />
+
+          <Route
+            path="/favorites"
+            element={
+              <HeaderWrapper handleLogout={handleLogout} currentUser={currentUser}>
+                <Favorites
+                  listName={"Favorites"}
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              </HeaderWrapper>
+            }
+          />
+
+          <Route
+            path="/watchlist"
+            element={
+              <HeaderWrapper handleLogout={handleLogout} currentUser={currentUser}>
+                <Watchlist
+                  listName={"Watchlist"}
+                  currentUser={currentUser}
+                  setCurrentUser={setCurrentUser}
+                />
+              </HeaderWrapper>
+            }
+          />
+
+          <Route
+            path="/search/*"
+            element={
+              <HeaderWrapper handleLogout={handleLogout} currentUser={currentUser}>
+                <SearchMovies />
+              </HeaderWrapper>
+            }
+          />
+        </Routes>
+      </div>
+      <Footer className="footer" />
+    </Router>
+
   );
 }
 

@@ -24,7 +24,6 @@ function MainSearch() {
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          className="main-search-input"
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
