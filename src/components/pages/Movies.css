@@ -1,12 +1,16 @@
-.movies {
-    display:flex;
-    justify-content: center;
-    max-height: fit-content;
-    max-width: fit-content;
-    overflow: scroll;
-}
+.popular {
+    background-color: black;
+    color:white;
+  }
+  
+  .popular-title {
+    background-color: black;
+    color:white;
+    margin: 0 auto;
+  }
+  
 
 .frame:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
       transition-duration: 0.5s;
   }
