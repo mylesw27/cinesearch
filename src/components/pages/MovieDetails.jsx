@@ -18,6 +18,7 @@ function MovieDetails({ currentUser }) {
   const [movie, setMovie] = useState({});
   const [watchMovie, setWatchMovie] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const rating = (movie.vote_average ? movie.vote_average.toFixed(1) : 0)
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -99,8 +100,8 @@ function MovieDetails({ currentUser }) {
         )}
         <div className="movie-text">
           <h1>{movie.title}</h1>
-          <h3><b>Rating:</b> {movie.vote_average}</h3>
-          <p><b>Adult:</b> {movie.adult ? "Yes" : "No"}</p>
+          <h3><b>User Rating:</b> {rating} <small>/ 10 ★</small></h3>
+          <p><b>Family Friendly:</b> {movie.adult ? "No" : "Yes"}</p>
           <p><b>Genres:</b> {movie.genres?.map((genre) => genre.name).join(", ")}</p>
           <p><b>Synopsis:</b> {movie.overview}</p>
           <p><b>Movie run time:</b> {movie.runtime} minutes</p>
