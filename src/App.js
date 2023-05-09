@@ -4,7 +4,6 @@ import axios from "axios";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Register from "./components/pages/Register";
-import Welcome from "./components/pages/Welcome";
 import "./App.css";
 import jwt_decode from "jwt-decode";
 import Favorites from "./components/pages/Favorites";
@@ -15,6 +14,7 @@ import MovieDetails from "./components/pages/MovieDetails";
 import Movies from "./components/pages/Movies";
 import SearchMovies from "./components/pages/SearchMovies";
 import "bootstrap/dist/css/bootstrap.css";
+import FrontPage from "./components/pages/FrontPage";
 function App() {
   // the currently logged in user will be stored up here in state
   const [currentUser, setCurrentUser] = useState(null);
@@ -66,7 +66,7 @@ function App() {
       <Header handleLogout={handleLogout} currentUser={currentUser} />
       <div className="App">
         <Routes>
-          <Route path="/" element={<Welcome />} />
+          <Route path="/" element={<FrontPage />} />
 
           <Route
             path="/register"
