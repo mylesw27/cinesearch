@@ -1,0 +1,17 @@
+.input-group {
+  max-width: 575px;
+  margin: 0 auto;
+}
+
+.form-control {
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.btn {
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: -1px;
+}
