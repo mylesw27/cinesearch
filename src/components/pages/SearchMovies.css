@@ -1,0 +1,15 @@
+.search {
+    background-color: black;
+    color:white;
+  }
+  
+  .search-title {
+    background-color: black;
+    color:white;
+    margin: 0 auto;
+  }
+  
+  .frame:hover {
+    transform: scale(1.1);
+      transition-duration: 0.5s;
+  }
