@@ -114,7 +114,7 @@ function MovieDetails({ currentUser }) {
               <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
             </div>
           </div>
-          <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}>Click Here To Find Potential Streams</p>
+          <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}>Stream It</p>
           {/* <p>Movie Homepage: {movie.homepage}</p> */}
           {isMenuOpen && (
             <div className="movie-dropdown">
