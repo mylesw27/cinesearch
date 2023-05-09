@@ -2,14 +2,17 @@ import { useEffect, useState } from "react"
 import CommentCard from "./CommentCard"
 import CommentForm from "./CommentForm"
 import axios from "axios"
+import Comments from "../pages/Comments"
 
 export default function Thread(props) {
     const comments = props.comments
+    const comments2 = props.comments2
     const setComments = props.setComments
     const thread = props.thread
     const [seeComments, setSeeComments] = useState(false)
     const currentUser = props.currentUser
     const [seeThread, setSeeThread] = useState(true)
+    const [seeComments2, setSeeComments2] = useState(true)
 
 
     const handleThreadClick = () => {
@@ -52,7 +55,7 @@ export default function Thread(props) {
                                     <div className="media-body">
                                         <div className="row">
                                             <div className="col-8 d-flex">
-                                                <h5>{thread.userName}</h5>
+                                                <h5 style={{fontFamily: "fantasy"}}>{thread.userName}</h5>
                                                 {/* <span>- {comment.commentTitle}</span> */}
                                             </div>
                                             <div className="col-4">
@@ -75,7 +78,7 @@ export default function Thread(props) {
                                                 />
                                             </>
                                             :
-                                            <div className="clickable" onClick={handleThreadClick}>Click to see thread comments</div>
+                                            <button className="btn-sm-danger" onClick={handleThreadClick}>Show Comments</button>
                                         }
                                     </div>
                                 </div>
