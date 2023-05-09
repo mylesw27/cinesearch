@@ -119,10 +119,10 @@ export default function Profile(props) {
           <div className="col form">
         <form style={{margin: '81px 27px 10px -37px'}}onSubmit={handleEdit}>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">Name</span>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
             id="name"
@@ -132,11 +132,11 @@ export default function Profile(props) {
           />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">User Name</span>
             <input
               type="text"
               id="userName"
-              class="form-control"
+              className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.userName}
@@ -147,11 +147,11 @@ export default function Profile(props) {
             />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">Email</span>
             <input
               type="text"
               id="email"
-              class="form-control"
+              className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.email}
@@ -162,11 +162,11 @@ export default function Profile(props) {
             />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">Password</span>
             <input
               type="text"
               id="password"
-              class="form-control"
+              className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder="new password"
