@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 // import listview component
 import ListView from '../partials/ListView'
 // import search field component
-import MainSearch from '../MainSearch'
+import MainSearch from '../partials/MainSearch'
 import axios from 'axios'
 
 // export function

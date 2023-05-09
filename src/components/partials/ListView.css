@@ -1,25 +1,24 @@
 .list-view-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .list-view {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5rem;
-    margin: 0 auto;
-    max-width: fit-content;
-    padding: 1rem;
-    justify-content: center;
-    padding-left: 110px;
-   row-gap: 300px;
-   align-items: bottom;
-  }
+  display: flex;
+  justify-content: center;
+}
+
+.list-view {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5rem;
+  margin: 0 auto;
+  padding: 1rem;
+  justify-content: center;
+  padding-left: 110px;
+  row-gap: 300px;
+  align-items: bottom;
+}
 
 
-  
-  @media (max-width: 768px) {
-    .item {
-      flex-basis: calc(50% - 10px);
-    }
+
+@media (max-width: 768px) {
+  .item {
+    flex-basis: calc(50% - 10px);
   }
+}
