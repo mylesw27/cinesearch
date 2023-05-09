@@ -10,6 +10,10 @@
 
 .comments-container {
     display: flex;
-    float: left;
+    flex-direction: column;
     border: 2px solid black;
+}
+
+.comments-form {
+border: 2px solid black;
 }

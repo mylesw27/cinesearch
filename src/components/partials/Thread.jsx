@@ -39,34 +39,56 @@ export default function Thread(props) {
 
     return (
         <>
-            {seeThread ?
-                <div className="thread-container">
-                    <p className="thread-users-name">{thread.userName} wrote:</p>
-                    <h3 className="thread-users-title">{thread.threadTitle}</h3>
-                    <h4 className="thread-users-body">{thread.threadBody}</h4>
-                    {currentUser._id === thread.userId ?
-                        <div>
-                            <button onClick={handleRemoveThread}>Remove Thread</button>
+    {seeThread ?
+        <div className="container mb-5 mt-5">
+            <div className="card">
+                <div className="row">
+                    <div className="col-md-12">
+                        <h3 className="text-center mb-5">{thread.threadTitle}</h3>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="media">
+                                    <img className="mr-3 rounded-circle" alt="Bootstrap Media Preview" src="https://i.imgur.com/stD0Q19.jpg" />
+                                    <div className="media-body">
+                                        <div className="row">
+                                            <div className="col-8 d-flex">
+                                                <h5>{thread.userName}</h5>
+                                                {/* <span>- {comment.commentTitle}</span> */}
+                                            </div>
+                                            <div className="col-4">
+                                                {currentUser._id === thread.userId &&
+                                                    <div className="pull-right reply">
+                                                        <button className="btn btn-danger" onClick={handleRemoveThread}>Remove Thread</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                        <p>{thread.threadBody}</p>
+                                        {seeComments ?
+                                            <>
+                                                {commentsArray}
+                                                <CommentForm
+                                                    currentUser={currentUser}
+                                                    thread={thread}
+                                                    comments={comments}
+                                                    setComments={setComments}
+                                                />
+                                            </>
+                                            :
+                                            <div className="clickable" onClick={handleThreadClick}>Click to see thread comments</div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        :
-                        <></>
-                    }
-                    {seeComments ?
-                        <>
-                            {commentsArray}
-                            <CommentForm
-                                currentUser={currentUser}
-                                thread={thread}
-                                comments={comments}
-                                setComments={setComments}
-                            />
-                        </>
-                        :
-                        <div onClick={handleThreadClick}>Click to see thread comments</div>}
+                    </div>
                 </div>
-                : <></>
-            }
-        </>
+            </div>
+        </div>
+        : <></>
+    }
+</>
+
     )
 
 

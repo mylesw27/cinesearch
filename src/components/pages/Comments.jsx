@@ -1,5 +1,6 @@
 // import necessary modules
 import { useState, useEffect } from "react";
+import Comments2 from "../partials/Comments2";
 // define the Comments component
 export default function Comments({ currentUser }) {
   // define state variables for the list of comments, the text of a new comment being added, and the ID of a comment being edited
@@ -98,7 +99,7 @@ export default function Comments({ currentUser }) {
           <button type="submit">Add Comment</button>
         </form>
       )}
-    </div>
+    </div>    
   );
 }
 

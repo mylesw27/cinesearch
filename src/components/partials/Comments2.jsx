@@ -59,8 +59,9 @@ export default function Comments2(props) {
                         <button className="discussions-dropdown" type="dropdown">View discussions</button>
                     </div>
                     <div className="comments-container">
-                        <h3 className="create-comment-header">Create a thread:</h3>
+                        {threadsArray}
                         <form className="comments-form" onSubmit={e => handleSubmit(e, form)}>
+                        <h3 className="create-comment-header">Create a thread:</h3>
                             {/* threadTitle */}
                             <label htmlFor="title">Thread Title:</label>
                             <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
@@ -70,7 +71,7 @@ export default function Comments2(props) {
 
                             <button type="submit">Post Thread</button>
                         </form>
-                        {threadsArray}
+                       
                     </div>
                 </>
                 : <h3>Please sign in to view discussions</h3>}
