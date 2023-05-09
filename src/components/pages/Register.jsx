@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"
 
 export default function Register(props) {
   // state for the controlled form
@@ -63,6 +64,7 @@ export default function Register(props) {
           Name:
         </label>
         <input
+          className="register-inputs"
           type="text"
           id="name"
           placeholder="your name"
@@ -74,6 +76,7 @@ export default function Register(props) {
           Username:
         </label>
         <input
+          className="register-inputs"
           type="text"
           id="userName"
           placeholder="your username"
@@ -85,6 +88,7 @@ export default function Register(props) {
           Email:
         </label>
         <input
+          className="register-inputs"
           type="email"
           id="email"
           placeholder="your email"
@@ -96,6 +100,7 @@ export default function Register(props) {
           Password:
         </label>
         <input
+          className="register-inputs"
           type="password"
           id="password"
           placeholder="password"
@@ -103,7 +108,7 @@ export default function Register(props) {
           value={password}
           autoComplete="off"
         />
-        
+
         <button type="submit" className="btn-register">
           Register
         </button>

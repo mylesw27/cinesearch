@@ -1,0 +1,25 @@
+.register-inputs {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin-left: 250px;
+    margin-right: 250px;
+    border-style: groove;
+    margin-bottom: 20px;
+}
+
+.register-inputs {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.btn-register {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 450px;
+    margin-right: 450px;
+}
+
+.btn-register:hover {
+    transform:scale(1.1);
+}
