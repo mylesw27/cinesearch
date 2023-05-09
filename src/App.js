@@ -4,7 +4,7 @@ import axios from "axios";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Register from "./components/pages/Register";
-import Welcome from "./components/pages/Welcome";
+import FrontPage from "./components/pages/FrontPage";
 import "./App.css";
 import jwt_decode from "jwt-decode";
 import Favorites from "./components/pages/Favorites";
@@ -66,7 +66,7 @@ function App() {
       <Header handleLogout={handleLogout} currentUser={currentUser} />
       <div className="App">
         <Routes>
-          <Route path="/" element={<Welcome />} />
+          <Route path="/" element={<FrontPage />} />
 
           <Route
             path="/register"
