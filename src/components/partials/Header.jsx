@@ -27,8 +27,11 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
   return (
     <>
       <nav className="navbar navbar-light">
-        <img className="navbar-logo" src="/panda.png" alt="Panda eating popcorn which is the CineSearch logo" />
-        <img className="navbar-name" src="/cinesearch_white.png" alt="Panda eating popcorn which is the CineSearch logo" />
+        <div className="logos">
+          <img className="navbar-logo" src="/panda.png" alt="Panda eating popcorn which is the CineSearch logo" />
+          <img className="navbar-name" src="/cinesearch_white.png" alt="Panda eating popcorn which is the CineSearch logo" />
+        </div>
+        <MainSearch className="searchbar" />
         <div>
           {currentUser ?
             <>
@@ -64,7 +67,7 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
             </>
           }
         </div>
-        <MainSearch className="searchbar" />
+
       </nav>
     </>
   );

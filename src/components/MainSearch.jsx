@@ -21,7 +21,7 @@ function MainSearch() {
 
   return (
     <div className="main-search">
-      <form onSubmit={handleSearch}>
+      <form className="container-fluid" onSubmit={handleSearch}>
         <input
           type="text"
           value={searchQuery}

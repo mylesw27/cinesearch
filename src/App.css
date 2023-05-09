@@ -18,7 +18,6 @@ body {
 }
 
 
-
 .navbar-logo {
   height: 95px;
   justify-content: baseline;
@@ -33,6 +32,8 @@ body {
 .navbar-light {
   padding: 25px;
 }
+
+
 
 .navbar-link {
   margin: 0px 15px;
