@@ -4,6 +4,7 @@ import axios from "axios";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import Register from "./components/pages/Register";
+import FrontPage from "./components/pages/FrontPage";
 import "./App.css";
 import jwt_decode from "jwt-decode";
 import Favorites from "./components/pages/Favorites";
@@ -25,7 +26,6 @@ function HeaderWrapper({ children, handleLogout, currentUser }) {
     </>
   );
 }
-
 
 function App() {
   // the currently logged in user will be stored up here in state
@@ -181,7 +181,6 @@ function App() {
       </div>
       <Footer className="footer" />
     </Router>
-
   );
 }
 
