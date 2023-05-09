@@ -99,14 +99,13 @@ export default function Profile(props) {
           <div className="">
             <div className="col">
               
-                <div style={{margin: '42px 0px 0px 42px'}}>
+                <div className="img">
                 <img
                   src={props.currentUser?.img ? props.currentUser.img : logo}
                   alt="This is the current default profile pic which is a person with no face"
-                  style={{ maxWidth: "200px", height: "auto", border:'5px solid grey', margin: '57px', borderRadius: '10px'}}
+                  style={{ maxWidth: "200px", height: "auto", border:'5px solid grey', margin: '57px 15px 8px 9px', borderRadius: '10px'}}
                 />
                 </div>
-              
               <label className="mainText" style={{margin: '0px,4px,7px,61px'}}htmlFor="my_file">Update Image</label>{" "}
               <Widget
                 publicKey="eb5cb5bbf1cbfe6b01be"
@@ -115,27 +114,32 @@ export default function Profile(props) {
                 name="my_file"
                 role="uploadcare-uploader"
               />
+              
             </div>
           </div>
-          <div className="col" style={{margin: '30px 0px 3px 0px'}}>
+          <div className="col form">
         <form style={{margin: '81px 27px 10px -37px'}}onSubmit={handleEdit}>
-          <div className="col">
-          
-         
-          <label className="mainText" htmlFor="name">Name</label>
+          <div className="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
           <input
             type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
             id="name"
             placeholder={props.currentUser.name}
             onChange={(e) => setUserData({ ...userData, name: e.target.value })}
             value={userData.name}
           />
           </div>
-          <div className="col">
-            <label className="text-white" htmlFor="username">Username</label>
+          <div className="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
             <input
               type="text"
               id="userName"
+              class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.userName}
               onChange={(e) =>
                 setUserData({ ...userData, userName: e.target.value })
@@ -143,11 +147,14 @@ export default function Profile(props) {
               value={userData.userName}
             />
           </div>
-          <div className="col">
-            <label className="text-white" htmlFor="email">Email</label>
+          <div className="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
             <input
               type="text"
               id="email"
+              class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.email}
               onChange={(e) =>
                 setUserData({ ...userData, email: e.target.value })
@@ -155,11 +162,14 @@ export default function Profile(props) {
               value={userData.email}
             />
           </div>
-          <div>
-            <label className="text-white" htmlFor="password">Password</label>
+          <div className="input-group input-group-sm mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
             <input
               type="text"
               id="password"
+              class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
               placeholder="new password"
               onChange={(e) =>
                 setUserData({ ...userData, password: e.target.value })
@@ -172,31 +182,38 @@ export default function Profile(props) {
           <button type="button" className="btn">
           <i className="bi bi-arrow-repeat text-white">Submit</i>
             </button>
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={()=> {
+            navigate('/profile');
+            window.location.reload();
+        }}>
           <i className="bi bi-x cancel-button">Cancel</i>
             </button>
         </form>
         </div>
         </div>
       ) : (
-        <div className="container-fluid  text-left">
-          <div className="row grid gap-5">
-          <div className="col-2" style={{margin: '50px 26px 28px 50px'}}>
+        <div className="container-fluid vh-100  text-left d-flex flex-row">
+          <div className="row">
+            <div className="col">
+          <div className="img">
             <img
               src={props.currentUser?.img ? props.currentUser.img : logo}
               alt="This is the current default profile pic which is a person with no face"
-              style={{ maxWidth: "200px", height: "auto", border:'5px solid grey', margin: '42px, 25px, 20px, 1px', borderRadius: '10px'}}
+              style={{ maxWidth: "200px", height: "auto", border:'5px solid grey', margin: '57px 15px 8px 9px', borderRadius: '10px'}}
             />
           </div>
-            <div className="col-3 align-items-left" style={{maxWidth: "200px", height: "1px"}}>
-              <h1 className="text-white" style={{margin: "68px 25px 0px 0px"}}>{props.currentUser?.name}</h1>
-          <p className="text-white" style={{margin: '0px 0px 0px 0px'}}>{props.currentUser?.email}</p>
-          <button type="button" className="btn"  style={{margin: '2px 3px 3px, 2px'}} onClick={() => setEdit(true)}>
+          </div>
+            <div className="col" style={{margin: '100px 0px 0px 0px'}}>
+          <h1 className="textInfo">{props.currentUser?.name}</h1>
+          <p className="textInfo">{props.currentUser?.email}</p>
+          <div style={{margin: '0px 0px 0px -11px'}}>
+          <button type="button" className="btn" onClick={() => setEdit(true)}>
             <i className="bi bi-pencil-square text-white">Edit</i>
           </button>
           <button type="button" className="btn" onClick={handleDelete}>
           <i className="bi bi-person-x-fill cancel-button">Delete</i>
           </button>
+          </div>
           </div>
         </div>
         </div>
