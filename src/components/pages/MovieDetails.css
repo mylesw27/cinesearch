@@ -10,9 +10,7 @@
 /* Movie poster */
 .movie-poster {
   display: flex;
-  position: inherit;
-  top: 75px;
-  left: 100px;
+
   width: auto;
   height: 75%;
   /* max-width: fit-content; */
@@ -20,7 +18,6 @@
   background-size: cover;
   background-position: center;
   opacity: 1;
-  z-index: 1;
   border-radius: 10px;
 }
 
@@ -51,22 +48,31 @@
 }
 
 .movie-text {
-  position: absolute;
   /* padding-top: 200px; */
-  width: 1000px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
   font-size: 36px;
   text-shadow: 1px 1px 1px #000;
   background: transparent;
   background-color: transparent;
+  orphans: 2;
+  widows: 2;
 }
 
-.buttons {
-  margin-top: 650px;
-  background-color: transparent;
+.detailsDisplay {
+  position: inherit;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 600px;
+  top: 75px;
+  left: 100px;
+}
+
+.details-column {
+  display: flex;
+  flex-direction: column;
+  width: 40 vw;
+  margin-left: 15px;
 }
 
 .movie-dropdown {
@@ -146,19 +152,17 @@
 }
 
 .stream-btn {
-  border: 1px solid black;
   border-width: 3px;
-  height: -1px;
   width: 460px;
-  display: block;
-  justify-content: center;
   font-size: small;
-  padding-top: 80px;
-  margin: auto;
 
 }
 
 .stream-btn:hover {
   transform: scale(1.1);
   transition-duration: 0.5s;
+}
+
+.discussion {
+  margin-top: 600px;
 }

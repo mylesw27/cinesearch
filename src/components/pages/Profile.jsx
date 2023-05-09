@@ -24,7 +24,7 @@ export default function Profile(props) {
     try {
       const fileInfo = await file.promise();
       const cdnUrl = fileInfo.cdnUrl;
-      setUserData({ ...userData, img: cdnUrl }, () => {});
+      setUserData({ ...userData, img: cdnUrl }, () => { });
       // Make a POST request to update the currentUser object with the UUID of the uploaded image
     } catch (err) {
       console.log(err);
@@ -97,8 +97,7 @@ export default function Profile(props) {
       {edit ? (
         <div className="container-fluid vh-100  text-left d-flex flex-row" >
           <div className="">
-            <div className="col">
-              
+            <div className="col">              
                 <div className="img">
                 <img
                   src={props.currentUser?.img ? props.currentUser.img : logo}
@@ -215,7 +214,6 @@ export default function Profile(props) {
           </button>
           </div>
           </div>
-        </div>
         </div>
       )}
     </div>
