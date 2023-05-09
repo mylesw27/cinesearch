@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import WatchlistButton from "../partials/WatchlistButton";
 import FavoritesButton from "../partials/FavoritesButton";
-import Comments2 from "../partials/Comments2";
+import Comments from "../partials/Comments";
 import "./MovieDetails.css"
 
 // Define the MovieDetails component
@@ -128,7 +128,7 @@ function MovieDetails({ currentUser }) {
         <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser} />
         <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
       </div>
-      <Comments2 movie={id} currentUser={currentUser} />
+      <Comments movie={id} currentUser={currentUser} />
     </>
   );
 }

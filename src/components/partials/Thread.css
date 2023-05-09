@@ -1,0 +1,40 @@
+.thread {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .thread-username {
+    font-weight: bold;
+    font-size: ;
+    margin-bottom: 10px;
+  }
+  
+  .thread-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .thread-body {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .remove-thread {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .remove-thread:hover {
+    background-color: #da190b;
+  }
+  
+  .thread-comments {
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 1px solid #ccc;
+  }
+  

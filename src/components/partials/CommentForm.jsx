@@ -28,9 +28,9 @@ export default function CommentForm(props) {
     return (
         <>
             <form onSubmit={e => handleSubmit(e, form)}>
-                <label htmlFor="commentBody">Enter your comments:</label>
-                <input type="textarea" value={form.commentBody} onChange={(e) => setForm({ ...form, commentBody: e.target.value })} />
-                <button type="submit">Post Comment</button>
+                <label htmlFor="commentBody" className="c-form-title">Enter your comments:</label>
+                <input className="c-form-input" type="textarea" value={form.commentBody} onChange={(e) => setForm({ ...form, commentBody: e.target.value })} />
+                <button className="c-form-button" type="submit">Post Comment</button>
             </form>
         </>
     )
