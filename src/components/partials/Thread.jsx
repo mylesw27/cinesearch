@@ -40,10 +40,10 @@ export default function Thread(props) {
     return (
         <>
             {seeThread ?
-                <div>
-                    <p>{thread.userName} wrote:</p>
-                    <h3>{thread.threadTitle}</h3>
-                    <h4>{thread.threadBody}</h4>
+                <div className="thread-container">
+                    <p className="thread-users-name">{thread.userName} wrote:</p>
+                    <h3 className="thread-users-title">{thread.threadTitle}</h3>
+                    <h4 className="thread-users-body">{thread.threadBody}</h4>
                     {currentUser._id === thread.userId ?
                         <div>
                             <button onClick={handleRemoveThread}>Remove Thread</button>
