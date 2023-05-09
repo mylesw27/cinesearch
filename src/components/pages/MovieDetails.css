@@ -37,6 +37,7 @@
   height: 600px;
   display: flex;
   justify-content: end;
+  background-color: transparent;
 }
 
 .backdrop-gradient {
@@ -59,10 +60,13 @@
   color: white;
   font-size: 36px;
   text-shadow: 1px 1px 1px #000;
+  background: transparent;
+  background-color: transparent;
 }
 
 .buttons {
   margin-top: 650px;
+  background-color: transparent;
 }
 
 .movie-dropdown {
@@ -84,6 +88,7 @@
 .movie-dropdown p {
   margin: 0;
   font-weight: 900;
+  background-color: transparent;
 }
 
 .movie-dropdown img {
@@ -101,17 +106,24 @@
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  background-color: transparent;
 }
 
 .movie-details p {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
+  background-color: transparent;
+}
+
+.movie-details h3 {
+  background-color: transparent;
 }
 
 /* Watch provider logos */
 .movie-details img {
   max-height: 100%;
   margin-right: 10px;
+
 }
 
 /* Favorite and watchlist buttons */
