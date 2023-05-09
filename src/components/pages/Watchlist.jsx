@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ListView from "../partials/ListView";
 import axios from "axios";
+import './Watchlist.css'
 
 
 export default function Watchlist() {
@@ -20,8 +21,10 @@ export default function Watchlist() {
 
   return (
     <div>
-      <h2 style={{fontFamily:"Sigmar", fontWeight:"lighter", padding:"30px"}}>My Watchlist</h2>
-      <ListView movies={watchlistArray} />
+      <h2 className="watch-title">Watchlist Movies</h2>
+      <div className="watch">
+      <ListView className="movies" movies={watchlistArray} />
+      </div>
     </div>
   );
 }

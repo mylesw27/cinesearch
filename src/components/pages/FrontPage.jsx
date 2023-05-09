@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import "./FrontPage.css"
 import MainSearch from '../partials/MainSearch';
 import { Link } from 'react-router-dom';
-import cinesearchlogo from '../assets/cinesearchlogo.png';
+import cinesearch_white from '../assets/cinesearch_white.png';
+import panda from '../assets/panda.png'
+
+
 
 const FrontPage = () => {
   const [movies, setMovies] = useState([]);
@@ -27,7 +30,10 @@ const FrontPage = () => {
         </div>
         <div className='hero-background'></div>
         <div className="hero-content">
-          <img src={cinesearchlogo} alt="Logo" className="logo" />
+          <div>
+        <img src={panda} alt="Logo" className="panda" />
+          </div>
+          <img src={cinesearch_white} alt="Logo" className="name" />
           <h1>Discover Your Next Favorite Movie</h1>
           <p>Explore thousands of movies and find the perfect one for you.</p>
           <MainSearch />
@@ -41,28 +47,28 @@ const FrontPage = () => {
         <ul className="features-list">
           <li>
             <div className="feature">
-              <i class="bi bi-eye-fill">
+              <i className="bi bi-eye-fill">
                 <p>Save the best movies to your watchlist or favorite movies.</p>
               </i>
             </div>
           </li>
           <li>
             <div className="feature">
-              <i class="bi bi-text-center">
+              <i className="bi bi-text-center">
                 <p>Get the relevant and up-to-date details for movies of the past and future.</p>
               </i>
             </div>
           </li>
           <li>
             <div className="feature">
-              <i class="bi bi-chat-left-text-fill">
+              <i className="bi bi-chat-left-text-fill">
                 <p>Checkout comments and threads with other movie buffs.</p>
               </i>
             </div>
           </li>
           <li>
             <div className="feature">
-              <i class="bi bi-collection-play-fill">
+              <i className="bi bi-collection-play-fill">
                 <p>See where the movies you're interested in are streaming</p>
               </i>
             </div>
@@ -72,7 +78,7 @@ const FrontPage = () => {
 
       {/* Movie Section */}
       <section className="movie-section">
-        <h2>Popular Movies:</h2>
+        <h2 className='movie-title'>Popular Movies:</h2>
         <div className="movie-list">
           {movies.map(movie => (
             <div key={movie.id} className="movie-card">
@@ -88,7 +94,6 @@ const FrontPage = () => {
           ))}
         </div>
       </section>
-
     </div>
   );
 };
