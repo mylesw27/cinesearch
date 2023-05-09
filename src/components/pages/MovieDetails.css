@@ -71,7 +71,7 @@
 .details-column {
   display: flex;
   flex-direction: column;
-  width: 40 vw;
+  width: 40vw;
   margin-left: 15px;
 }
 
@@ -134,17 +134,14 @@
 
 /* Favorite and watchlist buttons */
 .movie-details button {
-  background-color: #f44336;
+  background-color: #a01f16;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  width: 200px;
   border-radius: 5px;
-  font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
-  margin-right: 10px;
-  float: center;
-  margin-left: 150px;
+  margin: 10px 10px
 }
 
 .movie-details button:hover {
@@ -159,7 +156,7 @@
 }
 
 .stream-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
   transition-duration: 0.5s;
 }
 
