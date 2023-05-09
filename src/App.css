@@ -1,6 +1,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
 }
+
 .App {
   text-align: center;
   background-repeat: no-repeat;
@@ -12,24 +13,18 @@ body {
 
 .navbar {
   background-color: rosybrown;
-  height: 125px;
+  height: 100px !important;
+  color: white
 }
 
 
 
 .navbar-logo {
-  height: 125px;
-  width: 150px;
-  float: right;
-  background-color: rosybrown;
+  height: 100px;
 }
 
 .navbar-light {
   padding: 25px;
-}
-
-nav {
-  height: 175px;
 }
 
 .navbar-link {
@@ -37,8 +32,8 @@ nav {
   font-size: larger;
   display: inline;
   /* padding-inline: 25px; */
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color:black;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white !important;
   text-decoration: none;
   font-size: larger;
 }
@@ -57,9 +52,9 @@ nav {
 
 
 .header img {
-  width: 320px; 
-  height: auto; 
-  margin-right: 0px; 
+  width: 320px;
+  height: auto;
+  margin-right: 0px;
   margin-top: -80px;
 }
 
@@ -72,104 +67,104 @@ nav {
 }
 
 .register-inputs {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 
 input {
   margin-bottom: 1rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 
 }
 
 label {
-	margin-bottom: 0.5rem;
-	font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .btn-register {
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: none;
-	background-color: #0077cc;
-	color: #fff;
-	font-size: 1rem;
-	cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .btn-register:hover {
-	background-color: #0066b3;
+  background-color: #0066b3;
 }
 
 .label-name-register {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input-name {
-	width: 100%;
+  width: 100%;
 }
 
 .label-email-register {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input-email {
-	width: 100%;
+  width: 100%;
 }
 
 .label-password-register {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input-password {
-	width: 100%;
+  width: 100%;
 }
 
 .login-inputs {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 .btn-login {
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: none;
-	background-color: #0077cc;
-	color: #fff;
-	font-size: 1rem;
-	cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .btn-login:hover {
-	background-color: #0066b3;
+  background-color: #0066b3;
 }
 
 .label-password-login {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .label-email-login {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -244,95 +239,95 @@ label {
 }
 
 .register-inputs {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 
 input {
   margin-bottom: 1rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 
 }
 
 label {
-	margin-bottom: 0.5rem;
-	font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .btn-register {
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: none;
-	background-color: #0077cc;
-	color: #fff;
-	font-size: 1rem;
-	cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .btn-register:hover {
-	background-color: #0066b3;
+  background-color: #0066b3;
 }
 
 .label-name-register {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input-name {
-	width: 100%;
+  width: 100%;
 }
 
 .label-email-register {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input-email {
-	width: 100%;
+  width: 100%;
 }
 
 .label-password-register {
-	width: 100%;
+  width: 100%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .input-password {
-	width: 100%;
+  width: 100%;
 }
 
 .login-inputs {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 1rem;
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 .btn-login {
-	padding: 0.5rem;
-	border-radius: 4px;
-	border: none;
-	background-color: #0077cc;
-	color: #fff;
-	font-size: 1rem;
-	cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .btn-login:hover {
-	background-color: #0066b3;
+  background-color: #0066b3;
 }
 
 .footer {

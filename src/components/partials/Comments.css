@@ -1,0 +1,15 @@
+.discussions-firstlook {
+    display: flex;
+    flex-direction: row;
+}
+
+.discussions-dropdown {
+    border: none;
+    background-color: none;
+}
+
+.comments-container {
+    display: flex;
+    float: left;
+    border: 2px solid black;
+}
