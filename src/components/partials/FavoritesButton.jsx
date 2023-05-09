@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function FavoritesButton (props) {
+export default function FavoritesButton(props) {
   const [isFavorite, setIsFavorite] = useState(false); //I MIGHT NOT NEED props.isfavorite - change to false instead
   const jwt = localStorage.getItem("jwt");
   const tmdbId = `${props.movie.id}`
@@ -24,8 +24,8 @@ export default function FavoritesButton (props) {
         console.log(err);
       }
     };
-  // get all objectid from users favorites
-  // get all 
+    // get all objectid from users favorites
+    // get all 
     checkFavorite();
   }, [jwt, tmdbId]);
 
@@ -42,7 +42,7 @@ export default function FavoritesButton (props) {
         setIsFavorite(false);
       } else {
         // add to favorites
-        const sendData = {...props.movie, userId: currentUser._id}
+        const sendData = { ...props.movie, userId: currentUser._id }
         await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/favorites`, sendData, {
           headers: {
             Authorization: `${jwt}`,
@@ -56,12 +56,12 @@ export default function FavoritesButton (props) {
   };
 
 
-  
-  
+
+
 
   return (
     <button type="button" className="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
-      {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
+      {isFavorite ? <i class="bi bi-trash3">Remove From Favorites</i> : "Add To Favorites"}
     </button>
   );
 };
