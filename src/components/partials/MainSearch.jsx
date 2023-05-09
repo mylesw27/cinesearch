@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./MainSearch.css"
 
 // define mainsearch component
 function MainSearch() {
@@ -20,17 +21,22 @@ function MainSearch() {
   };
 
   return (
-    <div className="main-search">
-      <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch}>
+      <div className="input-group">
         <input
           type="text"
+          className="form-control"
+          placeholder="Search for a movie..."
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <button className="main-search-button" type="submit">Search</button>
-      </form>
-    </div>
+        <button className="btn btn-primary" type="submit">
+          Search
+        </button>
+      </div>
+    </form>
   );
 }
+
 
 export default MainSearch;

@@ -10,6 +10,13 @@ import panda from '../assets/panda.png'
 const FrontPage = () => {
   const [movies, setMovies] = useState([]);
 
+
+  const handleToggle = () => {
+    const links = document.querySelector('.hero-links ul');
+    links.classList.toggle('show-links');
+  };
+
+  
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`)
       .then(response => response.json())
@@ -24,21 +31,22 @@ const FrontPage = () => {
 
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="hero-links">
-          <Link to="/login" className="login-nav">Login</Link>
-          <Link to="/register" className="register-nav">Register</Link>
-        </div>
-        <div className='hero-background'></div>
-        <div className="hero-content">
-          <div>
-        <img src={panda} alt="Logo" className="panda" />
-          </div>
-          <img src={cinesearch_white} alt="Logo" className="name" />
-          <h1>Discover Your Next Favorite Movie</h1>
-          <p>Explore thousands of movies and find the perfect one for you.</p>
-          <MainSearch />
-        </div>
-      </section>
+  <div className="hero-links">
+    <i className="bi bi-list hamburger" onClick={handleToggle} />
+    <Link to="/login" className="login-nav">Login</Link>
+    <Link to="/register" className="register-nav">Register</Link>
+  </div>
+  <div className='hero-background'></div>
+  <div className="hero-content">
+    <div>
+      <img src={panda} alt="Logo" className="panda" />
+    </div>
+    
+    <h1>Discover Your Next Favorite Movie</h1>
+    <p>Explore thousands of movies and find the perfect one for you.</p>
+    <MainSearch />
+  </div>
+</section>
 
 
       {/* Features Section */}
