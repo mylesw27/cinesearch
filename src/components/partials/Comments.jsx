@@ -55,8 +55,6 @@ export default function Comments2(props) {
             {currentUser ?
                 <>
                     <div className="discussions-firstlook">
-                        <h2>Social:</h2>
-                        <button className="discussions-dropdown" type="dropdown">View discussions</button>
                     </div>
                     <div className="comments-container">
                         {threadsArray}
