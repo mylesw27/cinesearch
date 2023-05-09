@@ -1,67 +1,52 @@
-/* .movie-details {
-    position: relative;
-}
-
-.movie-poster, .movie-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.movie-backdrop {
-    opacity: 0.6;
-    z-index: -1;
-  }
-
-  .movie-details:hover .movie-poster {
-    opacity: 0;
-  }
-  
-  .movie-.movie-details .movie-backdrop {
-    opacity: 1;
-  } */
-
 /* Container for the movie poster and backdrop */
 .movie-details {
-  position:absolute;
-  width: 100%;
+  position: absolute;
+  width: 100vw;
   height: 600px;
+  object-fit: contain;
+  text-align: left;
 }
 
 /* Movie poster */
 .movie-poster {
-  position:inherit;
-  padding-left: 50px;
-  top: 0;
-  left: 0;
-  width: 30%;
-  height: 100%;
+  display: flex;
+  position: inherit;
+  top: 75px;
+  left: 100px;
+  width: auto;
+  height: 75%;
   /* max-width: fit-content; */
   /* background-image: url(`https://image.tmdb.org/t/p/w500${movie.poster_path}`); */
   background-size: cover;
   background-position: center;
   opacity: 1;
-  filter: contrast(120%) brightness(100%);
+  z-index: 1;
+  border-radius: 10px;
 }
 
 /* Movie backdrop */
 .movie-backdrop {
-  /* position: relative; */
-  filter: blur(2px);
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
-  /* background-image: url(`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`); */
-  background-size: cover;
-  background-position: center;
-  opacity: 0.35;
-  background: linear-gradient(right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8))
+  z-index: -1;
+  position: absolute;
+
+}
+
+.backdropDiv {
+  position: relative;
+  width: 100vw;
+  height: 600px;
+  display: flex;
+  justify-content: end;
+}
+
+.backdrop-gradient {
+  height: 100%;
+  width: 100vw;
+  position: absolute;
+  /* top: -600px; */
+  background: linear-gradient(to right, black 50%, rgba(255, 255, 255, 0.1));
+  display: flex;
+  justify-content: end;
 }
 
 .movie-text {
@@ -72,9 +57,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: red;
+  color: white;
   font-size: 36px;
   text-shadow: 1px 1px 1px #000;
+}
+
+.buttons {
+  margin-top: 650px;
 }
 
 .movie-dropdown {
