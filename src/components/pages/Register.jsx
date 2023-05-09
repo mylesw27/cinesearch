@@ -3,6 +3,8 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import "./Register.css"
+import { Link } from "react-router-dom"
+import loginandregister from "../assets/loginandregister.jpg"
 
 export default function Register(props) {
   // state for the controlled form
@@ -54,65 +56,72 @@ export default function Register(props) {
   }, [props.currentUser, navigate]);
 
   return (
-    <div className="register-container">
-      <h1 className="register-title" >Register for your account today!</h1>
+    <div>
+      <div className="hero-links">
+        <i className="bi bi-list hamburger" />
+        <Link to="/" className="home-nav">Home</Link>
+        <Link to="/login" className="login-nav">Login</Link>
+      </div>
+      <div className="register-container">
+        <h1 className="register-title" >Register for your account today!</h1>
 
-      <p>{msg}</p>
+        <p>{msg}</p>
 
-      <form className="register-inputs" onSubmit={handleSubmit}>
-        <label htmlFor="name" className="label-name-register">
-          Name:
-        </label>
-        <input
-          className="register-inputs"
-          type="text"
-          id="name"
-          placeholder="your name"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-        />
+        <form className="register-form" onSubmit={handleSubmit}>
+          <label htmlFor="name" className="label-name-register">
+            Name:
+          </label>
+          <input
+            className="register-inputs"
+            type="text"
+            id="name"
+            placeholder="enter your name..."
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
 
-        <label htmlFor="userName" className="label-name-register">
-          Username:
-        </label>
-        <input
-          className="register-inputs"
-          type="text"
-          id="userName"
-          placeholder="your username"
-          onChange={(e) => setUserName(e.target.value)}
-          value={userName}
-        />
+          <label htmlFor="userName" className="label-name-register">
+            Username:
+          </label>
+          <input
+            className="register-inputs"
+            type="text"
+            id="userName"
+            placeholder="create your username..."
+            onChange={(e) => setUserName(e.target.value)}
+            value={userName}
+          />
 
-        <label htmlFor="email" className="label-email-register">
-          Email:
-        </label>
-        <input
-          className="register-inputs"
-          type="email"
-          id="email"
-          placeholder="your email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
+          <label htmlFor="email" className="label-email-register">
+            Email:
+          </label>
+          <input
+            className="register-inputs"
+            type="email"
+            id="email"
+            placeholder="enter your email..."
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
 
-        <label htmlFor="password" className="label-password-register">
-          Password:
-        </label>
-        <input
-          className="register-inputs"
-          type="password"
-          id="password"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          autoComplete="off"
-        />
+          <label htmlFor="password" className="label-password-register">
+            Password:
+          </label>
+          <input
+            className="register-inputs"
+            type="password"
+            id="password"
+            placeholder="create your password..."
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            autoComplete="off"
+          />
 
-        <button type="submit" className="btn-register">
-          Register
-        </button>
-      </form>
+          <button type="submit" className="btn-register">
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
