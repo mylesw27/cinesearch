@@ -93,7 +93,7 @@ export default function Profile(props) {
   };
 
   return (
-    <div className="row grid gap-5">
+    <div className="background row grid gap-5">
       {edit ? (
         <div className="container-fluid vh-100  text-left d-flex flex-row" >
           <div className="">
