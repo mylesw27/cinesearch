@@ -3,8 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 // import listview component
 import ListView from '../partials/ListView'
-// import search field component
-import MainSearch from '../partials/MainSearch'
+import './SearchMovies.css'
 import axios from 'axios'
 
 // export function
@@ -31,9 +30,10 @@ export default function SearchMovies() {
     // return listview with searchArray
     return (
         <div>
-            <ListView
-                movies={movies}
-            />
+            <h2 className='search-title'>Search Results:</h2>
+            <div className='search'>
+            <ListView className='movies' movies={movies}/>
+            </div>
         </div>
     )
 }
