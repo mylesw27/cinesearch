@@ -1,0 +1,18 @@
+
+
+.faves {
+  display:flex;
+  background-color: black;
+  color:white;
+}
+
+.frame:hover {
+  transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.faves-title {
+  background-color: black;
+  color:white;
+  margin: 0 auto;
+}

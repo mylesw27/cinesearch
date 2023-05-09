@@ -1,11 +1,41 @@
 .hero-section {
   background-size: cover;
+  background-color: #000000;
   background-position: center;
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
+
+.hero-links {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.login-nav {
+  margin-right: 10px;
+  background-color: #ffffff;
+  border: 1px solid #333333;
+  color: #000000;
+  padding: 5px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.register-nav {
+  margin-right: 20px;
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  padding: 5px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 
 .logo {
   height: 12rem; /* reduce the height on smaller screens */
@@ -26,7 +56,7 @@
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-  color: #000000;
+  color: #ffffff;
   z-index: 1;
 }
 
@@ -83,6 +113,8 @@
 }
 
 .features-section {
+  background-color: #000000;
+  color:white;
   padding: 48px 0;
 }
 
@@ -103,11 +135,15 @@
 
 .feature {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  border: 2px solid #000000;
+  justify-content: center; 
+  border: 2px solid #ffffff;
   border-radius: 16px;
   padding: 24px;
-  background-color: #fff;
+  background-color: #1b1b1b;
+  color: white;
+  height: 300px;
 }
 
 .feature img {
@@ -120,12 +156,19 @@
 .feature p {
   margin: 0;
   font-size: 20px;
-  color: #555;
+  color: #ffffff;
+  flex-grow: 1; 
+}
+
+.movie-section {
+  background-color: black;
+  color: white;
 }
 
 .movie-list {
   display: grid;
-
+  color:white;
+  background-color: black;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 20px;
 }
@@ -136,6 +179,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  background-color: #1b1b1b;
 }
 
 .movie-card img {
@@ -147,9 +191,14 @@
 
 .movie-info {
   padding: 20px;
-  border:rgba(0, 0, 0,);
+  border: rgba(0, 0, 0);
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: white;
+}
+
+.movie-info a:visited {
+  color: lightgray;
 }
