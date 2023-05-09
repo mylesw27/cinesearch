@@ -1,36 +1,34 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Widget } from "@uploadcare/react-widget";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 
 import axios from "axios";
 
 export default function Profile(props) {
   // state for the secret message (aka user privilaged data)
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState(false);
   const [userData, setUserData] = useState({
-      name: props.name,
-      email: props.email,
-      password: props.password,
-      userName: props.userName,
-      img: props.img,
-})
+    name: props.name,
+    email: props.email,
+    password: props.password,
+    userName: props.userName,
+    img: props.img,
+  });
   const jwt = localStorage.getItem("jwt");
-  
+
   const navigate = useNavigate();
 
   async function handleFileSelect(file) {
     try {
       const fileInfo = await file.promise();
       const cdnUrl = fileInfo.cdnUrl;
-      setUserData({ ...userData, img: cdnUrl }, () => {
-      });
+      setUserData({ ...userData, img: cdnUrl }, () => {});
       // Make a POST request to update the currentUser object with the UUID of the uploaded image
     } catch (err) {
       console.log(err);
     }
   }
-  
 
   // useEffect for getting the user data and checking auth
   useEffect(() => {
@@ -58,8 +56,8 @@ export default function Profile(props) {
   }, []); // only fire on the first render of this component
 
   const handleEdit = async (e) => {
-    try{
-      e.preventDefault()
+    try {
+      e.preventDefault();
       const { name, email, password, userName, img } = userData;
       const reqBody = { name, email, password, userName, img };
       const auth = {
@@ -69,16 +67,13 @@ export default function Profile(props) {
       };
       const url = `${process.env.REACT_APP_SERVER_URL}/api-v1/users`;
       const response = await axios.put(url, reqBody, auth);
-      
-      setEdit(false)
 
-    }catch(err){
-      console.log(err)
+      setEdit(false);
+    } catch (err) {
+      console.log(err);
     }
-    props.setCurrentUser(userData)
-  
-    
-  }
+    props.setCurrentUser(userData);
+  };
 
   const handleDelete = async () => {
     try {
@@ -96,93 +91,98 @@ export default function Profile(props) {
     }
   };
 
-
   return (
     <div>
-      
       {edit ? (
-        
-       <form onSubmit={handleEdit}>
-        <label htmlFor="name">Name</label>
-        <input 
-        type="text"
-        id="name"
-        placeholder={props.currentUser.name}
-        onChange={(e) => setUserData({...userData, name:e.target.value})}
-        value={userData.name}
-        />
-        <div>
-        <label htmlFor="username">Username</label>
-        <input 
-        type="text"
-        id="userName"
-        placeholder={props.currentUser.userName}
-        onChange={(e) => setUserData({...userData, userName:e.target.value})}
-        value={userData.userName}
-        />
-        </div>
-        <div>
-        <label htmlFor="email">Email</label>
-        <input 
-        type="text"
-        id="email"
-        placeholder={props.currentUser.email}
-        onChange={(e) => setUserData({...userData, email:e.target.value})}
-        value={userData.email}
-        />
-        </div>
-        <div>
-        <label htmlFor="password">Password</label>
-        <input 
-        type="text"
-        id="password"
-        placeholder= 'new password'
-        onChange={(e) => setUserData({...userData, password:e.target.value})}
-        value={userData.password}
-        autoComplete="off"
-        />
-        </div>
-        <div>
-        <div>
-        <div>
-      <img
-          src={props.currentUser?.img ? props.currentUser.img : logo}
-          alt="This is the current default profile pic which is a person with no face"
-          style={{ maxWidth: "200px", height: "auto" }}
-        />
-        </div>
-        <label htmlFor="my_file">Your profile picture:</label>{" "}
-        <Widget
-          publicKey="eb5cb5bbf1cbfe6b01be"
-          id="img"
-          onFileSelect={handleFileSelect}
-          name="my_file"
-          role="uploadcare-uploader" 
-        />
-      </div>
-        </div>
-            <button>Submit</button>
-      </form> 
+        <form onSubmit={handleEdit}>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder={props.currentUser.name}
+            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+            value={userData.name}
+          />
+          <div>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="userName"
+              placeholder={props.currentUser.userName}
+              onChange={(e) =>
+                setUserData({ ...userData, userName: e.target.value })
+              }
+              value={userData.userName}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              placeholder={props.currentUser.email}
+              onChange={(e) =>
+                setUserData({ ...userData, email: e.target.value })
+              }
+              value={userData.email}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              type="text"
+              id="password"
+              placeholder="new password"
+              onChange={(e) =>
+                setUserData({ ...userData, password: e.target.value })
+              }
+              value={userData.password}
+              autoComplete="off"
+            />
+          </div>
+          <div>
+            <div>
+              <div>
+                <img
+                  src={props.currentUser?.img ? props.currentUser.img : logo}
+                  alt="This is the current default profile pic which is a person with no face"
+                  style={{ maxWidth: "200px", height: "auto" }}
+                />
+              </div>
+              <label htmlFor="my_file">Your profile picture:</label>{" "}
+              <Widget
+                publicKey="eb5cb5bbf1cbfe6b01be"
+                id="img"
+                onFileSelect={handleFileSelect}
+                name="my_file"
+                role="uploadcare-uploader"
+              />
+            </div>
+          </div>
+          <button>Submit</button>
+        </form>
       ) : (
-        <div>
-      <h1>Hello, {props.currentUser?.name}</h1>
-      <div className="centered">
-        <img
-          src={props.currentUser?.img ? props.currentUser.img : logo}
-          alt="This is the current default profile pic which is a person with no face"
-          style={{ maxWidth: "200px", height: "auto" }}
-        />
-      </div>
-      <p>your email is {props.currentUser?.email}</p>
-      <button onClick={()=> setEdit(true)}>edit</button>
-      <button onClick={handleDelete}>delete</button>
-
-      <h2>
-        Here is the secret message that is only availible to users of User App:
-      </h2>
-
-      <h3>{props.msg}</h3>
-      </div>
+        <div className="container text-left">
+          <div className="row grid gap-5">
+          <div className="col-2">
+            <img
+              src={props.currentUser?.img ? props.currentUser.img : logo}
+              alt="This is the current default profile pic which is a person with no face"
+              style={{ maxWidth: "200px", height: "auto" }}
+            />
+          </div>
+            <div className="col-3 m-5 align-items-left">
+              <h1>{props.currentUser?.name}</h1>
+          <p>{props.currentUser?.email}</p>
+          <button type="button" className="btn" onClick={() => setEdit(true)}>
+            <i className="bi bi-pencil-square">Edit</i>
+          </button>
+          <button type="button" className="btn" onClick={handleDelete}>
+          <i className="bi bi-person-x-fill">Delete</i>
+          </button>
+          </div>
+        </div>
+        </div>
       )}
     </div>
   );
