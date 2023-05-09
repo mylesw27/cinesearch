@@ -1,0 +1,16 @@
+.background{
+    background-color: black;
+}
+
+.cancel-button {
+    color: red
+}
+.mainText{
+    color: white;
+}
+.profileCol1{
+    margin: 42px, 25px, 20px, 1px;
+}
+.profileInfoCard{
+    margin: 42px 25px 20px 1px;
+}

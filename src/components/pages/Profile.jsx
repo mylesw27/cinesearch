@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Widget } from "@uploadcare/react-widget";
 import logo from "../assets/logo.png";
+import "./Profile.css"
 
 import axios from "axios";
 
@@ -92,10 +93,36 @@ export default function Profile(props) {
   };
 
   return (
-    <div>
+    <div className="row grid gap-5">
       {edit ? (
-        <form onSubmit={handleEdit}>
-          <label htmlFor="name">Name</label>
+        <div className="container-fluid vh-100  text-left d-flex flex-row" >
+          <div className="">
+            <div className="col">
+              
+                <div style={{margin: '42px 0px 0px 42px'}}>
+                <img
+                  src={props.currentUser?.img ? props.currentUser.img : logo}
+                  alt="This is the current default profile pic which is a person with no face"
+                  style={{ maxWidth: "200px", height: "auto", border:'5px solid grey', margin: '57px', borderRadius: '10px'}}
+                />
+                </div>
+              
+              <label className="mainText" style={{margin: '0px,4px,7px,61px'}}htmlFor="my_file">Update Image</label>{" "}
+              <Widget
+                publicKey="eb5cb5bbf1cbfe6b01be"
+                id="img"
+                onFileSelect={handleFileSelect}
+                name="my_file"
+                role="uploadcare-uploader"
+              />
+            </div>
+          </div>
+          <div className="col" style={{margin: '30px 0px 3px 0px'}}>
+        <form style={{margin: '81px 27px 10px -37px'}}onSubmit={handleEdit}>
+          <div className="col">
+          
+         
+          <label className="mainText" htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
@@ -103,8 +130,9 @@ export default function Profile(props) {
             onChange={(e) => setUserData({ ...userData, name: e.target.value })}
             value={userData.name}
           />
-          <div>
-            <label htmlFor="username">Username</label>
+          </div>
+          <div className="col">
+            <label className="text-white" htmlFor="username">Username</label>
             <input
               type="text"
               id="userName"
@@ -115,8 +143,8 @@ export default function Profile(props) {
               value={userData.userName}
             />
           </div>
-          <div>
-            <label htmlFor="email">Email</label>
+          <div className="col">
+            <label className="text-white" htmlFor="email">Email</label>
             <input
               type="text"
               id="email"
@@ -128,7 +156,7 @@ export default function Profile(props) {
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label className="text-white" htmlFor="password">Password</label>
             <input
               type="text"
               id="password"
@@ -140,45 +168,34 @@ export default function Profile(props) {
               autoComplete="off"
             />
           </div>
-          <div>
-            <div>
-              <div>
-                <img
-                  src={props.currentUser?.img ? props.currentUser.img : logo}
-                  alt="This is the current default profile pic which is a person with no face"
-                  style={{ maxWidth: "200px", height: "auto" }}
-                />
-              </div>
-              <label htmlFor="my_file">Your profile picture:</label>{" "}
-              <Widget
-                publicKey="eb5cb5bbf1cbfe6b01be"
-                id="img"
-                onFileSelect={handleFileSelect}
-                name="my_file"
-                role="uploadcare-uploader"
-              />
-            </div>
-          </div>
-          <button>Submit</button>
+          
+          <button type="button" className="btn">
+          <i className="bi bi-arrow-repeat text-white">Submit</i>
+            </button>
+          <button type="button" className="btn">
+          <i className="bi bi-x cancel-button">Cancel</i>
+            </button>
         </form>
+        </div>
+        </div>
       ) : (
-        <div className="container text-left">
+        <div className="container-fluid  text-left">
           <div className="row grid gap-5">
-          <div className="col-2">
+          <div className="col-2" style={{margin: '50px 26px 28px 50px'}}>
             <img
               src={props.currentUser?.img ? props.currentUser.img : logo}
               alt="This is the current default profile pic which is a person with no face"
-              style={{ maxWidth: "200px", height: "auto" }}
+              style={{ maxWidth: "200px", height: "auto", border:'5px solid grey', margin: '42px, 25px, 20px, 1px', borderRadius: '10px'}}
             />
           </div>
-            <div className="col-3 m-5 align-items-left">
-              <h1>{props.currentUser?.name}</h1>
-          <p>{props.currentUser?.email}</p>
-          <button type="button" className="btn" onClick={() => setEdit(true)}>
-            <i className="bi bi-pencil-square">Edit</i>
+            <div className="col-3 align-items-left" style={{maxWidth: "200px", height: "1px"}}>
+              <h1 className="text-white" style={{margin: "68px 25px 0px 0px"}}>{props.currentUser?.name}</h1>
+          <p className="text-white" style={{margin: '0px 0px 0px 0px'}}>{props.currentUser?.email}</p>
+          <button type="button" className="btn"  style={{margin: '2px 3px 3px, 2px'}} onClick={() => setEdit(true)}>
+            <i className="bi bi-pencil-square text-white">Edit</i>
           </button>
           <button type="button" className="btn" onClick={handleDelete}>
-          <i className="bi bi-person-x-fill">Delete</i>
+          <i className="bi bi-person-x-fill cancel-button">Delete</i>
           </button>
           </div>
         </div>
