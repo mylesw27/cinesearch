@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import ListView from "../partials/ListView";
 import axios from "axios";
+import './Favorites.css'
+
 
 export default function Favorites({ authToken }) {
   const [favoritesArray, setFavoritesArray] = useState([]);
@@ -19,8 +21,10 @@ export default function Favorites({ authToken }) {
 
   return (
     <div>
-      <h2 style={{fontFamily:"Sigmar", fontWeight:"lighter", padding:"30px"}}>My Favorite Movies</h2>
-      <ListView movies={favoritesArray} />
+      <h2 className="faves-title">Favorite Movies</h2>
+      <div className="faves">
+      <ListView className="movies" movies={favoritesArray} />
+      </div>
     </div>
   );
 }

@@ -14,8 +14,8 @@ import Footer from "./components/partials/Footer";
 import MovieDetails from "./components/pages/MovieDetails";
 import Movies from "./components/pages/Movies";
 import SearchMovies from "./components/pages/SearchMovies";
-// import "bootstrap/dist/css/bootstrap.css";
-// import FrontPage from "./components/pages/FrontPage";
+import "bootstrap/dist/css/bootstrap.css";
+
 
 
 function HeaderWrapper({ children, handleLogout, currentUser }) {
