@@ -4,6 +4,8 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import './Login.css'
 import { Link } from "react-router-dom";
+import panda from "../assets/panda.png"
+import cinesearch from '../assets/cinesearch_white.png'
 export default function Login({ currentUser, setCurrentUser }) {
   // state for the controlled form
   const [email, setEmail] = useState("");
@@ -44,17 +46,19 @@ export default function Login({ currentUser, setCurrentUser }) {
   }, [currentUser, navigate]);
   return (
     //
-    <div>
+    <div className="loginPage">
+      <img src={cinesearch} className="cinesearch" />
       <div className="hero-links">
         <i className="bi bi-list hamburger" />
         <Link to="/" className="home-nav">Home</Link>
         <Link to="/register" className="register-nav">Register</Link>
       </div>
+      <img src={panda} className="pandaLogo" />
       {/* // LOGIN information */}
       <div className="login-container">
-        <h1 className="login-title">Login to Your Account:</h1>
         <p className="msg">{msg}</p>
         <form onSubmit={handleSubmit} className="login-form">
+          <h1 className="login-title">LOGIN</h1>
           <label for="email" className="label-email-login">
             Email:
           </label>
