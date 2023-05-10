@@ -51,28 +51,44 @@ export default function Comments2(props) {
     }
 
     return (
-        <>
+        <div className="thread-box">
             {currentUser ?
                 <>
-                    <div className="discussions-firstlook">
-                    </div>
-                    <div className="comments-container">
-                        {threadsArray}
-                        <form className="comments-form" onSubmit={e => handleSubmit(e, form)}>
-                        <h3 className="create-comment-header">Create a thread:</h3>
-                            {/* threadTitle */}
-                            <label htmlFor="title">Thread Title:</label>
-                            <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
-                            {/* threadBody */}
-                            <label htmlFor="body">Thread Body:</label>
-                            <textarea type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
 
-                            <button type="submit">Post Thread</button>
-                        </form>
-             
-                    </div>
+
+<div class="create-thread-container">
+
+<form className="comments-form" onSubmit={e => handleSubmit(e, form)}>
+  <h3 class="create-thread-header">Create a Thread</h3>
+  <div class="create-thread-form">
+    <div class="create-thread-user-info">
+      <div class="create-thread-user-details">
+
+      </div>
+    </div>
+    <div class="create-thread-inputs">
+      <div class="create-thread-input-group">
+        <label for="title">Thread Title:</label>
+        <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
+      </div>
+      <div class="create-thread-input-group">
+        <label for="body">Thread Body:</label>
+        <textarea className="create-thread-body"type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="create-thread-submit">Post Thread</button>
+  </form>
+  <div>
+  {threadsArray}
+  </div>
+</div>
+
+
+
+
                 </>
                 : <h3>Please sign in to view discussions</h3>}
-        </>
+        </div>
     )
 }

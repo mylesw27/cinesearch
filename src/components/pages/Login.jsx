@@ -53,7 +53,7 @@ export default function Login({ currentUser, setCurrentUser }) {
   {/* // LOGIN information */}
 <div className="login-container">
   <h1 className="login-title">Login to Your Account:</h1>
-  <p className="msg"></p>
+  <p className="msg">{msg}</p>
   <form onSubmit={handleSubmit} className="login-form">
     <label for="email" className="label-email-login">
       Email:

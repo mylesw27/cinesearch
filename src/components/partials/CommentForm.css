@@ -1,32 +1,22 @@
-.comment-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 20px;
+.c-form-title {
+  width: 150px;
+  text-align: left;
   }
   
-  .comment-form label {
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
-  }
-  
-  .comment-form input[type="textarea"] {
-    width: 100%;
+  .c-form-input {
+    width: 500px;
     height: 100px;
     padding: 10px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+    text-align: left;
   }
   
-  .comment-form button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+  
+  .c-form-button:hover {
+    background-color: #909090;
   }
   
-  .comment-form button[type="submit"]:hover {
-    background-color: #45a049;
+  .c-form-submit {
+    padding:30px;
   }
-  

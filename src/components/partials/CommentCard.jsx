@@ -1,6 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
-import "./Comments.css"
+import "./CommentCard.css"
 import { useBootstrapBreakpoints } from "react-bootstrap/esm/ThemeProvider"
 
 export default function CommentCard(props) {
@@ -19,24 +19,24 @@ export default function CommentCard(props) {
 
 
     return (
-        <>
-            {seeComment ?
-                <>
-                    <div>
-                        <h4>{comment.userName}</h4>
-                        <p>{comment.commentBody}</p>
-                        {currentUser._id === comment.userId ?
-                            <div>
-                                <button onClick={handleRemoveComment}>x</button>
-                            </div>
-                            :
-                            <></>
-                        }
-                    </div>
-                </>
-                :
-                <></>
-            }
-        </>
+<div className="comment-box">
+  <div className="comment-user-info">
+    <img src={currentUser.img} alt={currentUser.userName} className="comment-user-img" />
+    <div className="comment-user-details">
+      <div className="comment-username">{currentUser.userName}</div>
+    </div>
+  </div>
+  <div className="comment-content">
+    <div className="comment">
+      <p className="comment-title">This is what they had to say:</p>
+      <p className="comment-body">{comment.commentBody}</p>
+      {currentUser._id === comment.userId && (
+        <div className="comment-actions">
+          <button onClick={handleRemoveComment}>Delete</button>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
     )
-}
+}    
