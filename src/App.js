@@ -167,7 +167,7 @@ function App() {
         </Routes>
       </div>
   
-      <Footer className="footer" />
+      {/* <Footer className="footer" /> */}
       
     </Router>
   );
