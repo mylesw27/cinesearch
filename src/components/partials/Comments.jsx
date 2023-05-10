@@ -49,6 +49,11 @@ export default function Comments2(props) {
             const postResponse = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads`, form)
             const responseObject = postResponse.data.newThread
             setThreads([...threads, responseObject])
+            if (currentUser.img) {
+                setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "", img: currentUser.img })
+            } else {
+                setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "", img: 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png' })
+            }
         } catch (error) {
             console.log(error)
         }
