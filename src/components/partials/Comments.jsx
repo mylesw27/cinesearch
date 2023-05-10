@@ -9,7 +9,7 @@ export default function Comments2(props) {
     const jwt = localStorage.getItem('jwt')
     const [threads, setThreads] = useState([])
     const [comments, setComments] = useState([])
-    const [form, setForm] = useState({ tmdbId: '', userId: '', userName: '', threadTitle: "", threadBody: "" })
+    const [form, setForm] = useState({ tmdbId: '', userId: '', userName: '', threadTitle: "", threadBody: "", userImg: '' })
     const [currentUser, setCurrentUser] = useState(props.currentUser)
     const navigate = useNavigate()
 
@@ -23,7 +23,11 @@ export default function Comments2(props) {
         }
         getComments()
         if (currentUser) {
-            setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "" })
+            if (currentUser.img) {
+                setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "", img: currentUser.img })
+            } else {
+                setForm({ tmdbId: movie, userId: currentUser._id, userName: currentUser.name, threadTitle: "", threadBody: "", img: 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png' })
+            }
         }
     }, [])
 
@@ -56,33 +60,33 @@ export default function Comments2(props) {
                 <>
 
 
-<div class="create-thread-container">
+                    <div class="create-thread-container">
 
-<form className="comments-form" onSubmit={e => handleSubmit(e, form)}>
-  <h3 class="create-thread-header">Create a Thread</h3>
-  <div class="create-thread-form">
-    <div class="create-thread-user-info">
-      <div class="create-thread-user-details">
+                        <form className="comments-form" onSubmit={e => handleSubmit(e, form)}>
+                            <h3 class="create-thread-header">Create a Thread</h3>
+                            <div class="create-thread-form">
+                                <div class="create-thread-user-info">
+                                    <div class="create-thread-user-details">
 
-      </div>
-    </div>
-    <div class="create-thread-inputs">
-      <div class="create-thread-input-group">
-        <label for="title">Thread Title:</label>
-        <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
-      </div>
-      <div class="create-thread-input-group">
-        <label for="body">Thread Body:</label>
-        <textarea className="create-thread-body"type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
-      </div>
-    </div>
-  </div>
-  <button type="submit" class="create-thread-submit">Post Thread</button>
-  </form>
-  <div>
-  {threadsArray}
-  </div>
-</div>
+                                    </div>
+                                </div>
+                                <div class="create-thread-inputs">
+                                    <div class="create-thread-input-group">
+                                        <label for="title">Thread Title:</label>
+                                        <input type="text" id="title" value={form.threadTitle} onChange={(e) => setForm({ ...form, threadTitle: e.target.value })} />
+                                    </div>
+                                    <div class="create-thread-input-group">
+                                        <label for="body">Thread Body:</label>
+                                        <textarea className="create-thread-body" type="textarea" id="body" value={form.threadBody} onChange={(e) => setForm({ ...form, threadBody: e.target.value })} />
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="create-thread-submit">Post Thread</button>
+                        </form>
+                        <div>
+                            {threadsArray}
+                        </div>
+                    </div>
 
 
 

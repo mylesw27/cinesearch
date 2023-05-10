@@ -44,24 +44,24 @@ export default function Thread(props) {
     <>
       {seeThread ?
         <div class="thread-container">
-  <div class="thread-box">
-    <div class="thread-user-info">
-      <img src={currentUser.img} alt={currentUser.userName} class="thread-user-img" />
-      <div class="thread-user-details">
-        <div class="thread-username">{thread.userName} wrote:</div>
-      </div>
-    </div>
-    <div class="thread-content">
-      <h3 class="thread-title">{thread.threadTitle}</h3>
-      <p class="thread-body">{thread.threadBody}</p>
-    </div>
-    {currentUser._id === thread.userId && (
-      <div class="thread-actions">
-        <button onClick={handleRemoveThread}>Remove Thread</button>
-      </div>
-    )}
-  </div>
-</div>
+          <div class="thread-box">
+            <div class="thread-user-info">
+              <img src={thread.img} alt={thread.userName} class="thread-user-img" />
+              <div class="thread-user-details">
+                <div class="thread-username">{thread.userName} wrote:</div>
+              </div>
+            </div>
+            <div class="thread-content">
+              <h3 class="thread-title">{thread.threadTitle}</h3>
+              <p class="thread-body">{thread.threadBody}</p>
+            </div>
+            {currentUser._id === thread.userId && (
+              <div class="thread-actions">
+                <button onClick={handleRemoveThread}>Remove Thread</button>
+              </div>
+            )}
+          </div>
+        </div>
 
 
         :
