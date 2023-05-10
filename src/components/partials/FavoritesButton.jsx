@@ -61,7 +61,7 @@ export default function FavoritesButton(props) {
 
   return (
     <button type="button" className="btn btn-sm font-weight-bold" onClick={toggleFavorite}>
-      {isFavorite ? <i class="bi bi-trash3">Remove From Favorites</i> : "Add To Favorites"}
+      {isFavorite ? "Remove From Favorites" : "Add To Favorites"}
     </button>
   );
 };

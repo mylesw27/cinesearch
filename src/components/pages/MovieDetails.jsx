@@ -24,7 +24,6 @@ function MovieDetails({ currentUser }) {
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
   }
-  console.log(watchMovie)
 
   useEffect(() => {
     const checkFavorite = async () => {
@@ -78,8 +77,6 @@ function MovieDetails({ currentUser }) {
       });
   }, [id]);
 
-  console.log(watchMovie)
-
   //Render the MovieDetails Component
   return (
     <>
@@ -120,7 +117,7 @@ function MovieDetails({ currentUser }) {
             <div className="streamingDiv">
               {watchMovie ?
                 <>
-                  <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}><img src={tvIcon} className="tvIcon" /> Stream It</p>
+                  <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "13px 30px" }}><img src={tvIcon} className="tvIcon" /> Stream It</p>
                   {isMenuOpen && (
                     <div className="movie-dropdown">
                       {watchMovie?.map((provider) => (

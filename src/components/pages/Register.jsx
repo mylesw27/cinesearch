@@ -4,7 +4,8 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import "./Register.css"
 import { Link } from "react-router-dom"
-import loginandregister from "../assets/loginandregister.jpg"
+import panda from "../assets/panda.png"
+import cinesearch from '../assets/cinesearch_white.png'
 
 export default function Register(props) {
   // state for the controlled form
@@ -56,18 +57,18 @@ export default function Register(props) {
   }, [props.currentUser, navigate]);
 
   return (
-    <div>
+    <div className="registerPage">
+      <img src={cinesearch} className="cinesearch" />
       <div className="hero-links">
         <i className="bi bi-list hamburger" />
         <Link to="/" className="home-nav">Home</Link>
         <Link to="/login" className="login-nav">Login</Link>
       </div>
+      <img src={panda} className="pandaLogo" />
       <div className="register-container">
-        <h1 className="register-title" >Register for your account today!</h1>
-
         <p>{msg}</p>
-
         <form className="register-form" onSubmit={handleSubmit}>
+          <h1 className="register-title" >REGISTER</h1>
           <label htmlFor="name" className="label-name-register">
             Name:
           </label>

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import "./CommentForm.css"
 
@@ -9,10 +9,31 @@ export default function CommentForm(props) {
         threadId: thread._id,
         userId: currentUser._id,
         userName: currentUser.name,
-        commentBody: ''
+        commentBody: '',
+        img: ''
     })
     const comments = props.comments
     const setComments = props.setComments
+
+    useEffect(() => {
+        if (currentUser.img) {
+            setForm({
+                threadId: thread._id,
+                userId: currentUser._id,
+                userName: currentUser.name,
+                commentBody: '',
+                img: currentUser.img
+            })
+        } else {
+            setForm({
+                threadId: thread._id,
+                userId: currentUser._id,
+                userName: currentUser.name,
+                commentBody: '',
+                img: 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png'
+            })
+        }
+    }, [])
 
     const handleSubmit = async (e, form) => {
         e.preventDefault()
@@ -20,6 +41,23 @@ export default function CommentForm(props) {
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/threads/comments`, form)
             const newComment = response.data.newComment
             setComments([...comments, newComment])
+            if (currentUser.img) {
+                setForm({
+                    threadId: thread._id,
+                    userId: currentUser._id,
+                    userName: currentUser.name,
+                    commentBody: '',
+                    img: currentUser.img
+                })
+            } else {
+                setForm({
+                    threadId: thread._id,
+                    userId: currentUser._id,
+                    userName: currentUser.name,
+                    commentBody: '',
+                    img: 'https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png'
+                })
+            }
         } catch (err) {
             console.log(err)
         }
