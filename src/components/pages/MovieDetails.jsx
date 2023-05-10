@@ -116,30 +116,31 @@ function MovieDetails({ currentUser }) {
               <FavoritesButton movie={movie} objectId={objectId} currentUser={currentUser} />
               <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
             </div>
-          </div>
-          <div className="streamingDiv">
-            {watchMovie ?
-              <>
-                <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}><img src={tvIcon} className="tvIcon" /> Stream It</p>
-                {isMenuOpen && (
-                  <div className="movie-dropdown">
-                    {watchMovie?.map((provider) => (
-                      <div className="provider-image" key={provider.provider_id}>
-                        {/* <p>{`${provider.provider_name}`}</p> */}
-                        <a href={`${movie.homepage}`}>
-                          <img
-                            src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
-                            alt={provider.provider_name}
-                            className="providerLogo"
-                          />
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </>
-              : <></>
-            }
+
+            <div className="streamingDiv">
+              {watchMovie ?
+                <>
+                  <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}><img src={tvIcon} className="tvIcon" /> Stream It</p>
+                  {isMenuOpen && (
+                    <div className="movie-dropdown">
+                      {watchMovie?.map((provider) => (
+                        <div className="provider-image" key={provider.provider_id}>
+                          {/* <p>{`${provider.provider_name}`}</p> */}
+                          <a href={`${movie.homepage}`}>
+                            <img
+                              src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
+                              alt={provider.provider_name}
+                              className="providerLogo"
+                            />
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+                : <></>
+              }
+            </div>
           </div>
         </div>
       </div>
