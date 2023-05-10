@@ -6,6 +6,7 @@ import WatchlistButton from "../partials/WatchlistButton";
 import FavoritesButton from "../partials/FavoritesButton";
 import Comments from "../partials/Comments";
 import "./MovieDetails.css"
+import tvIcon from '../assets/tv.svg'
 
 // Define the MovieDetails component
 function MovieDetails({ currentUser }) {
@@ -77,6 +78,8 @@ function MovieDetails({ currentUser }) {
       });
   }, [id]);
 
+  console.log(watchMovie)
+
   //Render the MovieDetails Component
   return (
     <>
@@ -114,23 +117,30 @@ function MovieDetails({ currentUser }) {
               <WatchlistButton movie={movie} watchObjId={watchObjId} currentUser={currentUser} />
             </div>
           </div>
-          <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}>Stream It</p>
-          {/* <p>Movie Homepage: {movie.homepage}</p> */}
-          {isMenuOpen && (
-            <div className="movie-dropdown">
-              {watchMovie?.map((provider) => (
-                <div className="provider-image" key={provider.provider_id}>
-                  {/* <p>{`${provider.provider_name}`}</p> */}
-                  <a href={`${movie.homepage}`}>
-                    <img
-                      src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
-                      alt={provider.provider_name}
-                    />
-                  </a>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="streamingDiv">
+            {watchMovie ?
+              <>
+                <p className="stream-btn" onClick={toggleMenu} style={{ fontFamily: "Sigmar", fontWeight: "lighter", padding: "30px" }}><img src={tvIcon} className="tvIcon" /> Stream It</p>
+                {isMenuOpen && (
+                  <div className="movie-dropdown">
+                    {watchMovie?.map((provider) => (
+                      <div className="provider-image" key={provider.provider_id}>
+                        {/* <p>{`${provider.provider_name}`}</p> */}
+                        <a href={`${movie.homepage}`}>
+                          <img
+                            src={`https://image.tmdb.org/t/p/w200/${provider.logo_path}`}
+                            alt={provider.provider_name}
+                            className="providerLogo"
+                          />
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
+              : <></>
+            }
+          </div>
         </div>
       </div>
       <br />
