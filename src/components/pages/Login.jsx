@@ -45,44 +45,44 @@ export default function Login({ currentUser, setCurrentUser }) {
   return (
     //
     <div>
-    <div className="hero-links">
-    <i className="bi bi-list hamburger" />
-    <Link to="/" className="home-nav">Home</Link>
-    <Link to="/register" className="register-nav">Register</Link>
-  </div>
-  {/* // LOGIN information */}
-<div className="login-container">
-  <h1 className="login-title">Login to Your Account:</h1>
-  <p className="msg"></p>
-  <form onSubmit={handleSubmit} className="login-form">
-    <label for="email" className="label-email-login">
-      Email:
-    </label>
-    <input
-      type="email"
-      id="email"
-      placeholder="your email..."
-      required
-      onChange={(e) => setEmail(e.target.value)}
-      value={email}
-    />
-    <label for="password" className="label-password-login">
-      Password:
-    </label>
-    <input
-      type="password"
-      id="password"
-      placeholder="password..."
-      required
-      onChange={(e) => setPassword(e.target.value)}
-      value={password}
-      autoComplete="off"
-    />
-    <button type="submit" className="btn-login">
-      Login
-    </button>
-  </form>
-</div>
-</div>
+      <div className="hero-links">
+        <i className="bi bi-list hamburger" />
+        <Link to="/" className="home-nav">Home</Link>
+        <Link to="/register" className="register-nav">Register</Link>
+      </div>
+      {/* // LOGIN information */}
+      <div className="login-container">
+        <h1 className="login-title">Login to Your Account:</h1>
+        <p className="msg">{msg}</p>
+        <form onSubmit={handleSubmit} className="login-form">
+          <label for="email" className="label-email-login">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="your email..."
+            required
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <label for="password" className="label-password-login">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            placeholder="password..."
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            autoComplete="off"
+          />
+          <button type="submit" className="btn-login">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
