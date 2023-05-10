@@ -9,13 +9,9 @@ import axios from "axios";
 export default function Profile(props) {
   // state for the secret message (aka user privilaged data)
   const [edit, setEdit] = useState(false);
-  const [userData, setUserData] = useState({
-    name: props.name,
-    email: props.email,
-    password: props.password,
-    userName: props.userName,
-    img: props.img,
-  });
+  const [userData, setUserData] = useState(
+   props.currentUser
+  );
   const jwt = localStorage.getItem("jwt");
 
   const navigate = useNavigate();
@@ -119,10 +115,10 @@ export default function Profile(props) {
           <div className="col form">
         <form style={{margin: '81px 27px 10px -37px'}}onSubmit={handleEdit}>
           <div className="input-group input-group-sm mb-3">
-          <span className="input-group-text" id="inputGroup-sizing-sm">Name</span>
+          <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
           <input
             type="text"
-            className="form-control"
+            class="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
             id="name"
@@ -132,11 +128,11 @@ export default function Profile(props) {
           />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span className="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+          <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
             <input
               type="text"
               id="userName"
-              className="form-control"
+              class="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.userName}
@@ -147,11 +143,11 @@ export default function Profile(props) {
             />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span className="input-group-text" id="inputGroup-sizing-sm">Email</span>
+          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
             <input
               type="text"
               id="email"
-              className="form-control"
+              class="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.email}
@@ -162,11 +158,11 @@ export default function Profile(props) {
             />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span className="input-group-text" id="inputGroup-sizing-sm">Password</span>
+          <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
             <input
               type="text"
               id="password"
-              className="form-control"
+              class="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder="new password"
