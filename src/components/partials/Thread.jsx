@@ -46,7 +46,7 @@ export default function Thread(props) {
         <div class="thread-container">
   <div class="thread-box">
     <div class="thread-user-info">
-      <img src={currentUser.img} alt={currentUser.userName} class="thread-user-img" />
+      {/* <img src={currentUser.img} alt={currentUser.userName} class="thread-user-img" /> */}
       <div class="thread-user-details">
         <div class="thread-username">{thread.userName} wrote:</div>
       </div>

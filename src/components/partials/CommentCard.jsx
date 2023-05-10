@@ -21,7 +21,7 @@ export default function CommentCard(props) {
     return (
 <div className="comment-box">
   <div className="comment-user-info">
-    <img src={currentUser.img} alt={currentUser.userName} className="comment-user-img" />
+    {/* <img src={currentUser.img} alt={currentUser.userName} className="comment-user-img" /> */}
     <div className="comment-user-details">
       <div className="comment-username">{currentUser.userName}</div>
     </div>
