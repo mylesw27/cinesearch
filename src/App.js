@@ -166,7 +166,9 @@ function App() {
           />
         </Routes>
       </div>
+  
       <Footer className="footer" />
+      
     </Router>
   );
 }
