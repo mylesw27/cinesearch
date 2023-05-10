@@ -9,13 +9,7 @@ import axios from "axios";
 export default function Profile(props) {
   // state for the secret message (aka user privilaged data)
   const [edit, setEdit] = useState(false);
-  const [userData, setUserData] = useState({
-    name: props.name,
-    email: props.email,
-    password: props.password,
-    userName: props.userName,
-    img: props.img,
-  });
+  const [userData, setUserData] = useState(props.currentUser);
   const jwt = localStorage.getItem("jwt");
 
   const navigate = useNavigate();
@@ -119,72 +113,66 @@ export default function Profile(props) {
           <div className="col form">
         <form style={{margin: '81px 27px 10px -37px'}}onSubmit={handleEdit}>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">Name</span>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
             id="name"
             placeholder={props.currentUser.name}
             onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-            value={userData.name}
           />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">User Name</span>
             <input
               type="text"
               id="userName"
-              class="form-control"
+              className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.userName}
               onChange={(e) =>
                 setUserData({ ...userData, userName: e.target.value })
               }
-              value={userData.userName}
             />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">Email</span>
             <input
               type="text"
               id="email"
-              class="form-control"
+              className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder={props.currentUser.email}
               onChange={(e) =>
                 setUserData({ ...userData, email: e.target.value })
               }
-              value={userData.email}
+
             />
           </div>
           <div className="input-group input-group-sm mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">Password</span>
             <input
               type="text"
               id="password"
-              class="form-control"
+              className="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm"
               placeholder="new password"
               onChange={(e) =>
                 setUserData({ ...userData, password: e.target.value })
               }
-              value={userData.password}
               autoComplete="off"
             />
           </div>
           
-          <button type="button" className="btn">
+          <button type="submit" className="btn">
           <i className="bi bi-arrow-repeat text-white">Submit</i>
             </button>
-          <button type="button" className="btn" onClick={()=> {
-            navigate('/profile');
-            window.location.reload();
-        }}>
+          <button type="button" className="btn" onClick={()=> setEdit(false)}>
           <i className="bi bi-x cancel-button">Cancel</i>
             </button>
         </form>
@@ -204,6 +192,7 @@ export default function Profile(props) {
           </div>
             <div className="col" style={{margin: '100px 0px 0px 0px'}}>
           <h1 className="textInfo">{props.currentUser?.name}</h1>
+          <p className="textInfo">{props.currentUser?.userName}</p>
           <p className="textInfo">{props.currentUser?.email}</p>
           <div style={{margin: '0px 0px 0px -11px'}}>
           <button type="button" className="btn" onClick={() => setEdit(true)}>
