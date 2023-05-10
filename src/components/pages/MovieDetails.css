@@ -1,3 +1,7 @@
+html {
+  background: black;
+}
+
 /* Container for the movie poster and backdrop */
 .movie-details {
   position: absolute;
@@ -27,6 +31,8 @@
   position: absolute;
 
 }
+
+
 
 .backdropDiv {
   position: relative;
@@ -62,8 +68,8 @@
   position: inherit;
   display: flex;
   flex-direction: row;
-  width: 100vw;
-  height: 600px;
+  width: 90vw;
+  height: 525px;
   top: 75px;
   left: 100px;
 }
@@ -77,17 +83,13 @@
 
 .movie-dropdown {
   display: flex;
-  top: 100%;
+  flex-direction: row;
+  justify-content: start;
   left: 0;
   z-index: 1;
-  background-color: transparent;
   padding: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
   width: 100%;
-  max-width: 75px;
-  max-height: 75px;
-  border-radius: 4px;
-  overflow: hidden;
   margin: 0 auto;
 }
 
@@ -98,8 +100,9 @@
 }
 
 .movie-dropdown img {
-  height: 75px;
-  width: 75px;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
 }
 
 .movie-dropdown a {
@@ -107,29 +110,44 @@
   margin-bottom: 1rem;
 }
 
+
 /* Title and metadata */
 .movie-details h1 {
-  font-size: 2.5rem;
+  font-size: 42px;
   font-weight: 600;
   margin-bottom: 0.5rem;
   background-color: transparent;
 }
 
 .movie-details p {
-  font-size: 1.25rem;
+  font-size: 18px;
   margin-bottom: 0.5rem;
   background-color: transparent;
+  color: white
 }
 
 .movie-details h3 {
   background-color: transparent;
 }
 
+.streamingDiv {
+  display: flex;
+  flex-direction: row;
+  /* align-items: end; */
+  /* justify-content: start; */
+  height: 100%;
+  width: 50vw;
+  /* text-align: right; */
+}
+
+.tvIcon {
+  height: 25px;
+}
+
 /* Watch provider logos */
 .movie-details img {
   max-height: 100%;
   margin-right: 10px;
-
 }
 
 /* Favorite and watchlist buttons */
@@ -146,13 +164,15 @@
 
 .movie-details button:hover {
   background-color: #d32f2f;
+  color: white;
 }
 
 .stream-btn {
   border-width: 3px;
-  width: 460px;
+  width: 250px;
   font-size: small;
-
+  padding: 0px;
+  background-color: gray;
 }
 
 .stream-btn:hover {
@@ -161,5 +181,6 @@
 }
 
 .discussion {
-  margin-top: 600px;
+  margin-top: 576px;
+  background-color: black;
 }

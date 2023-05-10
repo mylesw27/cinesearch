@@ -1,0 +1,92 @@
+.create-thread-container {
+  border: 1px solid #353535;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.create-thread-header {
+  margin-top: 0;
+}
+
+.create-thread-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.create-thread-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.create-thread-user-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.create-thread-user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-thread-username {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.create-thread-inputs {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.create-thread-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.create-thread-input-group label {
+  font-weight: bold;
+}
+
+.create-thread-input-group input,
+.create-thread-input-group textarea {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.create-thread-input-group input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.create-thread-input-group textarea {
+  width: 100%;
+  height: 150px;
+}
+
+.create-thread-submit {
+  padding: 5px 50px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #a01f16;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-end;
+}
+

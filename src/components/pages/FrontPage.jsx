@@ -95,7 +95,7 @@ const FrontPage = () => {
                 <div className="movie-info">
                   <h3><strong>{movie.title}</strong></h3>
                   <p><strong>Release date:</strong> {movie.release_date}</p>
-                  <p><strong>User rating:</strong> {movie.vote_average}</p>
+                  <p><strong>User rating:</strong> {movie.vote_average} / 10 ★</p>
                 </div>
               </Link>
             </div>

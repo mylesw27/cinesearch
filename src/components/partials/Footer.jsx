@@ -2,6 +2,13 @@ import React from "react";
 import "./Footer.css"
 
 export default function Footer() {
+
+  const footerStyle = {
+    backgroundColor: "black",
+    bottom: "0",
+    width: "100%",
+    height: "2.5rem"
+  }
   return (
     <div className="footerDiv">
     <footer className="footer">

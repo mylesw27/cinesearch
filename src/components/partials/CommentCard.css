@@ -1,35 +1,64 @@
-.comment-card {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .comment-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .comment-header h4 {
-    margin-right: 10px;
-    font-weight: bold;
-  }
-  
-  .comment-body {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .remove-comment {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .remove-comment:hover {
-    background-color: #da190b;
-  }
-  
+.comment-box {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  max-width: 800px; /* adjust this value to your liking */
+  margin: 0 auto; /* this will center the comment box on the page */
+}
+
+.comment-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  width: 10vw;
+}
+
+.comment-title {
+  text-align: left;
+  font-weight: bold;
+}
+
+.comment-user-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.comment-user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-username {
+  font-weight: bold;
+
+}
+
+.comment-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.comment {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-body {
+  margin-top: 0;
+  text-align: left;
+}
+
+.comment-actions {
+text-align: right;
+justify-content: center;
+}

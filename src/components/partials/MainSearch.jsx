@@ -30,7 +30,7 @@ function MainSearch() {
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
         />
-        <button className="btn btn-primary" type="submit">
+        <button className="button" type="submit">
           Search
         </button>
       </div>

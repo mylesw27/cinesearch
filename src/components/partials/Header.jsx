@@ -27,7 +27,6 @@ export default function Header({ currentUser, handleLogout, setCurrentUser }) {
     </>
   );
 
-  console.log(currentUser)
 
   // useEffect(() => {
   //   if (currentUser && currentUser.img) {
