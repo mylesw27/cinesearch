@@ -56,8 +56,8 @@ export default function Login({ currentUser, setCurrentUser }) {
       <img src={panda} className="pandaLogo" />
       {/* // LOGIN information */}
       <div className="login-container">
-        <p className="msg">{msg}</p>
         <form onSubmit={handleSubmit} className="login-form">
+          <p className="msg">{msg}</p>
           <h1 className="login-title">LOGIN</h1>
           <label for="email" className="label-email-login">
             Email:
