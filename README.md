@@ -71,7 +71,7 @@ Open the app in your browser:
 - Notifications if another user comments on a movie you have commented on
 
 ## Team Mavericks
- - [Dakota Smith](https://github.com/Dxk0ta)
+ - [Dakota Campbell](https://github.com/Dxk0ta)
  - [Anthony Wells](https://github.com/awellsbiz)
  - [Myles Wiegel](https://github.com/mylesw27)
  - [Juan Cabrera](https://github.com/juanedcabrera)
